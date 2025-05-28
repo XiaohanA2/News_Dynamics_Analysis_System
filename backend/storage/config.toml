@@ -1,0 +1,7 @@
+[database]
+host = "100.81.9.75"
+port = 3306
+username = "db"
+password = "password"
+database = "bi_test"
+
