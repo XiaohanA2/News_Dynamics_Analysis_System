@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
-@Table(name = "t_news_browse_record", schema = "bi", catalog = "")
+@Table(name = "t_news_browse_record", schema = "pens_db", catalog = "")
 public class TNewsBrowseRecordEntity {
     @Basic
     @Id
