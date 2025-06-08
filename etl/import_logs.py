@@ -9,9 +9,10 @@ KAFKA_BOOTSTRAP_SERVERS = 'localhost:9092'
 
 # MySQL 配置
 DB_CONFIG = {
-    'host': '******',
-    'user': '******',
-    'password': '******',
+    'host': '121.40.162.87',
+    'port': 3306,
+    'username': 'adminuser',
+    'password': '123456',
     'database': 'pens_db',
 }
 

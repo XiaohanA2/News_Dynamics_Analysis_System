@@ -137,6 +137,8 @@
 </template>
 
 <script>
+import request from '@/utils/request'
+
 export default {
   data() {
     return {
@@ -172,69 +174,50 @@ export default {
     }
   },
   mounted() {
-    this.$axios({
+    request({
       method: 'get',
-      url: 'category'
+      url: '/category'
     }).then(res => {
-      this.categoryList = res.data
+      this.categoryList = res
     }).catch(err => {
       console.log(err)
     })
-    this.$axios({
+    
+    request({
       url: '/range/userid',
       method: 'get'
     }).then(res => {
-      this.userIdRange.min = res.data[0].min_user_id
-      this.userIdRange.max = res.data[0].max_user_id
+      this.userIdRange.min = res[0].min_user_id
+      this.userIdRange.max = res[0].max_user_id
     }).catch(err => {
       console.log(err)
     })
-    this.$axios({
+    
+    request({
       url: '/range/length',
       method: 'get'
     }).then(res => {
-      this.headlineLengthRange.min = res.data[0].min_headline_length
-      this.headlineLengthRange.max = res.data[0].max_headline_length
-      this.contentLengthRange.min = res.data[0].min_content_length
-      this.contentLengthRange.max = res.data[0].max_content_length
+      this.headlineLengthRange.min = res[0].min_headline_length
+      this.headlineLengthRange.max = res[0].max_headline_length
+      this.contentLengthRange.min = res[0].min_content_length
+      this.contentLengthRange.max = res[0].max_content_length
     }).catch(err => {
       console.log(err)
     })
   },
   methods: {
     search(form) {
-      console.log(form)
-      const start_ts = form.startDate !== null ? Date.parse(new Date(form.startDate.replace(' ', 'T'))) / 1000 : ''
-      const end_ts = form.endDate !== null ? Date.parse(new Date(form.endDate.replace(' ', 'T'))) / 1000 : ''
-      const userId = form.userId === undefined ? '' : form.userId
-      const category = form.category === undefined ? '' : form.category
-      const topic = form.topic === undefined ? '' : form.topic
-      const minHeadlineLength = form.minHeadlineLength === undefined ? '' : form.minHeadlineLength
-      const maxHeadlineLength = form.maxHeadlineLength === undefined ? '' : form.maxHeadlineLength
-      const minContentLength = form.minContentLength === undefined ? '' : form.minContentLength
-      const maxContentLength = form.maxContentLength === undefined ? '' : form.maxContentLength
-      if (start_ts !== '' && end_ts !== '' && start_ts > end_ts) {
-        this.$message({
-          message: '起始时间不能大于结束时间',
-          type: 'error'
-        })
-        return
-      }
-      if (minHeadlineLength !== '' && maxHeadlineLength !== '' && minHeadlineLength > maxHeadlineLength) {
-        this.$message({
-          message: '标题最小长度不能大于标题最大长度',
-          type: 'error'
-        })
-        return
-      }
-      if (minContentLength !== '' && maxContentLength !== '' && minContentLength > maxContentLength) {
-        this.$message({
-          message: '内容最小长度不能大于内容最大长度',
-          type: 'error'
-        })
-        return
-      }
-      this.$axios({
+      const start_ts = Math.floor(this.form.startDate.getTime() / 1000)
+      const end_ts = Math.floor(this.form.endDate.getTime() / 1000)
+      const userId = this.form.userId
+      const category = this.form.category
+      const topic = this.form.topic
+      const minHeadlineLength = this.form.minHeadlineLength
+      const maxHeadlineLength = this.form.maxHeadlineLength
+      const minContentLength = this.form.minContentLength
+      const maxContentLength = this.form.maxContentLength
+
+      request({
         url: '/comprehensive',
         params: {
           start_ts: start_ts,
@@ -250,23 +233,13 @@ export default {
         },
         method: 'get'
       }).then(res => {
-        this.newsInfo = res.data
+        this.newsInfo = res
       }).catch(err => {
         console.log(err)
       })
-      // mockGetConprehensiveInfo(
-      //   start_ts, end_ts,
-      //   userId, category, topic,
-      //   minHeadlineLength, maxHeadlineLength,
-      //   minContentLength, maxContentLength)
-      //   .then(res => {
-      //     this.newsInfo = res.data
-      //   }).catch(err => {
-      //     console.log(err)
-      //   })
     },
     goNewsContent(row) {
-      this.$axios({
+      request({
         url: '/news/content',
         params: {
           news_id: row.news_id
@@ -274,25 +247,18 @@ export default {
         method: 'get'
       }).then(res => {
         this.headline = row.headline
-        this.content = res.data.content
+        this.content = res.content
         this.dialogVisible = true
       }).catch(err => {
         console.log(err)
       })
-      // mockGetNewsContent(row.news_id).then(res => {
-      //   this.headline = row.headline
-      //   this.content = res.data.content
-      //   this.dialogVisible = true
-      // }).catch(err => {
-      //   console.log(err)
-      // })
     },
     getTopicList(category) {
       if (category === '') {
         this.topicList = []
         return
       }
-      this.$axios({
+      request({
         url: '/topic',
         params: {
           category: category
@@ -305,13 +271,6 @@ export default {
       }).catch(err => {
         console.log(err)
       })
-      // mockGetTopicOfCategory(category).then(res => {
-      //   console.log(res)
-      //   this.topicList = res.data
-      //   console.log(this.topicList)
-      // }).catch(err => {
-      //   console.log(err)
-      // })
     },
     clearTopicList() {
       this.form.category = ''

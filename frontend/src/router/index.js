@@ -206,7 +206,7 @@ export const constantRoutes = [
     component: Layout,
     children: [
       {
-        path: 'https://github.com/cerebellumking/BusinessIntelligence',
+        path: 'https://github.com/XiaohanA2/News_Dynamics_Analysis_System',
         meta: { title: '仓库地址' }
       }
     ]

@@ -51,6 +51,7 @@
 </template>
 
 <script>
+import request from '@/utils/request'
 let websocket = null
 export default {
   data() {
@@ -141,6 +142,19 @@ export default {
         this.headline = row.headline
         this.content = res.data.content
         this.dialogVisible = true
+      }).catch(err => {
+        console.log(err)
+      })
+    },
+    getDynamicRecommendation() {
+      request({
+        url: '/recommendation',
+        method: 'get',
+        params: {
+          user_id: this.userId
+        }
+      }).then(res => {
+        this.recommendationData = res
       }).catch(err => {
         console.log(err)
       })

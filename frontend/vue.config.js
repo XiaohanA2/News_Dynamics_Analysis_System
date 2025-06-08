@@ -31,8 +31,15 @@ module.exports = {
   productionSourceMap: false,
   devServer: {
     proxy: {
+      '/api': {
+        target: 'http://localhost:8081',
+        changeOrigin: true,
+        pathRewrite: {
+          '^/api': '/api'
+        }
+      },
       '/websocket': {
-        target: 'http://localhost:8081/',
+        target: 'http://localhost:8081',
         changeOrigin: true
       }
     },
