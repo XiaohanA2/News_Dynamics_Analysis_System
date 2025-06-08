@@ -159,8 +159,8 @@ export default {
 .el-form-item {
   flex-shrink: 0;
   flex-grow: 1;
-  margin-left: 50px;
-  margin-right: 50px;
+  margin-left: 20px;
+  margin-right: 20px;
 }
 </style>
 
