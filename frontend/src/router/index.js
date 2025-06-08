@@ -51,31 +51,9 @@ export const constantRoutes = [
       path: 'introduction',
       name: 'introduction',
       component: () => import('@/views/introduction/index'),
-      meta: { title: '项目简介' }
+      meta: { title: '项目简介', icon: 'table' }
     }]
   },
-
-  // {
-  //   path: '/example',
-  //   component: Layout,
-  //   redirect: '/example/table',
-  //   name: 'Example',
-  //   meta: { title: 'Example', icon: 'el-icon-s-help' },
-  //   children: [
-  //     {
-  //       path: 'table',
-  //       name: 'Table',
-  //       component: () => import('@/views/table/index'),
-  //       meta: { title: 'Table', icon: 'table' }
-  //     },
-  //     {
-  //       path: 'tree',
-  //       name: 'Tree',
-  //       component: () => import('@/views/tree/index'),
-  //       meta: { title: 'Tree', icon: 'tree' }
-  //     }
-  //   ]
-  // },
 
   {
     path: '/single-news-fashion',
@@ -85,7 +63,7 @@ export const constantRoutes = [
         path: 'index',
         name: 'single-news-fashion',
         component: () => import('@/views/a-single-news-fashion/index'),
-        meta: { title: '单新闻流行变化' }
+        meta: { title: '单新闻流行变化', icon: 'nested' }
       }
     ]
   },
@@ -98,7 +76,7 @@ export const constantRoutes = [
         path: 'index',
         name: 'category-news-changing',
         component: () => import('@/views/b-category-news-changing/index'),
-        meta: { title: '某种类新闻变化' }
+        meta: { title: '某种类新闻变化', icon: 'list' }
       }
     ]
   },
@@ -111,7 +89,7 @@ export const constantRoutes = [
         path: 'index',
         name: 'user-interest-changing',
         component: () => import('@/views/c-user-interest-changing/index'),
-        meta: { title: '用户兴趣变化' }
+        meta: { title: '用户兴趣变化', icon: 'star' }
       }
     ]
   },
@@ -124,7 +102,7 @@ export const constantRoutes = [
         path: 'index',
         name: 'comprehensive-search',
         component: () => import('@/views/d-comprehensive-search/index'),
-        meta: { title: '组合统计查询' }
+        meta: { title: '组合统计查询', icon: 'tree-table' }
       }
     ]
   },
@@ -137,79 +115,20 @@ export const constantRoutes = [
         path: 'index',
         name: 'dynamic-recommendation',
         component: () => import('@/views/e-dynamic-recommendation/index'),
-        meta: { title: '实时推荐' }
+        meta: { title: '实时推荐', icon: 'example' }
       }
     ]
   },
 
-  // {
-  //   path: '/nested',
-  //   component: Layout,
-  //   redirect: '/nested/menu1',
-  //   name: 'Nested',
-  //   meta: {
-  //     title: 'Nested',
-  //     icon: 'nested'
-  //   },
-  //   children: [
-  //     {
-  //       path: 'menu1',
-  //       component: () => import('@/views/nested/menu1/index'), // Parent router-view
-  //       name: 'Menu1',
-  //       meta: { title: 'Menu1' },
-  //       children: [
-  //         {
-  //           path: 'menu1-1',
-  //           component: () => import('@/views/nested/menu1/menu1-1'),
-  //           name: 'Menu1-1',
-  //           meta: { title: 'Menu1-1' }
-  //         },
-  //         {
-  //           path: 'menu1-2',
-  //           component: () => import('@/views/nested/menu1/menu1-2'),
-  //           name: 'Menu1-2',
-  //           meta: { title: 'Menu1-2' },
-  //           children: [
-  //             {
-  //               path: 'menu1-2-1',
-  //               component: () => import('@/views/nested/menu1/menu1-2/menu1-2-1'),
-  //               name: 'Menu1-2-1',
-  //               meta: { title: 'Menu1-2-1' }
-  //             },
-  //             {
-  //               path: 'menu1-2-2',
-  //               component: () => import('@/views/nested/menu1/menu1-2/menu1-2-2'),
-  //               name: 'Menu1-2-2',
-  //               meta: { title: 'Menu1-2-2' }
-  //             }
-  //           ]
-  //         },
-  //         {
-  //           path: 'menu1-3',
-  //           component: () => import('@/views/nested/menu1/menu1-3'),
-  //           name: 'Menu1-3',
-  //           meta: { title: 'Menu1-3' }
-  //         }
-  //       ]
-  //     },
-  //     {
-  //       path: 'menu2',
-  //       component: () => import('@/views/nested/menu2/index'),
-  //       name: 'Menu2',
-  //       meta: { title: 'menu2' }
-  //     }
-  //   ]
-  // },
-
   {
-    path: '仓库地址',
+    path: '/hot',
     component: Layout,
-    children: [
-      {
-        path: 'https://github.com/cerebellumking/BusinessIntelligence',
-        meta: { title: '仓库地址' }
-      }
-    ]
+    children: [{
+      path: 'index',
+      name: 'hot',
+      component: () => import('@/views/f-hot-news-suggestion/index'),
+      meta: { title: '爆款新闻分析（待完成）', icon: 'fire' }
+    }]
   },
 
   // 404 page must be placed at the end !!!
