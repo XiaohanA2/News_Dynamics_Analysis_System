@@ -254,16 +254,6 @@ export default {
       }).catch(err => {
         console.log(err)
       })
-      // mockGetConprehensiveInfo(
-      //   start_ts, end_ts,
-      //   userId, category, topic,
-      //   minHeadlineLength, maxHeadlineLength,
-      //   minContentLength, maxContentLength)
-      //   .then(res => {
-      //     this.newsInfo = res.data
-      //   }).catch(err => {
-      //     console.log(err)
-      //   })
     },
     goNewsContent(row) {
       this.$axios({
@@ -279,13 +269,6 @@ export default {
       }).catch(err => {
         console.log(err)
       })
-      // mockGetNewsContent(row.news_id).then(res => {
-      //   this.headline = row.headline
-      //   this.content = res.data.content
-      //   this.dialogVisible = true
-      // }).catch(err => {
-      //   console.log(err)
-      // })
     },
     getTopicList(category) {
       if (category === '') {
@@ -305,13 +288,6 @@ export default {
       }).catch(err => {
         console.log(err)
       })
-      // mockGetTopicOfCategory(category).then(res => {
-      //   console.log(res)
-      //   this.topicList = res.data
-      //   console.log(this.topicList)
-      // }).catch(err => {
-      //   console.log(err)
-      // })
     },
     clearTopicList() {
       this.form.category = ''
