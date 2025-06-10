@@ -6,8 +6,9 @@ from flask_cors import CORS
 import tomli
 from util import log
 import time
+import openai
 
-with open("./config.toml", mode="rb") as fp:
+with open("backend/storage/config.toml", mode="rb") as fp:
     config = tomli.load(fp)
 
 app = Flask(__name__)
@@ -300,6 +301,84 @@ def getConprehensiveInfo():
         result = [{'headline': row[0], 'news_id': row[1]} for row in rows]
         return jsonify(result)
 
+# DeepSeek API 配置
+DEEPSEEK_API_KEY = "sk-819fcb9cb98343eba13358c4b1613712"
+DEEPSEEK_BASE_URL = "https://api.deepseek.com"
+
+@app.route('/news/boom-analysis', methods=['POST'])
+def news_boom_analysis():
+    """
+    输入：JSON，包含 category, topic, start_time, end_time
+    输出：每条新闻的爆款概率和分析
+    """
+    data = request.json
+    category = data.get('category')
+    topic = data.get('topic')
+    start_time = data.get('start_time')  # 例如 "2024-06-01 00:00:00"
+    end_time = data.get('end_time')      # 例如 "2024-06-07 23:59:59"
+
+    # 1. 查询新闻及统计数据
+    sql = f"""
+        SELECT n.news_id, n.headline, n.content, n.category, n.topic,
+               COUNT(r.user_id) AS user_count, SUM(r.duration) AS total_duration
+        FROM t_news n
+        LEFT JOIN t_news_browse_record r ON n.news_id = r.news_id
+        WHERE n.category = '{category}'
+          AND n.topic = '{topic}'
+          AND r.start_ts BETWEEN UNIX_TIMESTAMP('{start_time}') AND UNIX_TIMESTAMP('{end_time}')
+        GROUP BY n.news_id
+        LIMIT 1;
+    """
+    with db.engine.connect() as conn:
+        start = time.time()
+        rows = conn.execute(text(sql)).fetchall()
+        end = time.time()
+        news_list = []
+        log(text(sql), end - start)
+        for row in rows:
+            news_list.append({
+                "news_id": row.news_id,
+                "headline": row.headline,
+                "content": row.content,
+                "category": row.category,
+                "topic": row.topic,
+                "user_count": row.user_count or 0,
+                "total_duration": row.total_duration or 0
+            })
+
+    # 2. 调用 DeepSeek API 分析
+    client = openai.OpenAI(api_key=DEEPSEEK_API_KEY, base_url=DEEPSEEK_BASE_URL)
+    results = []
+    for news in news_list:
+        prompt = f"""
+            新闻标题：{news['headline']}
+            新闻内容：{news['content']}
+            新闻类别：{news['category']}
+            新闻主题：{news['topic']}
+            用户数：{news['user_count']}
+            浏览总时长：{news['total_duration']}
+            分析问题：在{start_time}到{end_time}期间，这条新闻成为爆款新闻的概率有多大？请分析原因，并总结该时间段内爆款新闻的共同特征。
+            """
+        try:
+            response = client.chat.completions.create(
+                model="deepseek-chat",
+                messages=[
+                    {"role": "system", "content": "你是一个资深数据分析师，擅长新闻爆款预测。"},
+                    {"role": "user", "content": prompt}
+                ],
+                stream=False
+            )
+            analysis = response.choices[0].message.content
+            print(news['headline'], time.time())
+        except Exception as e:
+            analysis = f"分析失败: {str(e)}"
+        results.append({
+            "news_id": news['news_id'],
+            "headline": news['headline'],
+            "analysis": analysis
+        })
+
+    return jsonify(results)
 
 if __name__ == '__main__':
     with app.app_context():

@@ -61,3 +61,15 @@ export function mockGetTopicOfCategory(category) {
     method: 'get'
   })
 }
+/**
+ * 爆款新闻分析
+ * @param {Object} params - { category, topic, start_time, end_time }
+ * @returns {Promise}
+ */
+export function analyzeHotNews(params) {
+  return request({
+    url: '/news/boom-analysis',
+    method: 'post',
+    data: params
+  })
+}
