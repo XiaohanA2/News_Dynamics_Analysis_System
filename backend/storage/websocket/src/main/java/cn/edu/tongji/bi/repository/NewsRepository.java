@@ -9,9 +9,6 @@ import java.util.Map;
 
 
 public interface NewsRepository extends JpaRepository<TNewsEntity, Integer> {
-    @Query(value = "select news_id,category,topic,headline,content from pens_db.t_news where category=(select category from pens_db.t_news n join (select * from pens_db.t_news_browse_record where user_id = ?1 order by start_ts desc limit 10)as r on n.news_id=r.news_id group by category order by count(*) desc limit 1) order by total_browse_num desc limit 10;", nativeQuery = true)
+    @Query(value = "select news.news_id,category,topic,headline,content from pens_db.t_news news join pens_db.t_news_current_popularity popular on news.news_id = popular.news_id where category=(select category from pens_db.t_news n join (select news_id from pens_db.t_news_browse_record where user_id = ?1 order by start_ts desc limit 10)as r on n.news_id=r.news_id group by category order by count(n.news_id) desc limit 1) order by popularity desc limit 10;", nativeQuery = true)
     List<Map<String,Object>> findNewsByUserId(int userId);
-
-    @Query(value = "select t_news.news_id,t_news.headline,t_news.content,start_ts from pens_db.t_news join (select * from pens_db.t_news_browse_record where user_id = ?1 and start_ts>?2 order by start_ts desc limit 10)as j on j.news_id=t_news.news_id", nativeQuery = true)
-    List<Map<String,Object>> getRecentClick(int userId,int startDay);
 }

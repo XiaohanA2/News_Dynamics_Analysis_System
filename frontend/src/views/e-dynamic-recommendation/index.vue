@@ -10,21 +10,6 @@
         </el-form-item>
       </el-form>
     </el-row>
-    <el-row v-if="newsClicked.length !== 0">
-      <el-divider>历史点击记录</el-divider>
-      <el-table :data="newsClicked" style="width: 100%; height: 'auto'" max-height="500px" stripe>
-        <el-table-column prop="news_id" label="news_id" width="180" />
-        <el-table-column prop="headline" label="headline" />
-        <el-table-column prop="date" label="date" width="180" />
-        <el-table-column fixed="right" label="Operations" width="120">
-          <template #default="scope">
-            <el-button link type="primary" size="small" @click.prevent="goNewsContent(scope.row)">
-              查看详细
-            </el-button>
-          </template>
-        </el-table-column>
-      </el-table>
-    </el-row>
     <el-row v-if="newsRecommended.length !== 0">
       <el-divider>新闻推荐</el-divider>
       <el-table :data="newsRecommended" style="width: 100%; height: 500px" max-height="500px" stripe>
@@ -61,7 +46,6 @@ export default {
         max: 0
       },
       newsRecommended: [],
-      newsClicked: [],
       headline: '',
       content: '',
       dialogVisible: false
@@ -86,6 +70,9 @@ export default {
   methods: {
     search() {
       if (this.isInput) {
+        if (websocket) {
+          websocket.close()
+        }
         websocket = new WebSocket('ws://127.0.0.1:8081/websocket/' + this.userId)
         websocket.onopen = () => {
           console.log('websocket open')
@@ -95,20 +82,6 @@ export default {
           res = JSON.parse(res.data)
           console.log(res)
           this.newsRecommended = res.news
-          if (res.clicks == null) {
-            this.newsClicked = []
-          } else {
-            this.newsClicked = res.clicks.map(item => {
-              return {
-                news_id: item.news_id,
-                headline: item.headline,
-                date: new Date(item.start_ts * 1000)
-                  .toISOString()
-                  .replace('T', ' ').replace('Z', '')
-                  .slice(0, -4)
-              }
-            })
-          }
         }
         const sendWebSocketMessage = () => {
           if (websocket.readyState === WebSocket.OPEN) {
