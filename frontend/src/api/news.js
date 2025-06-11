@@ -73,3 +73,4 @@ export function analyzeHotNews(params) {
     data: params
   })
 }
+

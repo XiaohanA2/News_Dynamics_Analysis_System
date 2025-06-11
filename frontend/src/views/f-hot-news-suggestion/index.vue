@@ -64,7 +64,7 @@
         </el-form-item>
       </el-row>
     </el-form>
-        <el-table :data="newsInfo" v-if="newsInfo.length" style="margin-top: 30px;">
+    <el-table v-if="newsInfo.length" :data="newsInfo" style="margin-top: 30px;">
       <el-table-column prop="headline" label="新闻标题" />
       <el-table-column prop="analysis" label="分析结果" />
     </el-table>
@@ -98,46 +98,47 @@ export default {
     })
   },
   methods: {
-      search(form) {
-    const start_time = form.startDate
-    const end_time = form.endDate
-    const category = form.category
-    const topic = form.topic
+    search(form) {
+      const start_time = form.startDate
+      const end_time = form.endDate
+      const category = form.category
+      const topic = form.topic
 
-    if (!start_time || !end_time) {
-      this.$message({
-        message: '请选择起止时间',
-        type: 'error'
-      })
-      return
-    }
-    if (new Date(start_time) > new Date(end_time)) {
-      this.$message({
-        message: '起始时间不能大于结束时间',
-        type: 'error'
-      })
-      return
-    }
+      if (!start_time || !end_time) {
+        this.$message({
+          message: '请选择起止时间',
+          type: 'error'
+        })
+        return
+      }
+      if (new Date(start_time) > new Date(end_time)) {
+        this.$message({
+          message: '起始时间不能大于结束时间',
+          type: 'error'
+        })
+        return
+      }
 
-    analyzeHotNews({
-      category,
-      topic,
-      start_time,
-      end_time
-    }).then(res => {
-      this.newsInfo = res.data
-      this.$message({
-        message: '分析完成！',
-        type: 'success'
+      analyzeHotNews({
+        category,
+        topic,
+        start_time,
+        end_time
       })
-    }).catch(err => {
-      this.$message({
-        message: '分析失败',
-        type: 'error'
-      })
-      console.error(err)
-    })
-  },
+        .then(res => {
+          this.newsInfo = res.data
+          this.$message({
+            message: '分析完成！',
+            type: 'success'
+          })
+        }).catch(err => {
+          this.$message({
+            message: '分析失败',
+            type: 'error'
+          })
+          console.error(err)
+        })
+    },
     getTopicList(category) {
       if (category === '') {
         this.topicList = []
