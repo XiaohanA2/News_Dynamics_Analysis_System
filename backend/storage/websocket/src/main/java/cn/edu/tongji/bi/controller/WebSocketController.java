@@ -31,7 +31,6 @@ public class WebSocketController {
     private static NewsRepository newsRepository;
     private Session session = null;
     private static String path = "./query.log";
-    private static int start = 0;
     @Autowired
     public void setUserService(NewsRepository newsRepository) {
         WebSocketController.newsRepository = newsRepository;
@@ -42,7 +41,6 @@ public class WebSocketController {
         this.session = session;
         webSocketControllerSet.add(this);
         this.userid = Integer.parseInt(userid);
-//        this.sendMessage("测试一下");
     }
 
     @OnClose
@@ -56,24 +54,12 @@ public class WebSocketController {
         for (WebSocketController item: webSocketControllerSet) {
             try {
                 Map<String,Object> result = new HashMap<>(16);
-                String sql = String.format("SELECT news_id, category, topic, headline, content FROM t_news WHERE category=(SELECT category FROM t_news n JOIN (SELECT * FROM t_news_browse_record WHERE user_id = %s ORDER BY start_ts DESC LIMIT 10) AS r ON n.news_id=r.news_id GROUP BY category ORDER BY count(*) DESC LIMIT 1) ORDER BY total_browse_num DESC LIMIT 10;",userid);
+                String sql = String.format("SELECT news_id, category, topic, headline, content FROM t_news WHERE category=(SELECT category FROM t_news n JOIN (SELECT * FROM t_news_browse_record WHERE user_id = %s ORDER BY start_ts DESC LIMIT 10) AS r ON n.news_id=r.news_id GROUP BY category ORDER BY count(*) DESC LIMIT 1) ORDER BY total_browse_num DESC LIMIT 10;", userid);
                 Long startTime = System.currentTimeMillis();
                 List<Map<String,Object>> news = newsRepository.findNewsByUserId(userid);
                 Long endTime = System.currentTimeMillis();
                 logSql(sql, (double)(endTime-startTime)/1000);
                 result.put("news",news);
-                sql = String.format("SELECT t_news.news_id, t_news.headline, t_news.content, start_ts FROM t_news JOIN (SELECT * FROM t_news_browse_record WHERE user_id = %s and start_ts>%s ORDER BY start_ts DESC LIMIT 10) AS j ON j.news_id=t_news.news_id", userid,start);
-                startTime = System.currentTimeMillis();
-                List<Map<String,Object>> recentClick = newsRepository.getRecentClick(userid,start);
-                endTime = System.currentTimeMillis();
-                logSql(sql,(double)(endTime-startTime)/1000);
-                if (recentClick.size() != 0) {
-                    start = Integer.parseInt(recentClick.get(0).get("start_ts").toString());
-                    result.put("clicks",recentClick);
-                } else {
-                    System.out.println("no recent clicks");
-                    result.put("clicks",null);
-                }
                 item.session.getBasicRemote().sendText(JSON.toJSONString(result));
             } catch (Exception e) {
                 e.printStackTrace();
