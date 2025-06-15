@@ -46,13 +46,7 @@ export const constantRoutes = [
   {
     path: '/',
     component: Layout,
-    redirect: '/introduction',
-    children: [{
-      path: 'introduction',
-      name: 'introduction',
-      component: () => import('@/views/introduction/index'),
-      meta: { title: '项目简介', icon: 'table' }
-    }]
+    redirect: '/single-news-fashion/index'
   },
 
   {

@@ -140,10 +140,11 @@
       <el-table-column label="详细指标" min-width="150">
         <template slot-scope="scope">
           <el-popover
+            v-if="scope.row.metrics"
             placement="right"
             width="400"
             trigger="click"
-            v-if="scope.row.metrics">
+          >
             <div>
               <p><strong>总浏览用户数：</strong>{{ scope.row.metrics.total_users }}</p>
               <p><strong>总浏览时长：</strong>{{ scope.row.metrics.total_duration }}秒</p>

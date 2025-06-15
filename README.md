@@ -168,6 +168,12 @@ create table t_news_browse_record
     start_day int unsigned not null
 );
 
+create index idx_newsid_startts
+    on t_news_browse_record (news_id, start_ts);
+
+create index t_news_browse_record_news_id_IDX
+    on t_news_browse_record (news_id, start_day);
+
 create index t_news_browse_record_news_id_index
     on t_news_browse_record (news_id);
 
@@ -225,6 +231,8 @@ WHERE headline LIKE '%{headline}%'
 LIMIT {amount};
 ```
 
+![](./assets/2025-06-15-19-45-21.png)
+
 然后根据新闻标题，由后端服务查找指定新闻在指定时间内的日浏览量变化，前端使用折线图进行展示。
 
 ```SQL
@@ -233,6 +241,8 @@ FROM t_news_browse_record tnbr
 WHERE {start_ts} <= tnbr.start_ts AND tnbr.start_ts <= {end_ts} AND news_id = {news_id}
 GROUP BY tnbr.news_id, FROM_UNIXTIME(tnbr.start_ts,"%Y-%m-%d");
 ```
+
+![](./assets/2025-06-15-19-47-11.png)
 
 ### 6.2. 查询某些种类的新闻的变化情况
 
@@ -243,6 +253,8 @@ SELECT DISTINCT(category)
 FROM t_news_daily_category;
 ```
 
+![](./assets/2025-06-15-19-47-33.png)
+
 根据所选新闻种类，可以查询多个新闻种类在指定时间内日浏览数的变化，前端使用折线图进行展示。
 
 ```SQL
@@ -251,6 +263,8 @@ FROM t_news_daily_category WHERE day_stamp >= {start_day} AND day_stamp<={end_da
 AND (category = 'entertainment' or category = 'finance')
 GROUP BY day_stamp, category;
 ```
+
+![](./assets/2025-06-15-19-49-42.png)
 
 ### 6.3. 查询用户兴趣变化
 
@@ -266,6 +280,8 @@ FROM t_news AS n
     ) AS t ON n.news_id=t.news_id
 GROUP BY n.category;
 ```
+
+![](./assets/2025-06-15-19-52-02.png)
 
 ### 6.4. 组合查询
 
@@ -286,6 +302,8 @@ WHERE tnbr.start_ts >= 1560355200 AND tnbr.start_ts <= 1561996800
             AND n.topic like '%soccer%'
     );
 ```
+
+![](./assets/2025-06-15-19-54-50.png)
 
 ### 6.5. 爆款新闻分析
 
