@@ -3001,3 +3001,618 @@
 [2025-06-15 20:03:08] 
         SELECT min(user_id), max(user_id) FROM t_news_browse_record;
          0.016542911529541016s
+[2025-06-15 22:58:49] 
+        SELECT min(user_id), max(user_id) FROM t_news_browse_record;
+         0.0196230411529541s
+[2025-06-15 22:58:51] 
+        SELECT distinct(category)
+        FROM t_news_daily_category;
+         0.01997208595275879s
+[2025-06-15 22:58:51] 
+        SELECT min(user_id), max(user_id) FROM t_news_browse_record;
+         0.012061834335327148s
+[2025-06-15 22:58:52] 
+        SELECT min(user_id), max(user_id) FROM t_news_browse_record;
+         0.013066291809082031s
+[2025-06-15 22:58:52] 
+        SELECT distinct(category)
+        FROM t_news_daily_category;
+         0.012611627578735352s
+[2025-06-15 22:58:55] 
+            SELECT min(length(headline)), max(length(headline)), min(length(content)), max(length(content))
+            FROM t_news;
+             4.003763198852539s
+[2025-06-15 23:00:02] 
+        SELECT news_id,headline
+        FROM t_news
+        WHERE headline LIKE '%%'
+        LIMIT 5;
+         0.02683568000793457s
+[2025-06-15 23:00:12] 
+        SELECT distinct(category)
+        FROM t_news_daily_category;
+         0.014580249786376953s
+[2025-06-15 23:00:14] 
+        SELECT min(user_id), max(user_id) FROM t_news_browse_record;
+         0.012952089309692383s
+[2025-06-15 23:00:19] 
+        SELECT news_id,headline
+        FROM t_news
+        WHERE headline LIKE '%%'
+        LIMIT 5;
+         0.013113975524902344s
+[2025-06-15 23:00:43] 
+        SELECT news_id,headline
+        FROM t_news
+        WHERE headline LIKE '%%'
+        LIMIT 5;
+         0.013196706771850586s
+[2025-06-15 23:00:45] 
+        SELECT news_id,headline
+        FROM t_news
+        WHERE headline LIKE '%me%'
+        LIMIT 5;
+         0.013579845428466797s
+[2025-06-15 23:00:46] 
+        SELECT news_id,headline
+        FROM t_news
+        WHERE headline LIKE '%medi%'
+        LIMIT 5;
+         0.04716348648071289s
+[2025-06-15 23:00:47] 
+        SELECT news_id,headline
+        FROM t_news
+        WHERE headline LIKE '%medic%'
+        LIMIT 5;
+         0.06685495376586914s
+[2025-06-15 23:00:48] 
+        SELECT news_id,headline
+        FROM t_news
+        WHERE headline LIKE '%medici%'
+        LIMIT 5;
+         0.8540654182434082s
+[2025-06-15 23:00:49] 
+        SELECT news_id,headline
+        FROM t_news
+        WHERE headline LIKE '%medicin%'
+        LIMIT 5;
+         0.2744596004486084s
+[2025-06-15 23:00:49] 
+        SELECT news_id,headline
+        FROM t_news
+        WHERE headline LIKE '%medicine%'
+        LIMIT 5;
+         0.10465383529663086s
+[2025-06-15 23:01:19] 
+        SELECT COUNT(*), FROM_UNIXTIME(tnbr.start_ts,"%Y-%m-%d")
+        FROM t_news_browse_record tnbr
+        WHERE 1560700800 <= tnbr.start_ts AND tnbr.start_ts <= 1561564800 AND news_id = 27281
+        GROUP BY tnbr.news_id, FROM_UNIXTIME(tnbr.start_ts,"%Y-%m-%d");
+         0.0431210994720459s
+[2025-06-15 23:01:31] 
+        SELECT distinct(category)
+        FROM t_news_daily_category;
+         0.013057947158813477s
+[2025-06-15 23:02:33] 
+        SELECT day_stamp, category, browse_count
+        FROM t_news_daily_category WHERE day_stamp>=18056 and day_stamp<=18088 and (category = 'foodanddrink' or category = 'health')
+        GROUP BY day_stamp, category;
+         0.014898061752319336s
+[2025-06-15 23:03:36] 
+        SELECT min(user_id), max(user_id) FROM t_news_browse_record;
+         0.013004302978515625s
+[2025-06-15 23:04:32] 
+        SELECT count(*), n.category
+        FROM t_news AS n
+            JOIN (
+                SELECT tnbr.news_id,tnbr.start_ts
+                FROM t_news_browse_record AS tnbr
+                WHERE tnbr.user_id=25178 and tnbr.start_ts>=1422892800 and tnbr.start_ts<=1560268800
+            ) AS t ON n.news_id=t.news_id
+        GROUP BY n.category;
+         0.016581058502197266s
+[2025-06-15 23:04:46] 
+        SELECT count(*), n.category
+        FROM t_news AS n
+            JOIN (
+                SELECT tnbr.news_id,tnbr.start_ts
+                FROM t_news_browse_record AS tnbr
+                WHERE tnbr.user_id=25178 and tnbr.start_ts>=1422892800 and tnbr.start_ts<=1561651200
+            ) AS t ON n.news_id=t.news_id
+        GROUP BY n.category;
+         0.12440347671508789s
+[2025-06-15 23:04:54] 
+        SELECT count(*), n.category
+        FROM t_news AS n
+            JOIN (
+                SELECT tnbr.news_id,tnbr.start_ts
+                FROM t_news_browse_record AS tnbr
+                WHERE tnbr.user_id=25178 and tnbr.start_ts>=1559059200 and tnbr.start_ts<=1561651200
+            ) AS t ON n.news_id=t.news_id
+        GROUP BY n.category;
+         0.013396501541137695s
+[2025-06-15 23:05:00] 
+        SELECT count(*), n.category
+        FROM t_news AS n
+            JOIN (
+                SELECT tnbr.news_id,tnbr.start_ts
+                FROM t_news_browse_record AS tnbr
+                WHERE tnbr.user_id=25178 and tnbr.start_ts>=1560182400 and tnbr.start_ts<=1561651200
+            ) AS t ON n.news_id=t.news_id
+        GROUP BY n.category;
+         0.013816595077514648s
+[2025-06-15 23:05:06] 
+        SELECT count(*), n.category
+        FROM t_news AS n
+            JOIN (
+                SELECT tnbr.news_id,tnbr.start_ts
+                FROM t_news_browse_record AS tnbr
+                WHERE tnbr.user_id=25178 and tnbr.start_ts>=1560182400 and tnbr.start_ts<=1561824000
+            ) AS t ON n.news_id=t.news_id
+        GROUP BY n.category;
+         0.014655590057373047s
+[2025-06-15 23:05:07] 
+        SELECT count(*), n.category
+        FROM t_news AS n
+            JOIN (
+                SELECT tnbr.news_id,tnbr.start_ts
+                FROM t_news_browse_record AS tnbr
+                WHERE tnbr.user_id=25178 and tnbr.start_ts>=1560182400 and tnbr.start_ts<=1561824000
+            ) AS t ON n.news_id=t.news_id
+        GROUP BY n.category;
+         0.013779878616333008s
+[2025-06-15 23:05:19] 
+        SELECT count(*), n.category
+        FROM t_news AS n
+            JOIN (
+                SELECT tnbr.news_id,tnbr.start_ts
+                FROM t_news_browse_record AS tnbr
+                WHERE tnbr.user_id=25178 and tnbr.start_ts>=1560873600 and tnbr.start_ts<=1561824000
+            ) AS t ON n.news_id=t.news_id
+        GROUP BY n.category;
+         0.021758079528808594s
+[2025-06-15 23:05:29] 
+        SELECT count(*), n.category
+        FROM t_news AS n
+            JOIN (
+                SELECT tnbr.news_id,tnbr.start_ts
+                FROM t_news_browse_record AS tnbr
+                WHERE tnbr.user_id=25178 and tnbr.start_ts>=1560700800 and tnbr.start_ts<=1561824000
+            ) AS t ON n.news_id=t.news_id
+        GROUP BY n.category;
+         0.013299942016601562s
+[2025-06-15 23:05:35] 
+        SELECT min(user_id), max(user_id) FROM t_news_browse_record;
+         0.011461019515991211s
+[2025-06-15 23:05:35] 
+        SELECT distinct(category)
+        FROM t_news_daily_category;
+         0.012686729431152344s
+[2025-06-15 23:05:38] 
+            SELECT min(length(headline)), max(length(headline)), min(length(content)), max(length(content))
+            FROM t_news;
+             2.915384292602539s
+[2025-06-15 23:06:18] 
+        SELECT DISTINCT(n.topic)
+        FROM t_news n
+        WHERE n.category='sports';
+         0.0429072380065918s
+[2025-06-15 23:06:46] 
+        SELECT DISTINCT new.headline, new.news_id
+        FROM t_news_browse_record AS tnbr
+            JOIN t_news AS new
+            ON tnbr.news_id = new.news_id
+        WHERE tnbr.start_ts >= 1560355200 and tnbr.start_ts <= 1561996800 and user_id >= 1008 and user_id <= 1008 and  tnbr.news_id
+            IN (
+                SELECT news_id
+                FROM t_news n
+                WHERE LENGTH(n.headline) >= 7  and LENGTH(n.headline) <= 245 and LENGTH(n.content) >= 5 and LENGTH(n.content) <= 5000 and n.topic like '%soccer%'
+            );
+         0.2605934143066406s
+[2025-06-15 23:06:51] 
+        SELECT n.content
+        FROM t_news n
+        WHERE n.news_id='50692';
+         0.01566147804260254s
+[2025-06-15 23:06:54] 
+        SELECT n.content
+        FROM t_news n
+        WHERE n.news_id='61112';
+         0.012561559677124023s
+[2025-06-15 23:06:56] 
+        SELECT n.content
+        FROM t_news n
+        WHERE n.news_id='78095';
+         0.015005350112915039s
+[2025-06-15 23:07:00] 
+        SELECT min(user_id), max(user_id) FROM t_news_browse_record;
+         0.012896537780761719s
+[2025-06-15 23:07:32] 
+        SELECT n.content
+        FROM t_news n
+        WHERE n.news_id='98068';
+         0.1698286533355713s
+[2025-06-15 23:07:38] 
+        SELECT n.content
+        FROM t_news n
+        WHERE n.news_id='21307';
+         0.013916492462158203s
+[2025-06-15 23:07:45] 
+        SELECT n.content
+        FROM t_news n
+        WHERE n.news_id='15251';
+         0.10350465774536133s
+[2025-06-15 23:07:48] 
+        SELECT distinct(category)
+        FROM t_news_daily_category;
+         0.13339591026306152s
+[2025-06-15 23:07:51] 
+        SELECT DISTINCT(n.topic)
+        FROM t_news n
+        WHERE n.category='entertainment';
+         0.06281232833862305s
+[2025-06-15 23:11:56] 
+    WITH browse_agg AS (
+        SELECT
+            news_id,
+            COUNT(DISTINCT user_id) AS total_users,
+            SUM(duration) AS total_duration,
+            SUM(duration) / (UNIX_TIMESTAMP('2019-06-13 00:00:00') - UNIX_TIMESTAMP('2019-06-12 00:00:00')) * 3600 AS hourly_duration
+        FROM t_news_browse_record
+        WHERE start_ts BETWEEN UNIX_TIMESTAMP('2019-06-12 00:00:00') AND UNIX_TIMESTAMP('2019-06-13 00:00:00')
+        GROUP BY news_id
+        HAVING COUNT(*) > 0
+    )
+    SELECT
+        n.news_id,
+        n.headline,
+        n.category,
+        n.topic,
+        b.total_users,
+        b.total_duration,
+        b.hourly_duration
+    FROM browse_agg b
+    JOIN t_news n ON n.news_id = b.news_id
+    WHERE 1=1
+        AND n.category LIKE '%entertainment%'
+        AND n.topic LIKE '%celebrity%'
+    ORDER BY b.total_duration DESC
+    LIMIT 5;
+     0.1794416904449463s
+[2025-06-15 23:21:40] 
+        SELECT news_id,headline
+        FROM t_news
+        WHERE headline LIKE '%%'
+        LIMIT 5;
+         0.06990551948547363s
+[2025-06-15 23:21:41] 
+        SELECT news_id,headline
+        FROM t_news
+        WHERE headline LIKE '%me%'
+        LIMIT 5;
+         0.05918717384338379s
+[2025-06-15 23:21:42] 
+        SELECT news_id,headline
+        FROM t_news
+        WHERE headline LIKE '%medi%'
+        LIMIT 5;
+         0.14200949668884277s
+[2025-06-15 23:21:43] 
+        SELECT news_id,headline
+        FROM t_news
+        WHERE headline LIKE '%medic%'
+        LIMIT 5;
+         0.20167851448059082s
+[2025-06-15 23:21:53] 
+        SELECT news_id,headline
+        FROM t_news
+        WHERE headline LIKE '%medic%'
+        LIMIT 5;
+         0.6593959331512451s
+[2025-06-15 23:21:58] 
+        SELECT news_id,headline
+        FROM t_news
+        WHERE headline LIKE '%medicin%'
+        LIMIT 5;
+         4.337453365325928s
+[2025-06-15 23:21:58] 
+        SELECT news_id,headline
+        FROM t_news
+        WHERE headline LIKE '%medicine%'
+        LIMIT 5;
+         3.603391170501709s
+[2025-06-15 23:22:11] 
+        SELECT news_id,headline
+        FROM t_news
+        WHERE headline LIKE '%medicine%'
+        LIMIT 5;
+         4.104572772979736s
+[2025-06-15 23:22:19] 
+        SELECT news_id,headline
+        FROM t_news
+        WHERE headline LIKE '%medicine%'
+        LIMIT 5;
+         4.7446534633636475s
+[2025-06-15 23:22:30] 
+        SELECT news_id,headline
+        FROM t_news
+        WHERE headline LIKE '%%'
+        LIMIT 5;
+         0.013773202896118164s
+[2025-06-15 23:22:33] 
+        SELECT news_id,headline
+        FROM t_news
+        WHERE headline LIKE '%medicine%'
+        LIMIT 5;
+         4.885935068130493s
+[2025-06-15 23:22:35] 
+        SELECT news_id,headline
+        FROM t_news
+        WHERE headline LIKE '%m%'
+        LIMIT 5;
+         0.011672496795654297s
+[2025-06-15 23:22:37] 
+        SELECT news_id,headline
+        FROM t_news
+        WHERE headline LIKE '%me%'
+        LIMIT 5;
+         0.013279199600219727s
+[2025-06-15 23:22:40] 
+        SELECT news_id,headline
+        FROM t_news
+        WHERE headline LIKE '%med%'
+        LIMIT 5;
+         0.0695807933807373s
+[2025-06-15 23:22:41] 
+        SELECT news_id,headline
+        FROM t_news
+        WHERE headline LIKE '%medi%'
+        LIMIT 5;
+         0.10645675659179688s
+[2025-06-15 23:22:42] 
+        SELECT news_id,headline
+        FROM t_news
+        WHERE headline LIKE '%medic%'
+        LIMIT 5;
+         0.23375535011291504s
+[2025-06-15 23:22:48] 
+        SELECT news_id,headline
+        FROM t_news
+        WHERE headline LIKE '%medici%'
+        LIMIT 5;
+         4.654419898986816s
+[2025-06-15 23:22:48] 
+        SELECT news_id,headline
+        FROM t_news
+        WHERE headline LIKE '%medicin%'
+        LIMIT 5;
+         2.7337026596069336s
+[2025-06-15 23:22:48] 
+        SELECT news_id,headline
+        FROM t_news
+        WHERE headline LIKE '%medicine%'
+        LIMIT 5;
+         1.7587833404541016s
+[2025-06-15 23:22:50] 
+        SELECT news_id,headline
+        FROM t_news
+        WHERE headline LIKE '%medicine%'
+        LIMIT 5;
+         1.4182677268981934s
+[2025-06-15 23:23:24] 
+        SELECT COUNT(*), FROM_UNIXTIME(tnbr.start_ts,"%Y-%m-%d")
+        FROM t_news_browse_record tnbr
+        WHERE 1560700800 <= tnbr.start_ts AND tnbr.start_ts <= 1561478400 AND news_id = 27281
+        GROUP BY tnbr.news_id, FROM_UNIXTIME(tnbr.start_ts,"%Y-%m-%d");
+         0.4550461769104004s
+[2025-06-15 23:23:30] 
+        SELECT distinct(category)
+        FROM t_news_daily_category;
+         0.0882408618927002s
+[2025-06-15 23:24:03] 
+        SELECT day_stamp, category, browse_count
+        FROM t_news_daily_category WHERE day_stamp>=18056 and day_stamp<=18077 and (category = 'foodanddrink' or category = 'health')
+        GROUP BY day_stamp, category;
+         0.12389111518859863s
+[2025-06-15 23:24:10] 
+        SELECT day_stamp, category, browse_count
+        FROM t_news_daily_category WHERE day_stamp>=18066 and day_stamp<=18077 and (category = 'foodanddrink' or category = 'health')
+        GROUP BY day_stamp, category;
+         0.09033846855163574s
+[2025-06-15 23:24:17] 
+        SELECT day_stamp, category, browse_count
+        FROM t_news_daily_category WHERE day_stamp>=18066 and day_stamp<=18085 and (category = 'foodanddrink' or category = 'health')
+        GROUP BY day_stamp, category;
+         0.023441076278686523s
+[2025-06-15 23:24:22] 
+        SELECT min(user_id), max(user_id) FROM t_news_browse_record;
+         0.2932271957397461s
+[2025-06-15 23:24:55] 
+        SELECT count(*), n.category
+        FROM t_news AS n
+            JOIN (
+                SELECT tnbr.news_id,tnbr.start_ts
+                FROM t_news_browse_record AS tnbr
+                WHERE tnbr.user_id=25178 and tnbr.start_ts>=1557763200 and tnbr.start_ts<=1560960000
+            ) AS t ON n.news_id=t.news_id
+        GROUP BY n.category;
+         0.8710267543792725s
+[2025-06-15 23:25:05] 
+        SELECT count(*), n.category
+        FROM t_news AS n
+            JOIN (
+                SELECT tnbr.news_id,tnbr.start_ts
+                FROM t_news_browse_record AS tnbr
+                WHERE tnbr.user_id=25178 and tnbr.start_ts>=1560182400 and tnbr.start_ts<=1560960000
+            ) AS t ON n.news_id=t.news_id
+        GROUP BY n.category;
+         0.9073202610015869s
+[2025-06-15 23:25:06] 
+        SELECT count(*), n.category
+        FROM t_news AS n
+            JOIN (
+                SELECT tnbr.news_id,tnbr.start_ts
+                FROM t_news_browse_record AS tnbr
+                WHERE tnbr.user_id=25178 and tnbr.start_ts>=1560182400 and tnbr.start_ts<=1560960000
+            ) AS t ON n.news_id=t.news_id
+        GROUP BY n.category;
+         0.04641246795654297s
+[2025-06-15 23:25:14] 
+        SELECT count(*), n.category
+        FROM t_news AS n
+            JOIN (
+                SELECT tnbr.news_id,tnbr.start_ts
+                FROM t_news_browse_record AS tnbr
+                WHERE tnbr.user_id=25178 and tnbr.start_ts>=1560182400 and tnbr.start_ts<=1561651200
+            ) AS t ON n.news_id=t.news_id
+        GROUP BY n.category;
+         0.410614013671875s
+[2025-06-15 23:25:15] 
+        SELECT count(*), n.category
+        FROM t_news AS n
+            JOIN (
+                SELECT tnbr.news_id,tnbr.start_ts
+                FROM t_news_browse_record AS tnbr
+                WHERE tnbr.user_id=25178 and tnbr.start_ts>=1560182400 and tnbr.start_ts<=1561651200
+            ) AS t ON n.news_id=t.news_id
+        GROUP BY n.category;
+         0.013885974884033203s
+[2025-06-15 23:25:21] 
+        SELECT count(*), n.category
+        FROM t_news AS n
+            JOIN (
+                SELECT tnbr.news_id,tnbr.start_ts
+                FROM t_news_browse_record AS tnbr
+                WHERE tnbr.user_id=25178 and tnbr.start_ts>=1560182400 and tnbr.start_ts<=1561996800
+            ) AS t ON n.news_id=t.news_id
+        GROUP BY n.category;
+         0.4038527011871338s
+[2025-06-15 23:25:27] 
+        SELECT distinct(category)
+        FROM t_news_daily_category;
+         0.32912111282348633s
+[2025-06-15 23:25:27] 
+        SELECT min(user_id), max(user_id) FROM t_news_browse_record;
+         0.33589816093444824s
+[2025-06-15 23:25:38] 
+            SELECT min(length(headline)), max(length(headline)), min(length(content)), max(length(content))
+            FROM t_news;
+             11.977625608444214s
+[2025-06-15 23:25:52] 
+        SELECT DISTINCT(n.topic)
+        FROM t_news n
+        WHERE n.category='sports';
+         0.07837986946105957s
+[2025-06-15 23:26:23] 
+        SELECT DISTINCT new.headline, new.news_id
+        FROM t_news_browse_record AS tnbr
+            JOIN t_news AS new
+            ON tnbr.news_id = new.news_id
+        WHERE tnbr.start_ts >= 1560355200 and tnbr.start_ts <= 1561910400 and user_id >= 1008 and user_id <= 1008 and  tnbr.news_id
+            IN (
+                SELECT news_id
+                FROM t_news n
+                WHERE LENGTH(n.headline) >= 0  and LENGTH(n.headline) <= 245 and LENGTH(n.content) >= 5 and LENGTH(n.content) <= 5000 and n.topic like '%soccer%'
+            );
+         2.676417827606201s
+[2025-06-15 23:26:25] 
+        SELECT n.content
+        FROM t_news n
+        WHERE n.news_id='50692';
+         0.01261591911315918s
+[2025-06-15 23:26:27] 
+        SELECT n.content
+        FROM t_news n
+        WHERE n.news_id='78095';
+         0.01350712776184082s
+[2025-06-15 23:26:29] 
+        SELECT n.content
+        FROM t_news n
+        WHERE n.news_id='61112';
+         0.019905805587768555s
+[2025-06-15 23:26:33] 
+        SELECT min(user_id), max(user_id) FROM t_news_browse_record;
+         0.23038840293884277s
+[2025-06-15 23:31:08] 
+        SELECT distinct(category)
+        FROM t_news_daily_category;
+         0.18293118476867676s
+[2025-06-15 23:31:17] 
+        SELECT DISTINCT(n.topic)
+        FROM t_news n
+        WHERE n.category='entertainment';
+         0.2170259952545166s
+[2025-06-15 23:31:39] 
+    WITH browse_agg AS (
+        SELECT
+            news_id,
+            COUNT(DISTINCT user_id) AS total_users,
+            SUM(duration) AS total_duration,
+            SUM(duration) / (UNIX_TIMESTAMP('2019-06-14 00:00:00') - UNIX_TIMESTAMP('2019-06-11 00:00:00')) * 3600 AS hourly_duration
+        FROM t_news_browse_record
+        WHERE start_ts BETWEEN UNIX_TIMESTAMP('2019-06-11 00:00:00') AND UNIX_TIMESTAMP('2019-06-14 00:00:00')
+        GROUP BY news_id
+        HAVING COUNT(*) > 0
+    )
+    SELECT
+        n.news_id,
+        n.headline,
+        n.category,
+        n.topic,
+        b.total_users,
+        b.total_duration,
+        b.hourly_duration
+    FROM browse_agg b
+    JOIN t_news n ON n.news_id = b.news_id
+    WHERE n.category = 'entertainment' AND n.topic = 'entertainment-celebrity'
+    ORDER BY b.total_duration DESC
+    LIMIT 5;
+     3.4642484188079834s
+[2025-06-15 23:31:39] 
+            SELECT news_id, content 
+            FROM t_news 
+            WHERE news_id IN (48081,17807,15109,16602,67690)
+         0.04289054870605469s
+[2025-06-15 23:32:02] 
+        SELECT min(user_id), max(user_id) FROM t_news_browse_record;
+         0.4377424716949463s
+[2025-06-15 23:32:02] 
+        SELECT distinct(category)
+        FROM t_news_daily_category;
+         0.03147101402282715s
+[2025-06-15 23:32:32] 
+        SELECT DISTINCT(n.topic)
+        FROM t_news n
+        WHERE n.category='news';
+         0.2391209602355957s
+[2025-06-15 23:33:13] 
+    WITH browse_agg AS (
+        SELECT
+            news_id,
+            COUNT(DISTINCT user_id) AS total_users,
+            SUM(duration) AS total_duration,
+            SUM(duration) / (UNIX_TIMESTAMP('2019-06-14 00:00:00') - UNIX_TIMESTAMP('2019-06-11 00:00:00')) * 3600 AS hourly_duration
+        FROM t_news_browse_record
+        WHERE start_ts BETWEEN UNIX_TIMESTAMP('2019-06-11 00:00:00') AND UNIX_TIMESTAMP('2019-06-14 00:00:00')
+        GROUP BY news_id
+        HAVING COUNT(*) > 0
+    )
+    SELECT
+        n.news_id,
+        n.headline,
+        n.category,
+        n.topic,
+        b.total_users,
+        b.total_duration,
+        b.hourly_duration
+    FROM browse_agg b
+    JOIN t_news n ON n.news_id = b.news_id
+    WHERE n.category = 'news' AND n.topic = 'newsworld'
+    ORDER BY b.total_duration DESC
+    LIMIT 5;
+     14.052600145339966s
+[2025-06-15 23:33:13] 
+            SELECT news_id, content 
+            FROM t_news 
+            WHERE news_id IN (79226,59196,49306,7089,108096)
+         0.051328420639038086s

@@ -335,11 +335,9 @@ def news_boom_analysis():
         b.hourly_duration
     FROM browse_agg b
     JOIN t_news n ON n.news_id = b.news_id
-    WHERE 1=1
-        {category_filter}
-        {topic_filter}
+    WHERE n.category = '{category}' AND n.topic = '{topic}'
     ORDER BY b.total_duration DESC
-    LIMIT 10;
+    LIMIT 5;
     """
     with db.engine.connect() as conn:
         start = time.time()

@@ -310,6 +310,67 @@ WHERE tnbr.start_ts >= 1560355200 AND tnbr.start_ts <= 1561996800
 
 ### 6.5. 爆款新闻分析
 
+
+为实现新闻的爆款预测分析，我们结合AI大模型与BI分析能力，通过分析新闻内容、用户行为、时间特征等多维度数据，预测指定时间段、主题、类别下哪些新闻最可能成为爆款，并给出详细的分析建议。
+
+```SQL
+WITH browse_agg AS (
+    SELECT
+        news_id,
+        COUNT(DISTINCT user_id) AS total_users,
+        SUM(duration) AS total_duration,
+        SUM(duration) / (UNIX_TIMESTAMP('{end_time}') - UNIX_TIMESTAMP('{start_time}')) * 3600 AS hourly_duration
+    FROM t_news_browse_record
+    WHERE start_ts BETWEEN UNIX_TIMESTAMP('{start_time}') AND UNIX_TIMESTAMP('{end_time}')
+    GROUP BY news_id
+    HAVING COUNT(*) > 0
+)
+SELECT
+    n.news_id,
+    n.headline,
+    n.category,
+    n.topic,
+    b.total_users,
+    b.total_duration,
+    b.hourly_duration
+FROM browse_agg b
+JOIN t_news n ON n.news_id = b.news_id
+WHERE 1=1
+    {category_filter}
+    {topic_filter}
+ORDER BY b.total_duration DESC
+LIMIT 5;
+```
+
+![](./assets/2025-06-15-22-45-21.png)
+
+为保证分析的准确性和实时性，我们采用以下策略：
+
+1. **数据预处理**：
+   - 通过WITH子句创建临时表`browse_agg`，预先聚合用户浏览数据
+   - 计算关键指标：总浏览用户数、总浏览时长、每小时平均浏览时长
+   - 使用HAVING子句过滤掉无浏览记录的新闻
+
+2. **AI分析流程**：
+   - 将SQL查询结果与新闻内容结合，构造完整的分析数据
+   - 调用DeepSeek大模型进行爆款预测分析
+   - 返回结构化的分析结果，包括：
+     - 爆款概率（分数、等级、原因）
+     - 传播特征（时长分析、用户参与度）
+     - 对比分析（优势、劣势）
+     - 改进建议（具体建议及预期效果）
+
+3. **性能优化**：
+   - 为`t_news_browse_record`表的`start_ts`和`news_id`字段建立索引
+   - 使用WITH子句优化复杂查询，减少重复计算
+   - 限制返回结果数量，避免数据量过大
+
+4. **异常处理**：
+   - 对AI返回的非标准JSON进行正则提取和解析
+   - 前端对空值进行判空处理，确保界面正常显示
+   - 记录SQL执行时间，便于性能监控
+
+通过以上设计，系统能够高效地分析新闻数据，为用户提供准确的爆款预测和优化建议，帮助内容创作者更好地把握用户兴趣和内容传播规律。
 ### 6.6. 实时新闻推荐
 
 为实现新闻的实时推荐，我们会从后端获取用户最新的二十条新闻浏览记录，选择最近浏览新闻中浏览最多的两个种类，然后从数据库中获取最近十五天内浏览量增长较快的十条新闻，推荐给用户。
