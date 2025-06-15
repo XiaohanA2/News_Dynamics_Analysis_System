@@ -64,7 +64,42 @@ export function mockGetTopicOfCategory(category) {
 /**
  * 爆款新闻分析
  * @param {Object} params - { category, topic, start_time, end_time }
- * @returns {Promise}
+ * @returns {Promise} 返回包含以下结构的数组：
+ * [
+ *   {
+ *     news_id: string,
+ *     headline: string,
+ *     metrics: {
+ *       total_users: number,
+ *       total_duration: number,
+ *       hourly_duration: number,
+ *       growth_trend: number,
+ *       duration_ratio: number,
+ *       growth_ratio: number
+ *     },
+ *     analysis: {
+ *       boom_probability: {
+ *         score: string,
+ *         level: string,
+ *         reason: string
+ *       },
+ *       spread_characteristics: {
+ *         duration_analysis: string,
+ *         growth_analysis: string,
+ *         user_engagement: string
+ *       },
+ *       comparative_analysis: {
+ *         advantages: string[],
+ *         disadvantages: string[]
+ *       },
+ *       improvement_suggestions: Array<{
+ *         aspect: string,
+ *         suggestion: string,
+ *         expected_impact: string
+ *       }>
+ *     }
+ *   }
+ * ]
  */
 export function analyzeHotNews(params) {
   return request({

@@ -7,6 +7,8 @@ import tomli
 from util import log
 import time
 import openai
+import json
+import re
 
 with open("backend/storage/config.toml", mode="rb") as fp:
     config = tomli.load(fp)
@@ -317,67 +319,166 @@ def news_boom_analysis():
     start_time = data.get('start_time')  # 例如 "2024-06-01 00:00:00"
     end_time = data.get('end_time')      # 例如 "2024-06-07 23:59:59"
 
-    # 1. 查询新闻及统计数据
-    sql = f"""
-        SELECT n.news_id, n.headline, n.content, n.category, n.topic,
-               COUNT(r.user_id) AS user_count, SUM(r.duration) AS total_duration
-        FROM t_news n
-        LEFT JOIN t_news_browse_record r ON n.news_id = r.news_id
-        WHERE n.category = '{category}'
-          AND n.topic = '{topic}'
-          AND r.start_ts BETWEEN UNIX_TIMESTAMP('{start_time}') AND UNIX_TIMESTAMP('{end_time}')
-        GROUP BY n.news_id
-        LIMIT 1;
+    # 1. 查询新闻及统计数据，宽松匹配category/topic且可选，去除增长趋势
+    category_filter = f"AND n.category LIKE '%{category}%'" if category else ""
+    topic_filter = f"AND n.topic LIKE '%{topic}%'" if topic else ""
+    sql1 = f"""
+    WITH browse_agg AS (
+        SELECT
+            news_id,
+            COUNT(DISTINCT user_id) AS total_users,
+            SUM(duration) AS total_duration,
+            SUM(duration) / (UNIX_TIMESTAMP('{end_time}') - UNIX_TIMESTAMP('{start_time}')) * 3600 AS hourly_duration
+        FROM t_news_browse_record
+        WHERE start_ts BETWEEN UNIX_TIMESTAMP('{start_time}') AND UNIX_TIMESTAMP('{end_time}')
+        GROUP BY news_id
+        HAVING COUNT(*) > 0
+    )
+    SELECT
+        n.news_id,
+        n.headline,
+        n.category,
+        n.topic,
+        b.total_users,
+        b.total_duration,
+        b.hourly_duration
+    FROM browse_agg b
+    JOIN t_news n ON n.news_id = b.news_id
+    WHERE 1=1
+        {category_filter}
+        {topic_filter}
+    ORDER BY b.total_duration DESC
+    LIMIT 10;
     """
     with db.engine.connect() as conn:
         start = time.time()
-        rows = conn.execute(text(sql)).fetchall()
+        rows = conn.execute(text(sql1)).fetchall()
         end = time.time()
         news_list = []
-        log(text(sql), end - start)
+        log(text(sql1), end - start)
         for row in rows:
             news_list.append({
                 "news_id": row.news_id,
                 "headline": row.headline,
-                "content": row.content,
                 "category": row.category,
                 "topic": row.topic,
-                "user_count": row.user_count or 0,
-                "total_duration": row.total_duration or 0
+                "total_users": row.total_users or 0,
+                "total_duration": row.total_duration or 0,
+                "hourly_duration": row.hourly_duration or 0
             })
+
+    # 批量查询content
+    if news_list:
+        news_ids = [news['news_id'] for news in news_list]
+        sql2 = f"""
+            SELECT news_id, content 
+            FROM t_news 
+            WHERE news_id IN ({','.join(map(str, news_ids))})
+        """
+        try:
+            with db.engine.connect() as conn:
+                start = time.time()
+                content_rows = conn.execute(text(sql2)).fetchall()
+                end = time.time()
+                log(text(sql2), end - start)
+                content_map = {row.news_id: row.content for row in content_rows}
+                for news in news_list:
+                    news['content'] = content_map.get(news['news_id'], '')
+        except Exception as e:
+            log(f"批量查询content失败: {str(e)}", 0)
+            for news in news_list:
+                news['content'] = ''
 
     # 2. 调用 DeepSeek API 分析
     client = openai.OpenAI(api_key=DEEPSEEK_API_KEY, base_url=DEEPSEEK_BASE_URL)
     results = []
+    # 计算整体统计数据
+    total_duration_avg = sum(n['total_duration'] for n in news_list) / len(news_list) if news_list else 0
     for news in news_list:
+        duration_ratio = news['total_duration'] / total_duration_avg if total_duration_avg > 0 else 0
         prompt = f"""
             新闻标题：{news['headline']}
             新闻内容：{news['content']}
             新闻类别：{news['category']}
             新闻主题：{news['topic']}
-            用户数：{news['user_count']}
-            浏览总时长：{news['total_duration']}
-            分析问题：在{start_time}到{end_time}期间，这条新闻成为爆款新闻的概率有多大？请分析原因，并总结该时间段内爆款新闻的共同特征。
+            \n统计数据：
+            - 总浏览用户数：{news['total_users']}
+            - 总浏览时长：{news['total_duration']}秒
+            - 每小时平均浏览时长：{news['hourly_duration']:.2f}秒
+            \n相对指标：
+            - 浏览时长相对平均值：{duration_ratio:.2f}倍
+            \n请严格只输出JSON，不要输出任何注释、代码块标记、解释或多余的内容。如果不是JSON格式，任务视为失败。
+            下面是你必须输出的JSON格式：
+            {{
+                "boom_probability": {{
+                    "score": "0-100的分数",
+                    "level": "高/中/低",
+                    "reason": "成为爆款的原因分析"
+                }},
+                "spread_characteristics": {{
+                    "duration_analysis": "浏览时长分析",
+                    "user_engagement": "用户参与度分析"
+                }},
+                "comparative_analysis": {{
+                    "advantages": ["优势1", "优势2", ...],
+                    "disadvantages": ["劣势1", "劣势2", ...]
+                }},
+                "improvement_suggestions": [
+                    {{
+                        "aspect": "改进方面",
+                        "suggestion": "具体建议",
+                        "expected_impact": "预期效果"
+                    }}
+                ]
+            }}
+            只输出JSON字符串，不要输出任何其他内容。
             """
         try:
             response = client.chat.completions.create(
                 model="deepseek-chat",
                 messages=[
-                    {"role": "system", "content": "你是一个资深数据分析师，擅长新闻爆款预测。"},
+                    {"role": "system", "content": "你是一个资深数据分析师，擅长新闻爆款预测和传播分析。请始终只返回JSON字符串，不要输出任何其他内容，不要输出注释、代码块标记或解释。"},
                     {"role": "user", "content": prompt}
                 ],
                 stream=False
             )
             analysis = response.choices[0].message.content
+            try:
+                analysis_json = json.loads(analysis)
+                analysis = analysis_json
+            except json.JSONDecodeError:
+                match = re.search(r'({[\s\S]*})', analysis)
+                if match:
+                    try:
+                        analysis_json = json.loads(match.group(1))
+                        analysis = analysis_json
+                    except Exception:
+                        analysis = {
+                            "error": "AI返回内容无法解析为JSON",
+                            "raw_response": analysis
+                        }
+                else:
+                    analysis = {
+                        "error": "AI返回内容无法解析为JSON",
+                        "raw_response": analysis
+                    }
             print(news['headline'], time.time())
         except Exception as e:
-            analysis = f"分析失败: {str(e)}"
+            analysis = {
+                "error": f"分析失败: {str(e)}",
+                "raw_response": None
+            }
         results.append({
             "news_id": news['news_id'],
             "headline": news['headline'],
+            "metrics": {
+                "total_users": news['total_users'],
+                "total_duration": news['total_duration'],
+                "hourly_duration": news['hourly_duration'],
+                "duration_ratio": duration_ratio
+            },
             "analysis": analysis
         })
-
     return jsonify(results)
 
 if __name__ == '__main__':

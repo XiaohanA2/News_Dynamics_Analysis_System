@@ -1,0 +1,2741 @@
+[2025-06-08 01:08:30] 
+        SELECT news_id,headline
+        FROM t_news
+        WHERE headline LIKE '%%'
+        LIMIT 5;
+         0.01760554313659668s
+[2025-06-08 01:08:36] 
+        SELECT count(*), from_unixtime(tnbr.start_ts,"%Y-%m-%d")
+        FROM t_news_browse_record tnbr
+        WHERE 1748880000 <= tnbr.start_ts and tnbr.start_ts <= 1749657600 and news_id = 0
+        GROUP BY tnbr.news_id, from_unixtime(tnbr.start_ts,"%Y-%m-%d");
+         0.021112442016601562s
+[2025-06-08 01:09:10] 
+        SELECT count(*), from_unixtime(tnbr.start_ts,"%Y-%m-%d")
+        FROM t_news_browse_record tnbr
+        WHERE 1748880000 <= tnbr.start_ts and tnbr.start_ts <= 1749657600 and news_id = 0
+        GROUP BY tnbr.news_id, from_unixtime(tnbr.start_ts,"%Y-%m-%d");
+         0.013637304306030273s
+[2025-06-08 01:09:25] 
+        SELECT distinct(category)
+        FROM t_news_daily_category;
+         0.01410365104675293s
+[2025-06-08 01:09:26] 
+        SELECT news_id,headline
+        FROM t_news
+        WHERE headline LIKE '%Predicting Atlanta Uniteds lineup against Columbus Crew in the U.S. Open Cup%'
+        LIMIT 5;
+         2.0383799076080322s
+[2025-06-08 01:09:51] 
+        SELECT day_stamp, category, browse_count
+        FROM t_news_daily_category WHERE day_stamp>=10987 and day_stamp<=18088 and (category = 'finance')
+        GROUP BY day_stamp, category;
+         0.01638507843017578s
+[2025-06-08 01:10:04] 
+        SELECT news_id,headline
+        FROM t_news
+        WHERE headline LIKE '%%'
+        LIMIT 5;
+         0.01278996467590332s
+[2025-06-08 01:10:17] 
+        SELECT count(*), from_unixtime(tnbr.start_ts,"%Y-%m-%d")
+        FROM t_news_browse_record tnbr
+        WHERE 1262275200 <= tnbr.start_ts and tnbr.start_ts <= 1748880000 and news_id = 0
+        GROUP BY tnbr.news_id, from_unixtime(tnbr.start_ts,"%Y-%m-%d");
+         0.028690814971923828s
+[2025-06-08 01:10:23] 
+        SELECT min(user_id), max(user_id) FROM t_news_browse_record;
+         0.015575885772705078s
+[2025-06-08 01:10:32] 
+        SELECT distinct(category)
+        FROM t_news_daily_category;
+         0.016731977462768555s
+[2025-06-08 01:10:32] 
+        SELECT min(user_id), max(user_id) FROM t_news_browse_record;
+         0.015030384063720703s
+[2025-06-08 01:10:32] 
+            SELECT min(length(headline)), max(length(headline)), min(length(content)), max(length(content))
+            FROM t_news;
+             0.3587517738342285s
+[2025-06-08 01:11:10] 
+        SELECT news_id,headline
+        FROM t_news
+        WHERE headline LIKE '%%'
+        LIMIT 5;
+         0.013123273849487305s
+[2025-06-08 01:11:35] 
+        SELECT min(user_id), max(user_id) FROM t_news_browse_record;
+         0.014349937438964844s
+[2025-06-08 01:11:58] 
+        SELECT min(user_id), max(user_id) FROM t_news_browse_record;
+         0.011881113052368164s
+[2025-06-08 01:11:58] 
+        SELECT distinct(category)
+        FROM t_news_daily_category;
+         0.013892889022827148s
+[2025-06-08 01:11:58] 
+            SELECT min(length(headline)), max(length(headline)), min(length(content)), max(length(content))
+            FROM t_news;
+             0.37247681617736816s
+[2025-06-08 01:11:59] 
+        SELECT min(user_id), max(user_id) FROM t_news_browse_record;
+         0.01418757438659668s
+[2025-06-08 01:22:01] 
+        SELECT min(user_id), max(user_id) FROM t_news_browse_record;
+         0.012745380401611328s
+
+[2025-06-08 01:22:02] 
+            SELECT min(length(headline)), max(length(headline)), min(length(content)), max(length(content))
+            FROM t_news;
+             0.3891317844390869s
+[2025-06-08 01:22:02] 
+        SELECT min(user_id), max(user_id) FROM t_news_browse_record;
+         0.016315221786499023s
+[2025-06-08 01:22:54] 
+        SELECT min(user_id), max(user_id) FROM t_news_browse_record;
+         0.013089895248413086s
+[2025-06-09 10:18:43] 
+        SELECT news_id,headline
+        FROM t_news
+        WHERE headline LIKE '%%'
+        LIMIT 5;
+         0.02711653709411621s
+[2025-06-09 10:18:44] 
+        SELECT news_id,headline
+        FROM t_news
+        WHERE headline LIKE '%te%'
+        LIMIT 5;
+         0.02246856689453125s
+[2025-06-09 10:18:58] 
+        SELECT count(*), from_unixtime(tnbr.start_ts,"%Y-%m-%d")
+        FROM t_news_browse_record tnbr
+        WHERE 1262534400 <= tnbr.start_ts and tnbr.start_ts <= 1749398400 and news_id = 0
+        GROUP BY tnbr.news_id, from_unixtime(tnbr.start_ts,"%Y-%m-%d");
+         0.02854609489440918s
+[2025-06-09 10:19:20] 
+        SELECT distinct(category)
+        FROM t_news_daily_category;
+         0.025235891342163086s
+[2025-06-09 10:19:22] 
+        SELECT min(user_id), max(user_id) FROM t_news_browse_record;
+         0.021071910858154297s
+[2025-06-09 10:19:22] 
+        SELECT distinct(category)
+        FROM t_news_daily_category;
+         0.021915435791015625s
+[2025-06-09 10:19:24] 
+        SELECT min(user_id), max(user_id) FROM t_news_browse_record;
+         0.0208432674407959s
+[2025-06-09 10:19:28] 
+            SELECT min(length(headline)), max(length(headline)), min(length(content)), max(length(content))
+            FROM t_news;
+             5.448902368545532s
+[2025-06-09 10:23:45] 
+        SELECT min(user_id), max(user_id) FROM t_news_browse_record;
+         0.018384933471679688s
+[2025-06-09 10:23:45] 
+        SELECT distinct(category)
+        FROM t_news_daily_category;
+         0.024921894073486328s
+[2025-06-09 10:23:46] 
+            SELECT min(length(headline)), max(length(headline)), min(length(content)), max(length(content))
+            FROM t_news;
+             0.4680359363555908s
+[2025-06-09 10:24:57] 
+        SELECT distinct(category)
+        FROM t_news_daily_category;
+         0.023664236068725586s
+[2025-06-09 10:24:58] 
+        SELECT min(user_id), max(user_id) FROM t_news_browse_record;
+         0.025966405868530273s
+[2025-06-09 10:25:01] 
+        SELECT distinct(category)
+        FROM t_news_daily_category;
+         0.022860050201416016s
+[2025-06-09 10:25:22] 
+        SELECT day_stamp, category, browse_count
+        FROM t_news_daily_category WHERE day_stamp>=15006 and day_stamp<=16988 and (category = 'autos')
+        GROUP BY day_stamp, category;
+         0.022942781448364258s
+[2025-06-09 10:26:28] 
+        SELECT day_stamp, category, browse_count
+        FROM t_news_daily_category WHERE day_stamp>=18057 and day_stamp<=18078 and (category = 'autos')
+        GROUP BY day_stamp, category;
+         0.025297880172729492s
+[2025-06-09 10:26:45] 
+        SELECT min(user_id), max(user_id) FROM t_news_browse_record;
+         0.028913259506225586s
+[2025-06-09 10:26:47] 
+        SELECT min(user_id), max(user_id) FROM t_news_browse_record;
+         0.033804893493652344s
+[2025-06-09 10:26:47] 
+        SELECT distinct(category)
+        FROM t_news_daily_category;
+         0.034804344177246094s
+[2025-06-09 10:26:47] 
+            SELECT min(length(headline)), max(length(headline)), min(length(content)), max(length(content))
+            FROM t_news;
+             0.43794703483581543s
+[2025-06-09 10:27:06] 
+        SELECT distinct(category)
+        FROM t_news_daily_category;
+         0.023253679275512695s
+[2025-06-09 10:27:13] 
+        SELECT distinct(category)
+        FROM t_news_daily_category;
+         0.019967317581176758s
+[2025-06-09 10:27:13] 
+            SELECT min(length(headline)), max(length(headline)), min(length(content)), max(length(content))
+            FROM t_news;
+             0.4490323066711426s
+[2025-06-09 10:28:02] 
+        SELECT DISTINCT(n.topic)
+        FROM t_news n
+        WHERE n.category='sports';
+         0.28341126441955566s
+[2025-06-09 10:28:12] 
+        SELECT DISTINCT(n.topic)
+        FROM t_news n
+        WHERE n.category='health';
+         0.2989029884338379s
+[2025-06-09 10:28:17] 
+        SELECT DISTINCT(n.topic)
+        FROM t_news n
+        WHERE n.category='sports';
+         0.26195740699768066s
+[2025-06-09 10:28:41] 
+        SELECT DISTINCT new.headline, new.news_id
+        FROM t_news_browse_record AS tnbr
+            JOIN t_news AS new
+            ON tnbr.news_id = new.news_id
+        WHERE tnbr.start_ts >= 1559577600 and tnbr.start_ts <= 1562169600 and user_id >= 1008 and user_id <= 1008 and  tnbr.news_id
+            IN (
+                SELECT news_id
+                FROM t_news n
+                WHERE LENGTH(n.headline) >= 7  and LENGTH(n.headline) <= 245 and LENGTH(n.content) >= 2 and LENGTH(n.content) <= 5000 and n.topic like '%soccer%'
+            );
+         0.13448095321655273s
+[2025-06-09 10:28:46] 
+        SELECT n.content
+        FROM t_news n
+        WHERE n.news_id='50692';
+         0.02254796028137207s
+[2025-06-09 10:28:50] 
+        SELECT n.content
+        FROM t_news n
+        WHERE n.news_id='61112';
+         0.023183584213256836s
+[2025-06-09 10:28:55] 
+        SELECT n.content
+        FROM t_news n
+        WHERE n.news_id='78095';
+         0.021085500717163086s
+[2025-06-09 10:28:59] 
+        SELECT DISTINCT(n.topic)
+        FROM t_news n
+        WHERE n.category='lifestyle';
+         0.29839515686035156s
+[2025-06-09 10:29:05] 
+        SELECT DISTINCT(n.topic)
+        FROM t_news n
+        WHERE n.category='kids';
+         0.31224775314331055s
+[2025-06-09 10:29:14] 
+        SELECT DISTINCT(n.topic)
+        FROM t_news n
+        WHERE n.category='music';
+         0.2745704650878906s
+[2025-06-09 10:29:22] 
+        SELECT min(user_id), max(user_id) FROM t_news_browse_record;
+         0.021424531936645508s
+[2025-06-09 10:29:23] 
+        SELECT min(user_id), max(user_id) FROM t_news_browse_record;
+         0.023947477340698242s
+[2025-06-09 10:30:24] 
+        SELECT count(*), n.category
+        FROM
+            t_news AS n
+            JOIN (
+                SELECT tnbr.news_id,tnbr.start_ts
+                FROM t_news_browse_record AS tnbr
+                WHERE tnbr.user_id=147999 and tnbr.start_ts>=1276012800 and tnbr.start_ts<=1433779200
+            ) AS t ON n.news_id=t.news_id
+        GROUP BY n.category;
+         0.02207183837890625s
+[2025-06-09 10:30:57] 
+        SELECT count(*), n.category
+        FROM
+            t_news AS n
+            JOIN (
+                SELECT tnbr.news_id,tnbr.start_ts
+                FROM t_news_browse_record AS tnbr
+                WHERE tnbr.user_id=147999 and tnbr.start_ts>=1559577600 and tnbr.start_ts<=1559577600
+            ) AS t ON n.news_id=t.news_id
+        GROUP BY n.category;
+         0.022073984146118164s
+[2025-06-09 10:31:13] 
+        SELECT count(*), n.category
+        FROM
+            t_news AS n
+            JOIN (
+                SELECT tnbr.news_id,tnbr.start_ts
+                FROM t_news_browse_record AS tnbr
+                WHERE tnbr.user_id=12000 and tnbr.start_ts>=1559577600 and tnbr.start_ts<=1559577600
+            ) AS t ON n.news_id=t.news_id
+        GROUP BY n.category;
+         0.056748390197753906s
+[2025-06-09 10:31:19] 
+        SELECT count(*), n.category
+        FROM
+            t_news AS n
+            JOIN (
+                SELECT tnbr.news_id,tnbr.start_ts
+                FROM t_news_browse_record AS tnbr
+                WHERE tnbr.user_id=12000 and tnbr.start_ts>=1559577600 and tnbr.start_ts<=1561996800
+            ) AS t ON n.news_id=t.news_id
+        GROUP BY n.category;
+         0.05421733856201172s
+[2025-06-09 10:31:31] 
+        SELECT count(*), n.category
+        FROM
+            t_news AS n
+            JOIN (
+                SELECT tnbr.news_id,tnbr.start_ts
+                FROM t_news_browse_record AS tnbr
+                WHERE tnbr.user_id=12159 and tnbr.start_ts>=1559577600 and tnbr.start_ts<=1561996800
+            ) AS t ON n.news_id=t.news_id
+        GROUP BY n.category;
+         0.05281233787536621s
+[2025-06-09 10:41:07] 
+        SELECT min(user_id), max(user_id) FROM t_news_browse_record;
+         0.1636371612548828s
+[2025-06-09 10:41:08] 
+        SELECT distinct(category)
+        FROM t_news_daily_category;
+         0.13649940490722656s
+[2025-06-09 10:41:11] 
+        SELECT min(user_id), max(user_id) FROM t_news_browse_record;
+         0.020927906036376953s
+[2025-06-09 10:41:11] 
+        SELECT distinct(category)
+        FROM t_news_daily_category;
+         0.08188438415527344s
+[2025-06-09 10:41:12] 
+            SELECT min(length(headline)), max(length(headline)), min(length(content)), max(length(content))
+            FROM t_news;
+             0.4563295841217041s
+[2025-06-09 10:41:13] 
+        SELECT DISTINCT(n.topic)
+        FROM t_news n
+        WHERE n.category='entertainment';
+         0.27259254455566406s
+[2025-06-09 10:43:25] 
+        SELECT min(user_id), max(user_id) FROM t_news_browse_record;
+         0.13530230522155762s
+[2025-06-09 10:43:32] 
+        SELECT min(user_id), max(user_id) FROM t_news_browse_record;
+         0.05768704414367676s
+[2025-06-09 10:43:46] 
+        SELECT min(user_id), max(user_id) FROM t_news_browse_record;
+         0.023068666458129883s
+[2025-06-09 10:44:24] 
+        SELECT min(user_id), max(user_id) FROM t_news_browse_record;
+         0.028613567352294922s
+
+[2025-06-09 10:44:24] 
+            SELECT min(length(headline)), max(length(headline)), min(length(content)), max(length(content))
+            FROM t_news;
+             0.4605433940887451s
+[2025-06-09 11:22:11] 
+        SELECT min(user_id), max(user_id) FROM t_news_browse_record;
+         0.02852177619934082s
+[2025-06-09 11:22:11] 
+        SELECT distinct(category)
+        FROM t_news_daily_category;
+         0.028290748596191406s
+[2025-06-09 11:22:12] 
+            SELECT min(length(headline)), max(length(headline)), min(length(content)), max(length(content))
+            FROM t_news;
+             0.539614200592041s
+[2025-06-09 11:22:33] 
+        SELECT distinct(category)
+        FROM t_news_daily_category;
+         0.02083277702331543s
+[2025-06-09 11:22:35] 
+        SELECT min(user_id), max(user_id) FROM t_news_browse_record;
+         0.05421900749206543s
+[2025-06-09 11:22:50] 
+        SELECT distinct(category)
+        FROM t_news_daily_category;
+         0.02395939826965332s
+[2025-06-09 11:22:50] 
+            SELECT min(length(headline)), max(length(headline)), min(length(content)), max(length(content))
+            FROM t_news;
+             0.38680458068847656s
+[2025-06-09 11:26:57] 
+        SELECT min(user_id), max(user_id) FROM t_news_browse_record;
+         0.021691560745239258s
+[2025-06-09 14:30:38] 
+        SELECT min(user_id), max(user_id) FROM t_news_browse_record;
+         0.027408599853515625s
+
+[2025-06-09 14:30:39] 
+            SELECT min(length(headline)), max(length(headline)), min(length(content)), max(length(content))
+            FROM t_news;
+             0.3387603759765625s
+[2025-06-10 18:30:38] 
+        SELECT distinct(category)
+        FROM t_news_daily_category;
+         0.02400970458984375s
+[2025-06-10 18:30:38] 
+        SELECT min(user_id), max(user_id) FROM t_news_browse_record;
+         0.022395849227905273s
+[2025-06-10 18:30:38] 
+            SELECT min(length(headline)), max(length(headline)), min(length(content)), max(length(content))
+            FROM t_news;
+             0.3312110900878906s
+[2025-06-10 18:30:59] 
+        SELECT distinct(category)
+        FROM t_news_daily_category;
+         0.021345853805541992s
+[2025-06-10 18:31:06] 
+        SELECT min(user_id), max(user_id) FROM t_news_browse_record;
+         0.02099442481994629s
+[2025-06-10 18:34:04] 
+        SELECT distinct(category)
+        FROM t_news_daily_category;
+         0.014711141586303711s
+[2025-06-10 18:34:04] 
+        SELECT min(user_id), max(user_id) FROM t_news_browse_record;
+         0.014348983764648438s
+
+[2025-06-10 18:34:04] 
+            SELECT min(length(headline)), max(length(headline)), min(length(content)), max(length(content))
+            FROM t_news;
+             0.32871270179748535s
+[2025-06-10 19:15:58] 
+        SELECT distinct(category)
+        FROM t_news_daily_category;
+         0.015070199966430664s
+[2025-06-10 19:40:02] 
+        SELECT distinct(category)
+        FROM t_news_daily_category;
+         0.013870954513549805s
+[2025-06-10 19:40:04] 
+        SELECT DISTINCT(n.topic)
+        FROM t_news n
+        WHERE n.category='autos';
+         0.23322343826293945s
+[2025-06-10 19:41:46] 
+        SELECT distinct(category)
+        FROM t_news_daily_category;
+         0.013062477111816406s
+[2025-06-10 19:41:50] 
+        SELECT DISTINCT(n.topic)
+        FROM t_news n
+        WHERE n.category='entertainment';
+         0.22881555557250977s
+[2025-06-10 20:02:03] 
+        SELECT DISTINCT(n.topic)
+        FROM t_news n
+        WHERE n.category='autos';
+         0.22011852264404297s
+[2025-06-10 20:03:12] 
+        SELECT DISTINCT(n.topic)
+        FROM t_news n
+        WHERE n.category='kids';
+         0.21958565711975098s
+[2025-06-10 20:07:57] 
+        SELECT DISTINCT(n.topic)
+        FROM t_news n
+        WHERE n.category='entertainment';
+         0.22204375267028809s
+[2025-06-10 20:15:36] 
+        SELECT distinct(category)
+        FROM t_news_daily_category;
+         0.018360614776611328s
+[2025-06-10 20:15:40] 
+        SELECT DISTINCT(n.topic)
+        FROM t_news n
+        WHERE n.category='entertainment';
+         1.6919701099395752s
+[2025-06-10 20:15:52] 
+        SELECT DISTINCT(n.topic)
+        FROM t_news n
+        WHERE n.category='finance';
+         0.30925798416137695s
+[2025-06-10 20:15:59] 
+        SELECT DISTINCT(n.topic)
+        FROM t_news n
+        WHERE n.category='finance';
+         0.23227477073669434s
+[2025-06-10 20:30:19] 
+        SELECT n.news_id, n.headline, n.content, n.category, n.topic,
+               COUNT(r.user_id) AS user_count, SUM(r.duration) AS total_duration
+        FROM t_news n
+        LEFT JOIN t_news_browse_record r ON n.news_id = r.news_id
+        WHERE n.category = 'finance'
+          AND n.topic = 'markets'
+          AND r.start_ts BETWEEN UNIX_TIMESTAMP('2000-02-02 00:00:00') AND UNIX_TIMESTAMP('2025-06-11 00:00:00')
+        GROUP BY n.news_id
+        LIMIT 10;
+     0.04646420478820801s
+[2025-06-10 20:31:20] 
+        SELECT n.news_id, n.headline, n.content, n.category, n.topic,
+               COUNT(r.user_id) AS user_count, SUM(r.duration) AS total_duration
+        FROM t_news n
+        LEFT JOIN t_news_browse_record r ON n.news_id = r.news_id
+        WHERE n.category = 'finance'
+          AND n.topic = 'markets'
+          AND r.start_ts BETWEEN UNIX_TIMESTAMP('2000-02-02 00:00:00') AND UNIX_TIMESTAMP('2025-06-11 00:00:00')
+        GROUP BY n.news_id
+        LIMIT 10;
+     0.04234051704406738s
+[2025-06-10 20:43:26] 
+        SELECT n.news_id, n.headline, n.content, n.category, n.topic,
+               COUNT(r.user_id) AS user_count, SUM(r.duration) AS total_duration
+        FROM t_news n
+        LEFT JOIN t_news_browse_record r ON n.news_id = r.news_id
+        WHERE n.category = 'finance'
+          AND n.topic = 'markets'
+          AND r.start_ts BETWEEN UNIX_TIMESTAMP('2000-02-02 00:00:00') AND UNIX_TIMESTAMP('2025-06-11 00:00:00')
+        GROUP BY n.news_id
+        LIMIT 1;
+     0.014084100723266602s
+[2025-06-10 20:43:31] 
+        SELECT distinct(category)
+        FROM t_news_daily_category;
+         0.013907194137573242s
+[2025-06-10 20:43:34] 
+        SELECT DISTINCT(n.topic)
+        FROM t_news n
+        WHERE n.category='health';
+         0.270383358001709s
+[2025-06-10 20:43:50] 
+        SELECT n.news_id, n.headline, n.content, n.category, n.topic,
+               COUNT(r.user_id) AS user_count, SUM(r.duration) AS total_duration
+        FROM t_news n
+        LEFT JOIN t_news_browse_record r ON n.news_id = r.news_id
+        WHERE n.category = 'health'
+          AND n.topic = 'wellness'
+          AND r.start_ts BETWEEN UNIX_TIMESTAMP('2000-06-06 00:00:00') AND UNIX_TIMESTAMP('2025-06-10 20:43:49')
+        GROUP BY n.news_id
+        LIMIT 1;
+     0.08132719993591309s
+[2025-06-10 20:44:58] 
+        SELECT distinct(category)
+        FROM t_news_daily_category;
+         0.013440847396850586s
+[2025-06-10 20:45:05] 
+        SELECT DISTINCT(n.topic)
+        FROM t_news n
+        WHERE n.category='entertainment';
+         0.22571635246276855s
+[2025-06-10 20:45:16] 
+        SELECT n.news_id, n.headline, n.content, n.category, n.topic,
+               COUNT(r.user_id) AS user_count, SUM(r.duration) AS total_duration
+        FROM t_news n
+        LEFT JOIN t_news_browse_record r ON n.news_id = r.news_id
+        WHERE n.category = 'entertainment'
+          AND n.topic = 'entertainment-celebrity'
+          AND r.start_ts BETWEEN UNIX_TIMESTAMP('2000-01-04 00:00:00') AND UNIX_TIMESTAMP('2025-06-10 00:00:00')
+        GROUP BY n.news_id
+        LIMIT 1;
+     0.013373136520385742s
+[2025-06-10 20:45:27] 
+        SELECT n.news_id, n.headline, n.content, n.category, n.topic,
+               COUNT(r.user_id) AS user_count, SUM(r.duration) AS total_duration
+        FROM t_news n
+        LEFT JOIN t_news_browse_record r ON n.news_id = r.news_id
+        WHERE n.category = 'entertainment'
+          AND n.topic = 'entertainment-celebrity'
+          AND r.start_ts BETWEEN UNIX_TIMESTAMP('2000-01-04 00:00:00') AND UNIX_TIMESTAMP('2025-06-10 00:00:00')
+        GROUP BY n.news_id
+        LIMIT 1;
+     0.014482259750366211s
+[2025-06-10 21:00:58] 
+        SELECT n.news_id, n.headline, n.content, n.category, n.topic,
+               COUNT(r.user_id) AS user_count, SUM(r.duration) AS total_duration
+        FROM t_news n
+        LEFT JOIN t_news_browse_record r ON n.news_id = r.news_id
+        WHERE n.category = 'entertainment'
+          AND n.topic = 'entertainment-celebrity'
+          AND r.start_ts BETWEEN UNIX_TIMESTAMP('2002-02-06 00:00:00') AND UNIX_TIMESTAMP('2025-06-10 00:00:00')
+        GROUP BY n.news_id
+        LIMIT 1;
+     0.015064716339111328s
+[2025-06-14 01:09:10] 
+        SELECT min(user_id), max(user_id) FROM t_news_browse_record;
+         0.01551961898803711s
+[2025-06-14 01:09:16] 
+        SELECT distinct(category)
+        FROM t_news_daily_category;
+         0.018000125885009766s
+[2025-06-14 01:09:16] 
+        SELECT min(user_id), max(user_id) FROM t_news_browse_record;
+         0.012466192245483398s
+[2025-06-14 01:09:18] 
+        SELECT distinct(category)
+        FROM t_news_daily_category;
+         0.02537083625793457s
+[2025-06-14 01:09:18] 
+        SELECT min(user_id), max(user_id) FROM t_news_browse_record;
+         0.014417886734008789s
+[2025-06-14 01:09:20] 
+            SELECT min(length(headline)), max(length(headline)), min(length(content)), max(length(content))
+            FROM t_news;
+             3.7765114307403564s
+[2025-06-14 01:09:22] 
+        SELECT distinct(category)
+        FROM t_news_daily_category;
+         0.013431549072265625s
+[2025-06-14 01:09:25] 
+        SELECT DISTINCT(n.topic)
+        FROM t_news n
+        WHERE n.category='autos';
+         1.745772361755371s
+[2025-06-14 01:09:46] 
+        SELECT n.news_id, n.headline, n.content, n.category, n.topic,
+               COUNT(r.user_id) AS user_count, SUM(r.duration) AS total_duration
+        FROM t_news n
+        LEFT JOIN t_news_browse_record r ON n.news_id = r.news_id
+        WHERE n.category = 'autos'
+          AND n.topic = 'autosnews'
+          AND r.start_ts BETWEEN UNIX_TIMESTAMP('2025-06-03 00:00:00') AND UNIX_TIMESTAMP('2025-07-01 00:00:00')
+        GROUP BY n.news_id
+        LIMIT 1;
+     0.07480812072753906s
+[2025-06-14 01:11:39] 
+        SELECT n.news_id, n.headline, n.content, n.category, n.topic,
+               COUNT(r.user_id) AS user_count, SUM(r.duration) AS total_duration
+        FROM t_news n
+        LEFT JOIN t_news_browse_record r ON n.news_id = r.news_id
+        WHERE n.category = 'autos'
+          AND n.topic = 'autosnews'
+          AND r.start_ts BETWEEN UNIX_TIMESTAMP('2000-02-08 00:00:00') AND UNIX_TIMESTAMP('2025-07-01 00:00:00')
+        GROUP BY n.news_id
+        LIMIT 1;
+     0.0930778980255127s
+[2025-06-14 11:25:41] 
+        SELECT distinct(category)
+        FROM t_news_daily_category;
+         0.01899409294128418s
+[2025-06-14 11:25:49] 
+        SELECT DISTINCT(n.topic)
+        FROM t_news n
+        WHERE n.category='autos';
+         5.041260480880737s
+[2025-06-14 11:26:16] 
+        WITH time_periods AS (
+            SELECT 
+                n.news_id,
+                n.headline,
+                n.content,
+                n.category,
+                n.topic,
+                COUNT(DISTINCT r.user_id) AS total_users,
+                SUM(r.duration) AS total_duration,
+                -- ����ÿСʱƽ�����ʱ��
+                SUM(r.duration) / (UNIX_TIMESTAMP('2001-02-06 00:00:00') - UNIX_TIMESTAMP('2000-06-13 11:25:57')) * 3600 AS hourly_duration,
+                -- ��������������ƣ�ʹ�����Իع�б�ʣ�
+                (
+                    SUM(r.duration * (UNIX_TIMESTAMP(r.start_ts) - UNIX_TIMESTAMP('2000-06-13 11:25:57'))) -
+                    SUM(r.duration) * SUM(UNIX_TIMESTAMP(r.start_ts) - UNIX_TIMESTAMP('2000-06-13 11:25:57')) / COUNT(*)
+                ) / (
+                    SUM(POWER(UNIX_TIMESTAMP(r.start_ts) - UNIX_TIMESTAMP('2000-06-13 11:25:57'), 2)) -
+                    POWER(SUM(UNIX_TIMESTAMP(r.start_ts) - UNIX_TIMESTAMP('2000-06-13 11:25:57')), 2) / COUNT(*)
+                ) AS growth_trend
+            FROM t_news n
+            LEFT JOIN t_news_browse_record r ON n.news_id = r.news_id
+            WHERE n.category = 'autos'
+              AND n.topic = 'autosnews'
+              AND r.start_ts BETWEEN UNIX_TIMESTAMP('2000-06-13 11:25:57') AND UNIX_TIMESTAMP('2001-02-06 00:00:00')
+            GROUP BY n.news_id, n.headline, n.content, n.category, n.topic
+            HAVING COUNT(*) > 0
+        )
+        SELECT *
+        FROM time_periods
+        ORDER BY total_duration DESC, growth_trend DESC
+        LIMIT 10;
+     0.046714067459106445s
+[2025-06-14 11:26:39] 
+        WITH time_periods AS (
+            SELECT 
+                n.news_id,
+                n.headline,
+                n.content,
+                n.category,
+                n.topic,
+                COUNT(DISTINCT r.user_id) AS total_users,
+                SUM(r.duration) AS total_duration,
+                -- ����ÿСʱƽ�����ʱ��
+                SUM(r.duration) / (UNIX_TIMESTAMP('2009-07-16 00:00:00') - UNIX_TIMESTAMP('2000-06-13 11:25:57')) * 3600 AS hourly_duration,
+                -- ��������������ƣ�ʹ�����Իع�б�ʣ�
+                (
+                    SUM(r.duration * (UNIX_TIMESTAMP(r.start_ts) - UNIX_TIMESTAMP('2000-06-13 11:25:57'))) -
+                    SUM(r.duration) * SUM(UNIX_TIMESTAMP(r.start_ts) - UNIX_TIMESTAMP('2000-06-13 11:25:57')) / COUNT(*)
+                ) / (
+                    SUM(POWER(UNIX_TIMESTAMP(r.start_ts) - UNIX_TIMESTAMP('2000-06-13 11:25:57'), 2)) -
+                    POWER(SUM(UNIX_TIMESTAMP(r.start_ts) - UNIX_TIMESTAMP('2000-06-13 11:25:57')), 2) / COUNT(*)
+                ) AS growth_trend
+            FROM t_news n
+            LEFT JOIN t_news_browse_record r ON n.news_id = r.news_id
+            WHERE n.category = 'autos'
+              AND n.topic = 'autosnews'
+              AND r.start_ts BETWEEN UNIX_TIMESTAMP('2000-06-13 11:25:57') AND UNIX_TIMESTAMP('2009-07-16 00:00:00')
+            GROUP BY n.news_id, n.headline, n.content, n.category, n.topic
+            HAVING COUNT(*) > 0
+        )
+        SELECT *
+        FROM time_periods
+        ORDER BY total_duration DESC, growth_trend DESC
+        LIMIT 10;
+     0.014426469802856445s
+[2025-06-14 11:26:49] 
+        SELECT DISTINCT(n.topic)
+        FROM t_news n
+        WHERE n.category='news';
+         5.553487777709961s
+[2025-06-14 11:26:53] 
+        WITH time_periods AS (
+            SELECT 
+                n.news_id,
+                n.headline,
+                n.content,
+                n.category,
+                n.topic,
+                COUNT(DISTINCT r.user_id) AS total_users,
+                SUM(r.duration) AS total_duration,
+                -- ����ÿСʱƽ�����ʱ��
+                SUM(r.duration) / (UNIX_TIMESTAMP('2009-07-16 00:00:00') - UNIX_TIMESTAMP('2000-06-13 11:25:57')) * 3600 AS hourly_duration,
+                -- ��������������ƣ�ʹ�����Իع�б�ʣ�
+                (
+                    SUM(r.duration * (UNIX_TIMESTAMP(r.start_ts) - UNIX_TIMESTAMP('2000-06-13 11:25:57'))) -
+                    SUM(r.duration) * SUM(UNIX_TIMESTAMP(r.start_ts) - UNIX_TIMESTAMP('2000-06-13 11:25:57')) / COUNT(*)
+                ) / (
+                    SUM(POWER(UNIX_TIMESTAMP(r.start_ts) - UNIX_TIMESTAMP('2000-06-13 11:25:57'), 2)) -
+                    POWER(SUM(UNIX_TIMESTAMP(r.start_ts) - UNIX_TIMESTAMP('2000-06-13 11:25:57')), 2) / COUNT(*)
+                ) AS growth_trend
+            FROM t_news n
+            LEFT JOIN t_news_browse_record r ON n.news_id = r.news_id
+            WHERE n.category = 'news'
+              AND n.topic = 'newsworld'
+              AND r.start_ts BETWEEN UNIX_TIMESTAMP('2000-06-13 11:25:57') AND UNIX_TIMESTAMP('2009-07-16 00:00:00')
+            GROUP BY n.news_id, n.headline, n.content, n.category, n.topic
+            HAVING COUNT(*) > 0
+        )
+        SELECT *
+        FROM time_periods
+        ORDER BY total_duration DESC, growth_trend DESC
+        LIMIT 10;
+     0.014881372451782227s
+[2025-06-14 12:43:50] 
+        SELECT distinct(category)
+        FROM t_news_daily_category;
+         0.022486209869384766s
+[2025-06-14 12:43:58] 
+        SELECT DISTINCT(n.topic)
+        FROM t_news n
+        WHERE n.category='news';
+         4.284472227096558s
+[2025-06-14 12:44:17] 
+        WITH time_periods AS (
+            SELECT 
+                n.news_id,
+                n.headline,
+                n.content,
+                n.category,
+                n.topic,
+                COUNT(DISTINCT r.user_id) AS total_users,
+                SUM(r.duration) AS total_duration,
+                -- ����ÿСʱƽ�����ʱ��
+                SUM(r.duration) / (UNIX_TIMESTAMP('2010-02-02 00:00:00') - UNIX_TIMESTAMP('2000-06-06 00:00:00')) * 3600 AS hourly_duration,
+                -- ��������������ƣ�ʹ�����Իع�б�ʣ�
+                (
+                    SUM(r.duration * (UNIX_TIMESTAMP(r.start_ts) - UNIX_TIMESTAMP('2000-06-06 00:00:00'))) -
+                    SUM(r.duration) * SUM(UNIX_TIMESTAMP(r.start_ts) - UNIX_TIMESTAMP('2000-06-06 00:00:00')) / COUNT(*)
+                ) / (
+                    SUM(POWER(UNIX_TIMESTAMP(r.start_ts) - UNIX_TIMESTAMP('2000-06-06 00:00:00'), 2)) -
+                    POWER(SUM(UNIX_TIMESTAMP(r.start_ts) - UNIX_TIMESTAMP('2000-06-06 00:00:00')), 2) / COUNT(*)
+                ) AS growth_trend
+            FROM t_news n
+            LEFT JOIN t_news_browse_record r ON n.news_id = r.news_id
+            WHERE n.category = 'news'
+              AND n.topic = 'newspolitics'
+              AND r.start_ts BETWEEN UNIX_TIMESTAMP('2000-06-06 00:00:00') AND UNIX_TIMESTAMP('2010-02-02 00:00:00')
+            GROUP BY n.news_id, n.headline, n.content, n.category, n.topic
+            HAVING COUNT(*) > 0
+        )
+        SELECT *
+        FROM time_periods
+        ORDER BY total_duration DESC, growth_trend DESC
+        LIMIT 10;
+     0.019412994384765625s
+[2025-06-14 12:44:48] 
+        WITH time_periods AS (
+            SELECT 
+                n.news_id,
+                n.headline,
+                n.content,
+                n.category,
+                n.topic,
+                COUNT(DISTINCT r.user_id) AS total_users,
+                SUM(r.duration) AS total_duration,
+                -- ����ÿСʱƽ�����ʱ��
+                SUM(r.duration) / (UNIX_TIMESTAMP('2010-02-02 00:00:00') - UNIX_TIMESTAMP('2000-06-06 00:00:00')) * 3600 AS hourly_duration,
+                -- ��������������ƣ�ʹ�����Իع�б�ʣ�
+                (
+                    SUM(r.duration * (UNIX_TIMESTAMP(r.start_ts) - UNIX_TIMESTAMP('2000-06-06 00:00:00'))) -
+                    SUM(r.duration) * SUM(UNIX_TIMESTAMP(r.start_ts) - UNIX_TIMESTAMP('2000-06-06 00:00:00')) / COUNT(*)
+                ) / (
+                    SUM(POWER(UNIX_TIMESTAMP(r.start_ts) - UNIX_TIMESTAMP('2000-06-06 00:00:00'), 2)) -
+                    POWER(SUM(UNIX_TIMESTAMP(r.start_ts) - UNIX_TIMESTAMP('2000-06-06 00:00:00')), 2) / COUNT(*)
+                ) AS growth_trend
+            FROM t_news n
+            LEFT JOIN t_news_browse_record r ON n.news_id = r.news_id
+            WHERE n.category = 'news'
+              AND n.topic = 'newsworld'
+              AND r.start_ts BETWEEN UNIX_TIMESTAMP('2000-06-06 00:00:00') AND UNIX_TIMESTAMP('2010-02-02 00:00:00')
+            GROUP BY n.news_id, n.headline, n.content, n.category, n.topic
+            HAVING COUNT(*) > 0
+        )
+        SELECT *
+        FROM time_periods
+        ORDER BY total_duration DESC, growth_trend DESC
+        LIMIT 10;
+     0.015312910079956055s
+[2025-06-14 12:46:44] 
+        WITH time_periods AS (
+            SELECT 
+                n.news_id,
+                n.headline,
+                n.content,
+                n.category,
+                n.topic,
+                COUNT(DISTINCT r.user_id) AS total_users,
+                SUM(r.duration) AS total_duration,
+                -- ����ÿСʱƽ�����ʱ��
+                SUM(r.duration) / (UNIX_TIMESTAMP('2010-02-02 00:00:00') - UNIX_TIMESTAMP('2000-06-06 00:00:00')) * 3600 AS hourly_duration,
+                -- ��������������ƣ�ʹ�����Իع�б�ʣ�
+                (
+                    SUM(r.duration * (UNIX_TIMESTAMP(r.start_ts) - UNIX_TIMESTAMP('2000-06-06 00:00:00'))) -
+                    SUM(r.duration) * SUM(UNIX_TIMESTAMP(r.start_ts) - UNIX_TIMESTAMP('2000-06-06 00:00:00')) / COUNT(*)
+                ) / (
+                    SUM(POWER(UNIX_TIMESTAMP(r.start_ts) - UNIX_TIMESTAMP('2000-06-06 00:00:00'), 2)) -
+                    POWER(SUM(UNIX_TIMESTAMP(r.start_ts) - UNIX_TIMESTAMP('2000-06-06 00:00:00')), 2) / COUNT(*)
+                ) AS growth_trend
+            FROM t_news n
+            LEFT JOIN t_news_browse_record r ON n.news_id = r.news_id
+            WHERE n.category = 'news'
+              AND n.topic = 'newsworld'
+              AND r.start_ts BETWEEN UNIX_TIMESTAMP('2000-06-06 00:00:00') AND UNIX_TIMESTAMP('2010-02-02 00:00:00')
+            GROUP BY n.news_id, n.headline, n.content, n.category, n.topic
+            HAVING COUNT(*) > 0
+        )
+        SELECT *
+        FROM time_periods
+        ORDER BY total_duration DESC, growth_trend DESC
+        LIMIT 10;
+     0.015385866165161133s
+[2025-06-14 12:47:57] 
+        WITH time_periods AS (
+            SELECT 
+                n.news_id,
+                n.headline,
+                n.content,
+                n.category,
+                n.topic,
+                COUNT(DISTINCT r.user_id) AS total_users,
+                SUM(r.duration) AS total_duration,
+                -- ����ÿСʱƽ�����ʱ��
+                SUM(r.duration) / (UNIX_TIMESTAMP('2010-02-02 00:00:00') - UNIX_TIMESTAMP('2000-06-06 00:00:00')) * 3600 AS hourly_duration,
+                -- ��������������ƣ�ʹ�����Իع�б�ʣ�
+                (
+                    SUM(r.duration * (UNIX_TIMESTAMP(r.start_ts) - UNIX_TIMESTAMP('2000-06-06 00:00:00'))) -
+                    SUM(r.duration) * SUM(UNIX_TIMESTAMP(r.start_ts) - UNIX_TIMESTAMP('2000-06-06 00:00:00')) / COUNT(*)
+                ) / (
+                    SUM(POWER(UNIX_TIMESTAMP(r.start_ts) - UNIX_TIMESTAMP('2000-06-06 00:00:00'), 2)) -
+                    POWER(SUM(UNIX_TIMESTAMP(r.start_ts) - UNIX_TIMESTAMP('2000-06-06 00:00:00')), 2) / COUNT(*)
+                ) AS growth_trend
+            FROM t_news n
+            LEFT JOIN t_news_browse_record r ON n.news_id = r.news_id
+            WHERE n.category = 'news'
+              AND n.topic = 'newsworld'
+              AND r.start_ts BETWEEN UNIX_TIMESTAMP('2000-06-06 00:00:00') AND UNIX_TIMESTAMP('2010-02-02 00:00:00')
+            GROUP BY n.news_id, n.headline, n.content, n.category, n.topic
+            HAVING COUNT(*) > 0
+        )
+        SELECT *
+        FROM time_periods
+        ORDER BY total_duration DESC, growth_trend DESC
+        LIMIT 10;
+     0.01355886459350586s
+[2025-06-14 12:48:02] 
+        WITH time_periods AS (
+            SELECT 
+                n.news_id,
+                n.headline,
+                n.content,
+                n.category,
+                n.topic,
+                COUNT(DISTINCT r.user_id) AS total_users,
+                SUM(r.duration) AS total_duration,
+                -- ����ÿСʱƽ�����ʱ��
+                SUM(r.duration) / (UNIX_TIMESTAMP('2010-02-02 00:00:00') - UNIX_TIMESTAMP('2000-06-06 00:00:00')) * 3600 AS hourly_duration,
+                -- ��������������ƣ�ʹ�����Իع�б�ʣ�
+                (
+                    SUM(r.duration * (UNIX_TIMESTAMP(r.start_ts) - UNIX_TIMESTAMP('2000-06-06 00:00:00'))) -
+                    SUM(r.duration) * SUM(UNIX_TIMESTAMP(r.start_ts) - UNIX_TIMESTAMP('2000-06-06 00:00:00')) / COUNT(*)
+                ) / (
+                    SUM(POWER(UNIX_TIMESTAMP(r.start_ts) - UNIX_TIMESTAMP('2000-06-06 00:00:00'), 2)) -
+                    POWER(SUM(UNIX_TIMESTAMP(r.start_ts) - UNIX_TIMESTAMP('2000-06-06 00:00:00')), 2) / COUNT(*)
+                ) AS growth_trend
+            FROM t_news n
+            LEFT JOIN t_news_browse_record r ON n.news_id = r.news_id
+            WHERE n.category = 'news'
+              AND n.topic = 'newsworld'
+              AND r.start_ts BETWEEN UNIX_TIMESTAMP('2000-06-06 00:00:00') AND UNIX_TIMESTAMP('2010-02-02 00:00:00')
+            GROUP BY n.news_id, n.headline, n.content, n.category, n.topic
+            HAVING COUNT(*) > 0
+        )
+        SELECT *
+        FROM time_periods
+        ORDER BY total_duration DESC, growth_trend DESC
+        LIMIT 10;
+     0.014165163040161133s
+[2025-06-14 12:52:59] 
+        SELECT distinct(category)
+        FROM t_news_daily_category;
+         0.022112369537353516s
+[2025-06-14 12:53:08] 
+        SELECT DISTINCT(n.topic)
+        FROM t_news n
+        WHERE n.category='news';
+         5.464385032653809s
+[2025-06-14 12:53:25] 
+        WITH time_periods AS (
+            SELECT 
+                n.news_id,
+                n.headline,
+                n.content,
+                n.category,
+                n.topic,
+                COUNT(DISTINCT r.user_id) AS total_users,
+                SUM(r.duration) AS total_duration,
+                -- ����ÿСʱƽ�����ʱ��
+                SUM(r.duration) / (UNIX_TIMESTAMP('2015-07-08 00:00:00') - UNIX_TIMESTAMP('2015-06-10 00:00:00')) * 3600 AS hourly_duration,
+                -- ��������������ƣ�ʹ�����Իع�б�ʣ�
+                (
+                    SUM(r.duration * (UNIX_TIMESTAMP(r.start_ts) - UNIX_TIMESTAMP('2015-06-10 00:00:00'))) -
+                    SUM(r.duration) * SUM(UNIX_TIMESTAMP(r.start_ts) - UNIX_TIMESTAMP('2015-06-10 00:00:00')) / COUNT(*)
+                ) / (
+                    SUM(POWER(UNIX_TIMESTAMP(r.start_ts) - UNIX_TIMESTAMP('2015-06-10 00:00:00'), 2)) -
+                    POWER(SUM(UNIX_TIMESTAMP(r.start_ts) - UNIX_TIMESTAMP('2015-06-10 00:00:00')), 2) / COUNT(*)
+                ) AS growth_trend
+            FROM t_news n
+            LEFT JOIN t_news_browse_record r ON n.news_id = r.news_id
+            WHERE n.category = 'news'
+              AND n.topic = 'newsworld'
+              AND r.start_ts BETWEEN UNIX_TIMESTAMP('2015-06-10 00:00:00') AND UNIX_TIMESTAMP('2015-07-08 00:00:00')
+            GROUP BY n.news_id, n.headline, n.content, n.category, n.topic
+            HAVING COUNT(*) > 0
+        )
+        SELECT *
+        FROM time_periods
+        ORDER BY total_duration DESC, growth_trend DESC
+        LIMIT 10;
+     0.015403270721435547s
+[2025-06-14 12:53:33] 
+        WITH time_periods AS (
+            SELECT 
+                n.news_id,
+                n.headline,
+                n.content,
+                n.category,
+                n.topic,
+                COUNT(DISTINCT r.user_id) AS total_users,
+                SUM(r.duration) AS total_duration,
+                -- ����ÿСʱƽ�����ʱ��
+                SUM(r.duration) / (UNIX_TIMESTAMP('2015-07-08 00:00:00') - UNIX_TIMESTAMP('2015-06-10 00:00:00')) * 3600 AS hourly_duration,
+                -- ��������������ƣ�ʹ�����Իع�б�ʣ�
+                (
+                    SUM(r.duration * (UNIX_TIMESTAMP(r.start_ts) - UNIX_TIMESTAMP('2015-06-10 00:00:00'))) -
+                    SUM(r.duration) * SUM(UNIX_TIMESTAMP(r.start_ts) - UNIX_TIMESTAMP('2015-06-10 00:00:00')) / COUNT(*)
+                ) / (
+                    SUM(POWER(UNIX_TIMESTAMP(r.start_ts) - UNIX_TIMESTAMP('2015-06-10 00:00:00'), 2)) -
+                    POWER(SUM(UNIX_TIMESTAMP(r.start_ts) - UNIX_TIMESTAMP('2015-06-10 00:00:00')), 2) / COUNT(*)
+                ) AS growth_trend
+            FROM t_news n
+            LEFT JOIN t_news_browse_record r ON n.news_id = r.news_id
+            WHERE n.category = 'news'
+              AND n.topic = 'newsworld'
+              AND r.start_ts BETWEEN UNIX_TIMESTAMP('2015-06-10 00:00:00') AND UNIX_TIMESTAMP('2015-07-08 00:00:00')
+            GROUP BY n.news_id, n.headline, n.content, n.category, n.topic
+            HAVING COUNT(*) > 0
+        )
+        SELECT *
+        FROM time_periods
+        ORDER BY total_duration DESC, growth_trend DESC
+        LIMIT 10;
+     0.014923810958862305s
+[2025-06-14 13:01:10] 
+        WITH time_periods AS (
+            SELECT 
+                n.news_id,
+                n.headline,
+                n.content,
+                n.category,
+                n.topic,
+                COUNT(DISTINCT r.user_id) AS total_users,
+                SUM(r.duration) AS total_duration,
+                -- ����ÿСʱƽ�����ʱ��
+                SUM(r.duration) / (UNIX_TIMESTAMP('2015-07-08 00:00:00') - UNIX_TIMESTAMP('2015-06-10 00:00:00')) * 3600 AS hourly_duration,
+                -- ��������������ƣ�ʹ�����Իع�б�ʣ�
+                (
+                    SUM(r.duration * (UNIX_TIMESTAMP(r.start_ts) - UNIX_TIMESTAMP('2015-06-10 00:00:00'))) -
+                    SUM(r.duration) * SUM(UNIX_TIMESTAMP(r.start_ts) - UNIX_TIMESTAMP('2015-06-10 00:00:00')) / COUNT(*)
+                ) / (
+                    SUM(POWER(UNIX_TIMESTAMP(r.start_ts) - UNIX_TIMESTAMP('2015-06-10 00:00:00'), 2)) -
+                    POWER(SUM(UNIX_TIMESTAMP(r.start_ts) - UNIX_TIMESTAMP('2015-06-10 00:00:00')), 2) / COUNT(*)
+                ) AS growth_trend
+            FROM t_news n
+            LEFT JOIN t_news_browse_record r ON n.news_id = r.news_id
+            WHERE n.category = 'news'
+              AND n.topic = 'newsworld'
+              AND r.start_ts BETWEEN UNIX_TIMESTAMP('2015-06-10 00:00:00') AND UNIX_TIMESTAMP('2015-07-08 00:00:00')
+            GROUP BY n.news_id, n.headline, n.content, n.category, n.topic
+            HAVING COUNT(*) > 0
+        )
+        SELECT *
+        FROM time_periods
+        ORDER BY total_duration DESC, growth_trend DESC
+        LIMIT 10;
+     0.013389110565185547s
+[2025-06-14 13:03:41] 
+        SELECT DISTINCT(n.topic)
+        FROM t_news n
+        WHERE n.category='entertainment';
+         2.6474502086639404s
+[2025-06-14 13:03:53] 
+        WITH time_periods AS (
+            SELECT 
+                n.news_id,
+                n.headline,
+                n.content,
+                n.category,
+                n.topic,
+                COUNT(DISTINCT r.user_id) AS total_users,
+                SUM(r.duration) AS total_duration,
+                -- ����ÿСʱƽ�����ʱ��
+                SUM(r.duration) / (UNIX_TIMESTAMP('2015-07-08 00:00:00') - UNIX_TIMESTAMP('2015-06-10 00:00:00')) * 3600 AS hourly_duration,
+                -- ��������������ƣ�ʹ�����Իع�б�ʣ�
+                (
+                    SUM(r.duration * (UNIX_TIMESTAMP(r.start_ts) - UNIX_TIMESTAMP('2015-06-10 00:00:00'))) -
+                    SUM(r.duration) * SUM(UNIX_TIMESTAMP(r.start_ts) - UNIX_TIMESTAMP('2015-06-10 00:00:00')) / COUNT(*)
+                ) / (
+                    SUM(POWER(UNIX_TIMESTAMP(r.start_ts) - UNIX_TIMESTAMP('2015-06-10 00:00:00'), 2)) -
+                    POWER(SUM(UNIX_TIMESTAMP(r.start_ts) - UNIX_TIMESTAMP('2015-06-10 00:00:00')), 2) / COUNT(*)
+                ) AS growth_trend
+            FROM t_news n
+            LEFT JOIN t_news_browse_record r ON n.news_id = r.news_id
+            WHERE n.category = 'entertainment'
+              AND n.topic = 'video'
+              AND r.start_ts BETWEEN UNIX_TIMESTAMP('2015-06-10 00:00:00') AND UNIX_TIMESTAMP('2015-07-08 00:00:00')
+            GROUP BY n.news_id, n.headline, n.content, n.category, n.topic
+            HAVING COUNT(*) > 0
+        )
+        SELECT *
+        FROM time_periods
+        ORDER BY total_duration DESC, growth_trend DESC
+        LIMIT 10;
+     0.015674591064453125s
+[2025-06-14 13:06:02] 
+        WITH time_periods AS (
+            SELECT 
+                n.news_id,
+                n.headline,
+                n.content,
+                n.category,
+                n.topic,
+                COUNT(DISTINCT r.user_id) AS total_users,
+                SUM(r.duration) AS total_duration,
+                -- ����ÿСʱƽ�����ʱ��
+                SUM(r.duration) / (UNIX_TIMESTAMP('2019-07-18 00:00:00') - UNIX_TIMESTAMP('2015-06-10 00:00:00')) * 3600 AS hourly_duration,
+                -- ��������������ƣ�ʹ�����Իع�б�ʣ�
+                (
+                    SUM(r.duration * (UNIX_TIMESTAMP(r.start_ts) - UNIX_TIMESTAMP('2015-06-10 00:00:00'))) -
+                    SUM(r.duration) * SUM(UNIX_TIMESTAMP(r.start_ts) - UNIX_TIMESTAMP('2015-06-10 00:00:00')) / COUNT(*)
+                ) / (
+                    SUM(POWER(UNIX_TIMESTAMP(r.start_ts) - UNIX_TIMESTAMP('2015-06-10 00:00:00'), 2)) -
+                    POWER(SUM(UNIX_TIMESTAMP(r.start_ts) - UNIX_TIMESTAMP('2015-06-10 00:00:00')), 2) / COUNT(*)
+                ) AS growth_trend
+            FROM t_news n
+            LEFT JOIN t_news_browse_record r ON n.news_id = r.news_id
+            WHERE n.category = 'entertainment'
+              AND n.topic = 'video'
+              AND r.start_ts BETWEEN UNIX_TIMESTAMP('2015-06-10 00:00:00') AND UNIX_TIMESTAMP('2019-07-18 00:00:00')
+            GROUP BY n.news_id, n.headline, n.content, n.category, n.topic
+            HAVING COUNT(*) > 0
+        )
+        SELECT *
+        FROM time_periods
+        ORDER BY total_duration DESC, growth_trend DESC
+        LIMIT 10;
+     9.950959920883179s
+[2025-06-14 13:17:16] 
+        WITH time_periods AS (
+            SELECT 
+                n.news_id,
+                n.headline,
+                n.content,
+                n.category,
+                n.topic,
+                COUNT(DISTINCT r.user_id) AS total_users,
+                SUM(r.duration) AS total_duration,
+                -- ����ÿСʱƽ�����ʱ��
+                SUM(r.duration) / (UNIX_TIMESTAMP('2019-07-18 00:00:00') - UNIX_TIMESTAMP('2015-06-10 00:00:00')) * 3600 AS hourly_duration,
+                -- ��������������ƣ�ʹ�����Իع�б�ʣ�
+                (
+                    SUM(r.duration * (UNIX_TIMESTAMP(r.start_ts) - UNIX_TIMESTAMP('2015-06-10 00:00:00'))) -
+                    SUM(r.duration) * SUM(UNIX_TIMESTAMP(r.start_ts) - UNIX_TIMESTAMP('2015-06-10 00:00:00')) / COUNT(*)
+                ) / (
+                    SUM(POWER(UNIX_TIMESTAMP(r.start_ts) - UNIX_TIMESTAMP('2015-06-10 00:00:00'), 2)) -
+                    POWER(SUM(UNIX_TIMESTAMP(r.start_ts) - UNIX_TIMESTAMP('2015-06-10 00:00:00')), 2) / COUNT(*)
+                ) AS growth_trend
+            FROM t_news n
+            LEFT JOIN t_news_browse_record r ON n.news_id = r.news_id
+            WHERE n.category = 'entertainment'
+              AND n.topic = 'video'
+              AND r.start_ts BETWEEN UNIX_TIMESTAMP('2015-06-10 00:00:00') AND UNIX_TIMESTAMP('2019-07-18 00:00:00')
+            GROUP BY n.news_id, n.headline, n.content, n.category, n.topic
+            HAVING COUNT(*) > 0
+        )
+        SELECT *
+        FROM time_periods
+        ORDER BY total_duration DESC, growth_trend DESC
+        LIMIT 1;
+     10.185965538024902s
+[2025-06-14 13:33:04] 
+        WITH time_periods AS (
+            SELECT 
+                n.news_id,
+                n.headline,
+                n.content,
+                n.category,
+                n.topic,
+                COUNT(DISTINCT r.user_id) AS total_users,
+                SUM(r.duration) AS total_duration,
+                -- ����ÿСʱƽ�����ʱ��
+                SUM(r.duration) / (UNIX_TIMESTAMP('2019-07-18 00:00:00') - UNIX_TIMESTAMP('2015-06-10 00:00:00')) * 3600 AS hourly_duration,
+                -- ��������������ƣ�ʹ�����Իع�б�ʣ�
+                (
+                    SUM(r.duration * (UNIX_TIMESTAMP(r.start_ts) - UNIX_TIMESTAMP('2015-06-10 00:00:00'))) -
+                    SUM(r.duration) * SUM(UNIX_TIMESTAMP(r.start_ts) - UNIX_TIMESTAMP('2015-06-10 00:00:00')) / COUNT(*)
+                ) / (
+                    SUM(POWER(UNIX_TIMESTAMP(r.start_ts) - UNIX_TIMESTAMP('2015-06-10 00:00:00'), 2)) -
+                    POWER(SUM(UNIX_TIMESTAMP(r.start_ts) - UNIX_TIMESTAMP('2015-06-10 00:00:00')), 2) / COUNT(*)
+                ) AS growth_trend
+            FROM t_news n
+            LEFT JOIN t_news_browse_record r ON n.news_id = r.news_id
+            WHERE n.category = 'entertainment'
+              AND n.topic = 'video'
+              AND r.start_ts BETWEEN UNIX_TIMESTAMP('2015-06-10 00:00:00') AND UNIX_TIMESTAMP('2019-07-18 00:00:00')
+            GROUP BY n.news_id, n.headline, n.content, n.category, n.topic
+            HAVING COUNT(*) > 0
+        )
+        SELECT *
+        FROM time_periods
+        ORDER BY total_duration DESC, growth_trend DESC
+        LIMIT 10;
+     4.737334489822388s
+[2025-06-14 13:33:59] 
+        WITH time_periods AS (
+            SELECT 
+                n.news_id,
+                n.headline,
+                n.content,
+                n.category,
+                n.topic,
+                COUNT(DISTINCT r.user_id) AS total_users,
+                SUM(r.duration) AS total_duration,
+                -- ����ÿСʱƽ�����ʱ��
+                SUM(r.duration) / (UNIX_TIMESTAMP('2019-07-18 00:00:00') - UNIX_TIMESTAMP('2015-06-10 00:00:00')) * 3600 AS hourly_duration,
+                -- ��������������ƣ�ʹ�����Իع�б�ʣ�
+                (
+                    SUM(r.duration * (UNIX_TIMESTAMP(r.start_ts) - UNIX_TIMESTAMP('2015-06-10 00:00:00'))) -
+                    SUM(r.duration) * SUM(UNIX_TIMESTAMP(r.start_ts) - UNIX_TIMESTAMP('2015-06-10 00:00:00')) / COUNT(*)
+                ) / (
+                    SUM(POWER(UNIX_TIMESTAMP(r.start_ts) - UNIX_TIMESTAMP('2015-06-10 00:00:00'), 2)) -
+                    POWER(SUM(UNIX_TIMESTAMP(r.start_ts) - UNIX_TIMESTAMP('2015-06-10 00:00:00')), 2) / COUNT(*)
+                ) AS growth_trend
+            FROM t_news n
+            LEFT JOIN t_news_browse_record r ON n.news_id = r.news_id
+            WHERE n.category = 'entertainment'
+              AND n.topic = 'video'
+              AND r.start_ts BETWEEN UNIX_TIMESTAMP('2015-06-10 00:00:00') AND UNIX_TIMESTAMP('2019-07-18 00:00:00')
+            GROUP BY n.news_id, n.headline, n.content, n.category, n.topic
+            HAVING COUNT(*) > 0
+        )
+        SELECT *
+        FROM time_periods
+        ORDER BY total_duration DESC, growth_trend DESC
+        LIMIT 3;
+     7.762771844863892s
+[2025-06-14 14:12:32] 
+        WITH time_periods AS (
+            SELECT 
+                n.news_id,
+                n.headline,
+                n.content,
+                n.category,
+                n.topic,
+                COUNT(DISTINCT r.user_id) AS total_users,
+                SUM(r.duration) AS total_duration,
+                -- ����ÿСʱƽ�����ʱ��
+                SUM(r.duration) / (UNIX_TIMESTAMP('2019-07-18 00:00:00') - UNIX_TIMESTAMP('2015-06-10 00:00:00')) * 3600 AS hourly_duration,
+                -- ��������������ƣ�ʹ�����Իع�б�ʣ�
+                (
+                    SUM(r.duration * (UNIX_TIMESTAMP(r.start_ts) - UNIX_TIMESTAMP('2015-06-10 00:00:00'))) -
+                    SUM(r.duration) * SUM(UNIX_TIMESTAMP(r.start_ts) - UNIX_TIMESTAMP('2015-06-10 00:00:00')) / COUNT(*)
+                ) / (
+                    SUM(POWER(UNIX_TIMESTAMP(r.start_ts) - UNIX_TIMESTAMP('2015-06-10 00:00:00'), 2)) -
+                    POWER(SUM(UNIX_TIMESTAMP(r.start_ts) - UNIX_TIMESTAMP('2015-06-10 00:00:00')), 2) / COUNT(*)
+                ) AS growth_trend
+            FROM t_news n
+            LEFT JOIN t_news_browse_record r ON n.news_id = r.news_id
+            WHERE n.category = 'entertainment'
+              AND n.topic = 'video'
+              AND r.start_ts BETWEEN UNIX_TIMESTAMP('2015-06-10 00:00:00') AND UNIX_TIMESTAMP('2019-07-18 00:00:00')
+            GROUP BY n.news_id, n.headline, n.content, n.category, n.topic
+            HAVING COUNT(*) > 0
+        )
+        SELECT *
+        FROM time_periods
+        ORDER BY total_duration DESC, growth_trend DESC
+        LIMIT 3;
+     7.560412883758545s
+[2025-06-14 18:55:05] 
+        WITH time_periods AS (
+            SELECT 
+                n.news_id,
+                n.headline,
+                n.content,
+                n.category,
+                n.topic,
+                COUNT(DISTINCT r.user_id) AS total_users,
+                SUM(r.duration) AS total_duration,
+                -- ����ÿСʱƽ�����ʱ��
+                SUM(r.duration) / (UNIX_TIMESTAMP('2019-07-18 00:00:00') - UNIX_TIMESTAMP('2015-06-10 00:00:00')) * 3600 AS hourly_duration,
+                -- ��������������ƣ�ʹ�����Իع�б�ʣ�
+                (
+                    SUM(r.duration * (UNIX_TIMESTAMP(r.start_ts) - UNIX_TIMESTAMP('2015-06-10 00:00:00'))) -
+                    SUM(r.duration) * SUM(UNIX_TIMESTAMP(r.start_ts) - UNIX_TIMESTAMP('2015-06-10 00:00:00')) / COUNT(*)
+                ) / (
+                    SUM(POWER(UNIX_TIMESTAMP(r.start_ts) - UNIX_TIMESTAMP('2015-06-10 00:00:00'), 2)) -
+                    POWER(SUM(UNIX_TIMESTAMP(r.start_ts) - UNIX_TIMESTAMP('2015-06-10 00:00:00')), 2) / COUNT(*)
+                ) AS growth_trend
+            FROM t_news n
+            LEFT JOIN t_news_browse_record r ON n.news_id = r.news_id
+            WHERE n.category = 'entertainment'
+              AND n.topic = 'video'
+              AND r.start_ts BETWEEN UNIX_TIMESTAMP('2015-06-10 00:00:00') AND UNIX_TIMESTAMP('2019-07-18 00:00:00')
+            GROUP BY n.news_id, n.headline, n.content, n.category, n.topic
+            HAVING COUNT(*) > 0
+        )
+        SELECT *
+        FROM time_periods
+        ORDER BY total_duration DESC, growth_trend DESC
+        LIMIT 3;
+     6.17700457572937s
+[2025-06-14 18:58:31] 
+        WITH time_periods AS (
+            SELECT 
+                n.news_id,
+                n.headline,
+                n.content,
+                n.category,
+                n.topic,
+                COUNT(DISTINCT r.user_id) AS total_users,
+                SUM(r.duration) AS total_duration,
+                -- ����ÿСʱƽ�����ʱ��
+                SUM(r.duration) / (UNIX_TIMESTAMP('2019-07-18 00:00:00') - UNIX_TIMESTAMP('2015-06-10 00:00:00')) * 3600 AS hourly_duration,
+                -- ��������������ƣ�ʹ�����Իع�б�ʣ�
+                (
+                    SUM(r.duration * (UNIX_TIMESTAMP(r.start_ts) - UNIX_TIMESTAMP('2015-06-10 00:00:00'))) -
+                    SUM(r.duration) * SUM(UNIX_TIMESTAMP(r.start_ts) - UNIX_TIMESTAMP('2015-06-10 00:00:00')) / COUNT(*)
+                ) / (
+                    SUM(POWER(UNIX_TIMESTAMP(r.start_ts) - UNIX_TIMESTAMP('2015-06-10 00:00:00'), 2)) -
+                    POWER(SUM(UNIX_TIMESTAMP(r.start_ts) - UNIX_TIMESTAMP('2015-06-10 00:00:00')), 2) / COUNT(*)
+                ) AS growth_trend
+            FROM t_news n
+            LEFT JOIN t_news_browse_record r ON n.news_id = r.news_id
+            WHERE n.category = 'entertainment'
+              AND n.topic = 'video'
+              AND r.start_ts BETWEEN UNIX_TIMESTAMP('2015-06-10 00:00:00') AND UNIX_TIMESTAMP('2019-07-18 00:00:00')
+            GROUP BY n.news_id, n.headline, n.content, n.category, n.topic
+            HAVING COUNT(*) > 0
+        )
+        SELECT *
+        FROM time_periods
+        ORDER BY total_duration DESC, growth_trend DESC
+        LIMIT 3;
+     6.395098924636841s
+[2025-06-14 19:29:33] 
+        SELECT distinct(category)
+        FROM t_news_daily_category;
+         0.021901845932006836s
+[2025-06-14 19:29:37] 
+        SELECT DISTINCT(n.topic)
+        FROM t_news n
+        WHERE n.category='news';
+         2.8924520015716553s
+[2025-06-14 19:29:54] 
+        WITH time_periods AS (
+            SELECT 
+                n.news_id,
+                n.headline,
+                n.content,
+                n.category,
+                n.topic,
+                COUNT(DISTINCT r.user_id) AS total_users,
+                SUM(r.duration) AS total_duration,
+                -- ����ÿСʱƽ�����ʱ��
+                SUM(r.duration) / (UNIX_TIMESTAMP('2019-06-11 00:00:00') - UNIX_TIMESTAMP('2018-06-05 00:00:00')) * 3600 AS hourly_duration,
+                -- ��������������ƣ�ʹ�����Իع�б�ʣ�
+                (
+                    SUM(r.duration * (UNIX_TIMESTAMP(r.start_ts) - UNIX_TIMESTAMP('2018-06-05 00:00:00'))) -
+                    SUM(r.duration) * SUM(UNIX_TIMESTAMP(r.start_ts) - UNIX_TIMESTAMP('2018-06-05 00:00:00')) / COUNT(*)
+                ) / (
+                    SUM(POWER(UNIX_TIMESTAMP(r.start_ts) - UNIX_TIMESTAMP('2018-06-05 00:00:00'), 2)) -
+                    POWER(SUM(UNIX_TIMESTAMP(r.start_ts) - UNIX_TIMESTAMP('2018-06-05 00:00:00')), 2) / COUNT(*)
+                ) AS growth_trend
+            FROM t_news n
+            LEFT JOIN t_news_browse_record r ON n.news_id = r.news_id
+            WHERE n.category = 'news'
+              AND n.topic = 'newspolitics'
+              AND r.start_ts BETWEEN UNIX_TIMESTAMP('2018-06-05 00:00:00') AND UNIX_TIMESTAMP('2019-06-11 00:00:00')
+            GROUP BY n.news_id, n.headline, n.content, n.category, n.topic
+            HAVING COUNT(*) > 0
+        )
+        SELECT *
+        FROM time_periods
+        ORDER BY total_duration DESC, growth_trend DESC
+        LIMIT 1;
+     0.05757546424865723s
+[2025-06-14 19:30:02] 
+        WITH time_periods AS (
+            SELECT 
+                n.news_id,
+                n.headline,
+                n.content,
+                n.category,
+                n.topic,
+                COUNT(DISTINCT r.user_id) AS total_users,
+                SUM(r.duration) AS total_duration,
+                -- ����ÿСʱƽ�����ʱ��
+                SUM(r.duration) / (UNIX_TIMESTAMP('2019-06-11 00:00:00') - UNIX_TIMESTAMP('2018-06-05 00:00:00')) * 3600 AS hourly_duration,
+                -- ��������������ƣ�ʹ�����Իع�б�ʣ�
+                (
+                    SUM(r.duration * (UNIX_TIMESTAMP(r.start_ts) - UNIX_TIMESTAMP('2018-06-05 00:00:00'))) -
+                    SUM(r.duration) * SUM(UNIX_TIMESTAMP(r.start_ts) - UNIX_TIMESTAMP('2018-06-05 00:00:00')) / COUNT(*)
+                ) / (
+                    SUM(POWER(UNIX_TIMESTAMP(r.start_ts) - UNIX_TIMESTAMP('2018-06-05 00:00:00'), 2)) -
+                    POWER(SUM(UNIX_TIMESTAMP(r.start_ts) - UNIX_TIMESTAMP('2018-06-05 00:00:00')), 2) / COUNT(*)
+                ) AS growth_trend
+            FROM t_news n
+            LEFT JOIN t_news_browse_record r ON n.news_id = r.news_id
+            WHERE n.category = 'news'
+              AND n.topic = 'newsworld'
+              AND r.start_ts BETWEEN UNIX_TIMESTAMP('2018-06-05 00:00:00') AND UNIX_TIMESTAMP('2019-06-11 00:00:00')
+            GROUP BY n.news_id, n.headline, n.content, n.category, n.topic
+            HAVING COUNT(*) > 0
+        )
+        SELECT *
+        FROM time_periods
+        ORDER BY total_duration DESC, growth_trend DESC
+        LIMIT 1;
+     0.014146566390991211s
+[2025-06-14 19:30:10] 
+        SELECT DISTINCT(n.topic)
+        FROM t_news n
+        WHERE n.category='entertainment';
+         0.2579350471496582s
+[2025-06-14 19:30:14] 
+        WITH time_periods AS (
+            SELECT 
+                n.news_id,
+                n.headline,
+                n.content,
+                n.category,
+                n.topic,
+                COUNT(DISTINCT r.user_id) AS total_users,
+                SUM(r.duration) AS total_duration,
+                -- ����ÿСʱƽ�����ʱ��
+                SUM(r.duration) / (UNIX_TIMESTAMP('2019-06-11 00:00:00') - UNIX_TIMESTAMP('2018-06-05 00:00:00')) * 3600 AS hourly_duration,
+                -- ��������������ƣ�ʹ�����Իع�б�ʣ�
+                (
+                    SUM(r.duration * (UNIX_TIMESTAMP(r.start_ts) - UNIX_TIMESTAMP('2018-06-05 00:00:00'))) -
+                    SUM(r.duration) * SUM(UNIX_TIMESTAMP(r.start_ts) - UNIX_TIMESTAMP('2018-06-05 00:00:00')) / COUNT(*)
+                ) / (
+                    SUM(POWER(UNIX_TIMESTAMP(r.start_ts) - UNIX_TIMESTAMP('2018-06-05 00:00:00'), 2)) -
+                    POWER(SUM(UNIX_TIMESTAMP(r.start_ts) - UNIX_TIMESTAMP('2018-06-05 00:00:00')), 2) / COUNT(*)
+                ) AS growth_trend
+            FROM t_news n
+            LEFT JOIN t_news_browse_record r ON n.news_id = r.news_id
+            WHERE n.category = 'entertainment'
+              AND n.topic = 'entertainment-celebrity'
+              AND r.start_ts BETWEEN UNIX_TIMESTAMP('2018-06-05 00:00:00') AND UNIX_TIMESTAMP('2019-06-11 00:00:00')
+            GROUP BY n.news_id, n.headline, n.content, n.category, n.topic
+            HAVING COUNT(*) > 0
+        )
+        SELECT *
+        FROM time_periods
+        ORDER BY total_duration DESC, growth_trend DESC
+        LIMIT 1;
+     0.014091014862060547s
+[2025-06-14 19:43:30] 
+        WITH time_periods AS (
+            SELECT 
+                n.news_id,
+                n.headline,
+                n.content,
+                n.category,
+                n.topic,
+                COUNT(DISTINCT r.user_id) AS total_users,
+                SUM(r.duration) AS total_duration,
+                -- ����ÿСʱƽ�����ʱ��
+                SUM(r.duration) / (UNIX_TIMESTAMP('2020-06-09 00:00:00') - UNIX_TIMESTAMP('2018-06-05 00:00:00')) * 3600 AS hourly_duration,
+                -- ��������������ƣ�ʹ�����Իع�б�ʣ�
+                (
+                    SUM(r.duration * (UNIX_TIMESTAMP(r.start_ts) - UNIX_TIMESTAMP('2018-06-05 00:00:00'))) -
+                    SUM(r.duration) * SUM(UNIX_TIMESTAMP(r.start_ts) - UNIX_TIMESTAMP('2018-06-05 00:00:00')) / COUNT(*)
+                ) / (
+                    SUM(POWER(UNIX_TIMESTAMP(r.start_ts) - UNIX_TIMESTAMP('2018-06-05 00:00:00'), 2)) -
+                    POWER(SUM(UNIX_TIMESTAMP(r.start_ts) - UNIX_TIMESTAMP('2018-06-05 00:00:00')), 2) / COUNT(*)
+                ) AS growth_trend
+            FROM t_news n
+            LEFT JOIN t_news_browse_record r ON n.news_id = r.news_id
+            WHERE n.category = 'entertainment'
+              AND n.topic = 'video'
+              AND r.start_ts BETWEEN UNIX_TIMESTAMP('2018-06-05 00:00:00') AND UNIX_TIMESTAMP('2020-06-09 00:00:00')
+            GROUP BY n.news_id, n.headline, n.content, n.category, n.topic
+            HAVING COUNT(*) > 0
+        )
+        SELECT *
+        FROM time_periods
+        ORDER BY total_duration DESC, growth_trend DESC
+        LIMIT 1;
+     3.7255055904388428s
+[2025-06-14 20:22:42] 
+        SELECT distinct(category)
+        FROM t_news_daily_category;
+         0.07919454574584961s
+[2025-06-14 20:22:42] 
+        SELECT distinct(category)
+        FROM t_news_daily_category;
+         0.015127897262573242s
+[2025-06-14 20:22:46] 
+        WITH time_periods AS (
+            SELECT 
+                n.news_id,
+                n.headline,
+                n.content,
+                n.category,
+                n.topic,
+                COUNT(DISTINCT r.user_id) AS total_users,
+                SUM(r.duration) AS total_duration,
+                -- ����ÿСʱƽ�����ʱ��
+                SUM(r.duration) / (UNIX_TIMESTAMP('2019-11-14 00:00:00') - UNIX_TIMESTAMP('2018-10-23 00:00:00')) * 3600 AS hourly_duration,
+                -- ��������������ƣ�ʹ�����Իع�б�ʣ�
+                (
+                    SUM(r.duration * (UNIX_TIMESTAMP(r.start_ts) - UNIX_TIMESTAMP('2018-10-23 00:00:00'))) -
+                    SUM(r.duration) * SUM(UNIX_TIMESTAMP(r.start_ts) - UNIX_TIMESTAMP('2018-10-23 00:00:00')) / COUNT(*)
+                ) / (
+                    SUM(POWER(UNIX_TIMESTAMP(r.start_ts) - UNIX_TIMESTAMP('2018-10-23 00:00:00'), 2)) -
+                    POWER(SUM(UNIX_TIMESTAMP(r.start_ts) - UNIX_TIMESTAMP('2018-10-23 00:00:00')), 2) / COUNT(*)
+                ) AS growth_trend
+            FROM t_news n
+            LEFT JOIN t_news_browse_record r ON n.news_id = r.news_id
+            WHERE n.category = ''
+              AND n.topic = ''
+              AND r.start_ts BETWEEN UNIX_TIMESTAMP('2018-10-23 00:00:00') AND UNIX_TIMESTAMP('2019-11-14 00:00:00')
+            GROUP BY n.news_id, n.headline, n.content, n.category, n.topic
+            HAVING COUNT(*) > 0
+        )
+        SELECT *
+        FROM time_periods
+        ORDER BY total_duration DESC, growth_trend DESC
+        LIMIT 1;
+     7.053725242614746s
+[2025-06-14 20:22:52] 
+        SELECT DISTINCT(n.topic)
+        FROM t_news n
+        WHERE n.category='entertainment';
+         0.3110649585723877s
+[2025-06-14 20:59:10] 
+        WITH time_periods AS (
+            SELECT 
+                n.news_id,
+                n.headline,
+                n.content,
+                n.category,
+                n.topic,
+                COUNT(DISTINCT r.user_id) AS total_users,
+                SUM(r.duration) AS total_duration,
+                -- ����ÿСʱƽ�����ʱ��
+                SUM(r.duration) / (UNIX_TIMESTAMP('2019-08-21 00:00:00') - UNIX_TIMESTAMP('2019-08-13 00:00:00')) * 3600 AS hourly_duration,
+                -- ��������������ƣ�ʹ�����Իع�б�ʣ�
+                (
+                    SUM(r.duration * (UNIX_TIMESTAMP(r.start_ts) - UNIX_TIMESTAMP('2019-08-13 00:00:00'))) -
+                    SUM(r.duration) * SUM(UNIX_TIMESTAMP(r.start_ts) - UNIX_TIMESTAMP('2019-08-13 00:00:00')) / COUNT(*)
+                ) / (
+                    SUM(POWER(UNIX_TIMESTAMP(r.start_ts) - UNIX_TIMESTAMP('2019-08-13 00:00:00'), 2)) -
+                    POWER(SUM(UNIX_TIMESTAMP(r.start_ts) - UNIX_TIMESTAMP('2019-08-13 00:00:00')), 2) / COUNT(*)
+                ) AS growth_trend
+            FROM t_news n
+            LEFT JOIN t_news_browse_record r ON n.news_id = r.news_id
+            WHERE n.category = 'entertainment'
+              AND n.topic = 'entertainment-celebrity'
+              AND r.start_ts BETWEEN UNIX_TIMESTAMP('2019-08-13 00:00:00') AND UNIX_TIMESTAMP('2019-08-21 00:00:00')
+            GROUP BY n.news_id, n.headline, n.content, n.category, n.topic
+            HAVING COUNT(*) > 0
+        )
+        SELECT *
+        FROM time_periods
+        ORDER BY total_duration DESC, growth_trend DESC
+        LIMIT 1;
+     0.049097537994384766s
+[2025-06-14 20:59:15] 
+        WITH time_periods AS (
+            SELECT 
+                n.news_id,
+                n.headline,
+                n.content,
+                n.category,
+                n.topic,
+                COUNT(DISTINCT r.user_id) AS total_users,
+                SUM(r.duration) AS total_duration,
+                -- ����ÿСʱƽ�����ʱ��
+                SUM(r.duration) / (UNIX_TIMESTAMP('2019-08-21 00:00:00') - UNIX_TIMESTAMP('2019-08-06 00:00:00')) * 3600 AS hourly_duration,
+                -- ��������������ƣ�ʹ�����Իع�б�ʣ�
+                (
+                    SUM(r.duration * (UNIX_TIMESTAMP(r.start_ts) - UNIX_TIMESTAMP('2019-08-06 00:00:00'))) -
+                    SUM(r.duration) * SUM(UNIX_TIMESTAMP(r.start_ts) - UNIX_TIMESTAMP('2019-08-06 00:00:00')) / COUNT(*)
+                ) / (
+                    SUM(POWER(UNIX_TIMESTAMP(r.start_ts) - UNIX_TIMESTAMP('2019-08-06 00:00:00'), 2)) -
+                    POWER(SUM(UNIX_TIMESTAMP(r.start_ts) - UNIX_TIMESTAMP('2019-08-06 00:00:00')), 2) / COUNT(*)
+                ) AS growth_trend
+            FROM t_news n
+            LEFT JOIN t_news_browse_record r ON n.news_id = r.news_id
+            WHERE n.category = 'entertainment'
+              AND n.topic = 'entertainment-celebrity'
+              AND r.start_ts BETWEEN UNIX_TIMESTAMP('2019-08-06 00:00:00') AND UNIX_TIMESTAMP('2019-08-21 00:00:00')
+            GROUP BY n.news_id, n.headline, n.content, n.category, n.topic
+            HAVING COUNT(*) > 0
+        )
+        SELECT *
+        FROM time_periods
+        ORDER BY total_duration DESC, growth_trend DESC
+        LIMIT 1;
+     0.01564335823059082s
+[2025-06-14 20:59:21] 
+        WITH time_periods AS (
+            SELECT 
+                n.news_id,
+                n.headline,
+                n.content,
+                n.category,
+                n.topic,
+                COUNT(DISTINCT r.user_id) AS total_users,
+                SUM(r.duration) AS total_duration,
+                -- ����ÿСʱƽ�����ʱ��
+                SUM(r.duration) / (UNIX_TIMESTAMP('2019-08-21 00:00:00') - UNIX_TIMESTAMP('2019-07-17 00:00:00')) * 3600 AS hourly_duration,
+                -- ��������������ƣ�ʹ�����Իع�б�ʣ�
+                (
+                    SUM(r.duration * (UNIX_TIMESTAMP(r.start_ts) - UNIX_TIMESTAMP('2019-07-17 00:00:00'))) -
+                    SUM(r.duration) * SUM(UNIX_TIMESTAMP(r.start_ts) - UNIX_TIMESTAMP('2019-07-17 00:00:00')) / COUNT(*)
+                ) / (
+                    SUM(POWER(UNIX_TIMESTAMP(r.start_ts) - UNIX_TIMESTAMP('2019-07-17 00:00:00'), 2)) -
+                    POWER(SUM(UNIX_TIMESTAMP(r.start_ts) - UNIX_TIMESTAMP('2019-07-17 00:00:00')), 2) / COUNT(*)
+                ) AS growth_trend
+            FROM t_news n
+            LEFT JOIN t_news_browse_record r ON n.news_id = r.news_id
+            WHERE n.category = 'entertainment'
+              AND n.topic = 'entertainment-celebrity'
+              AND r.start_ts BETWEEN UNIX_TIMESTAMP('2019-07-17 00:00:00') AND UNIX_TIMESTAMP('2019-08-21 00:00:00')
+            GROUP BY n.news_id, n.headline, n.content, n.category, n.topic
+            HAVING COUNT(*) > 0
+        )
+        SELECT *
+        FROM time_periods
+        ORDER BY total_duration DESC, growth_trend DESC
+        LIMIT 1;
+     0.014537811279296875s
+[2025-06-14 21:03:08] 
+        WITH time_periods AS (
+            SELECT 
+                n.news_id,
+                n.headline,
+                n.content,
+                n.category,
+                n.topic,
+                COUNT(DISTINCT r.user_id) AS total_users,
+                SUM(r.duration) AS total_duration,
+                -- ����ÿСʱƽ�����ʱ��
+                SUM(r.duration) / (UNIX_TIMESTAMP('2019-08-13 00:00:00') - UNIX_TIMESTAMP('2019-02-06 00:00:00')) * 3600 AS hourly_duration,
+                -- ��������������ƣ�ʹ�����Իع�б�ʣ�
+                (
+                    SUM(r.duration * (UNIX_TIMESTAMP(r.start_ts) - UNIX_TIMESTAMP('2019-02-06 00:00:00'))) -
+                    SUM(r.duration) * SUM(UNIX_TIMESTAMP(r.start_ts) - UNIX_TIMESTAMP('2019-02-06 00:00:00')) / COUNT(*)
+                ) / (
+                    SUM(POWER(UNIX_TIMESTAMP(r.start_ts) - UNIX_TIMESTAMP('2019-02-06 00:00:00'), 2)) -
+                    POWER(SUM(UNIX_TIMESTAMP(r.start_ts) - UNIX_TIMESTAMP('2019-02-06 00:00:00')), 2) / COUNT(*)
+                ) AS growth_trend
+            FROM t_news n
+            LEFT JOIN t_news_browse_record r ON n.news_id = r.news_id
+            WHERE n.category = 'entertainment'
+              AND n.topic = 'video'
+              AND r.start_ts BETWEEN UNIX_TIMESTAMP('2019-02-06 00:00:00') AND UNIX_TIMESTAMP('2019-08-13 00:00:00')
+            GROUP BY n.news_id, n.headline, n.content, n.category, n.topic
+            HAVING COUNT(*) > 0
+        )
+        SELECT *
+        FROM time_periods
+        ORDER BY total_duration DESC, growth_trend DESC
+        LIMIT 1;
+     3.6927897930145264s
+[2025-06-14 21:12:49] 
+            WITH filtered_news AS (
+        SELECT DISTINCT n.news_id, n.headline, n.content, n.category, n.topic
+        FROM t_news n
+        JOIN t_news_browse_record r ON n.news_id = r.news_id
+        WHERE n.category = 'entertainment'
+        AND n.topic = 'video'
+        AND r.start_ts BETWEEN UNIX_TIMESTAMP('2019-02-06 00:00:00') AND UNIX_TIMESTAMP('2019-08-13 00:00:00')
+    ),
+    agg AS (
+        SELECT
+            f.news_id,
+            f.headline,
+            f.content,
+            f.category,
+            f.topic,
+            COUNT(DISTINCT r.user_id) AS total_users,
+            SUM(r.duration) AS total_duration,
+            SUM(r.duration) / (UNIX_TIMESTAMP('2019-08-13 00:00:00') - UNIX_TIMESTAMP('2019-02-06 00:00:00')) * 3600 AS hourly_duration,
+            (
+                SUM(r.duration * (UNIX_TIMESTAMP(r.start_ts) - UNIX_TIMESTAMP('2019-02-06 00:00:00'))) -
+                SUM(r.duration) * SUM(UNIX_TIMESTAMP(r.start_ts) - UNIX_TIMESTAMP('2019-02-06 00:00:00')) / COUNT(*)
+            ) / (
+                SUM(POWER(UNIX_TIMESTAMP(r.start_ts) - UNIX_TIMESTAMP('2019-02-06 00:00:00'), 2)) -
+                POWER(SUM(UNIX_TIMESTAMP(r.start_ts) - UNIX_TIMESTAMP('2019-02-06 00:00:00')), 2) / COUNT(*)
+            ) AS growth_trend
+        FROM filtered_news f
+        JOIN t_news_browse_record r ON f.news_id = r.news_id
+        WHERE r.start_ts BETWEEN UNIX_TIMESTAMP('2019-02-06 00:00:00') AND UNIX_TIMESTAMP('2019-08-13 00:00:00')
+        GROUP BY f.news_id, f.headline, f.content, f.category, f.topic
+        HAVING COUNT(*) > 0
+    )
+    SELECT *
+    FROM agg
+    ORDER BY total_duration DESC, growth_trend DESC
+    LIMIT 10;
+     6.9285993576049805s
+[2025-06-14 21:18:09] 
+            WITH filtered_news AS (
+        SELECT DISTINCT n.news_id, n.headline, n.content, n.category, n.topic
+        FROM t_news n
+        JOIN t_news_browse_record r ON n.news_id = r.news_id
+        WHERE n.category = 'entertainment'
+        AND n.topic = 'video'
+        AND r.start_ts BETWEEN UNIX_TIMESTAMP('2019-02-06 00:00:00') AND UNIX_TIMESTAMP('2019-08-13 00:00:00')
+    ),
+    agg AS (
+        SELECT
+            f.news_id,
+            f.headline,
+            f.content,
+            f.category,
+            f.topic,
+            COUNT(DISTINCT r.user_id) AS total_users,
+            SUM(r.duration) AS total_duration,
+            SUM(r.duration) / (UNIX_TIMESTAMP('2019-08-13 00:00:00') - UNIX_TIMESTAMP('2019-02-06 00:00:00')) * 3600 AS hourly_duration,
+            (
+                SUM(r.duration * (UNIX_TIMESTAMP(r.start_ts) - UNIX_TIMESTAMP('2019-02-06 00:00:00'))) -
+                SUM(r.duration) * SUM(UNIX_TIMESTAMP(r.start_ts) - UNIX_TIMESTAMP('2019-02-06 00:00:00')) / COUNT(*)
+            ) / (
+                SUM(POWER(UNIX_TIMESTAMP(r.start_ts) - UNIX_TIMESTAMP('2019-02-06 00:00:00'), 2)) -
+                POWER(SUM(UNIX_TIMESTAMP(r.start_ts) - UNIX_TIMESTAMP('2019-02-06 00:00:00')), 2) / COUNT(*)
+            ) AS growth_trend
+        FROM filtered_news f
+        JOIN t_news_browse_record r ON f.news_id = r.news_id
+        WHERE r.start_ts BETWEEN UNIX_TIMESTAMP('2019-02-06 00:00:00') AND UNIX_TIMESTAMP('2019-08-13 00:00:00')
+        GROUP BY f.news_id, f.headline, f.content, f.category, f.topic
+        HAVING COUNT(*) > 0
+    )
+    SELECT *
+    FROM agg
+    ORDER BY total_duration DESC, growth_trend DESC
+    LIMIT 10;
+     7.547116279602051s
+[2025-06-14 21:47:02] 
+            WITH filtered_news AS (
+        SELECT DISTINCT n.news_id, n.headline, n.content, n.category, n.topic
+        FROM t_news n
+        JOIN t_news_browse_record r ON n.news_id = r.news_id
+        WHERE n.category = 'entertainment'
+        AND n.topic = 'video'
+        AND r.start_ts BETWEEN UNIX_TIMESTAMP('2019-02-06 00:00:00') AND UNIX_TIMESTAMP('2019-08-13 00:00:00')
+    ),
+    agg AS (
+        SELECT
+            f.news_id,
+            f.headline,
+            f.content,
+            f.category,
+            f.topic,
+            COUNT(DISTINCT r.user_id) AS total_users,
+            SUM(r.duration) AS total_duration,
+            SUM(r.duration) / (UNIX_TIMESTAMP('2019-08-13 00:00:00') - UNIX_TIMESTAMP('2019-02-06 00:00:00')) * 3600 AS hourly_duration,
+            (
+                SUM(r.duration * (UNIX_TIMESTAMP(r.start_ts) - UNIX_TIMESTAMP('2019-02-06 00:00:00'))) -
+                SUM(r.duration) * SUM(UNIX_TIMESTAMP(r.start_ts) - UNIX_TIMESTAMP('2019-02-06 00:00:00')) / COUNT(*)
+            ) / (
+                SUM(POWER(UNIX_TIMESTAMP(r.start_ts) - UNIX_TIMESTAMP('2019-02-06 00:00:00'), 2)) -
+                POWER(SUM(UNIX_TIMESTAMP(r.start_ts) - UNIX_TIMESTAMP('2019-02-06 00:00:00')), 2) / COUNT(*)
+            ) AS growth_trend
+        FROM filtered_news f
+        JOIN t_news_browse_record r ON f.news_id = r.news_id
+        WHERE r.start_ts BETWEEN UNIX_TIMESTAMP('2019-02-06 00:00:00') AND UNIX_TIMESTAMP('2019-08-13 00:00:00')
+        GROUP BY f.news_id, f.headline, f.content, f.category, f.topic
+        HAVING COUNT(*) > 0
+    )
+    SELECT *
+    FROM agg
+    ORDER BY total_duration DESC, growth_trend DESC
+    LIMIT 5;
+     7.359263896942139s
+[2025-06-14 21:47:10] 
+            WITH filtered_news AS (
+        SELECT DISTINCT n.news_id, n.headline, n.content, n.category, n.topic
+        FROM t_news n
+        JOIN t_news_browse_record r ON n.news_id = r.news_id
+        WHERE n.category = 'entertainment'
+        AND n.topic = 'video'
+        AND r.start_ts BETWEEN UNIX_TIMESTAMP('2019-02-06 00:00:00') AND UNIX_TIMESTAMP('2019-08-13 00:00:00')
+    ),
+    agg AS (
+        SELECT
+            f.news_id,
+            f.headline,
+            f.content,
+            f.category,
+            f.topic,
+            COUNT(DISTINCT r.user_id) AS total_users,
+            SUM(r.duration) AS total_duration,
+            SUM(r.duration) / (UNIX_TIMESTAMP('2019-08-13 00:00:00') - UNIX_TIMESTAMP('2019-02-06 00:00:00')) * 3600 AS hourly_duration,
+            (
+                SUM(r.duration * (UNIX_TIMESTAMP(r.start_ts) - UNIX_TIMESTAMP('2019-02-06 00:00:00'))) -
+                SUM(r.duration) * SUM(UNIX_TIMESTAMP(r.start_ts) - UNIX_TIMESTAMP('2019-02-06 00:00:00')) / COUNT(*)
+            ) / (
+                SUM(POWER(UNIX_TIMESTAMP(r.start_ts) - UNIX_TIMESTAMP('2019-02-06 00:00:00'), 2)) -
+                POWER(SUM(UNIX_TIMESTAMP(r.start_ts) - UNIX_TIMESTAMP('2019-02-06 00:00:00')), 2) / COUNT(*)
+            ) AS growth_trend
+        FROM filtered_news f
+        JOIN t_news_browse_record r ON f.news_id = r.news_id
+        WHERE r.start_ts BETWEEN UNIX_TIMESTAMP('2019-02-06 00:00:00') AND UNIX_TIMESTAMP('2019-08-13 00:00:00')
+        GROUP BY f.news_id, f.headline, f.content, f.category, f.topic
+        HAVING COUNT(*) > 0
+    )
+    SELECT *
+    FROM agg
+    ORDER BY total_duration DESC, growth_trend DESC
+    LIMIT 5;
+     10.63841724395752s
+[2025-06-14 22:59:05] 
+        SELECT distinct(category)
+        FROM t_news_daily_category;
+         0.031014204025268555s
+[2025-06-14 22:59:10] 
+        SELECT DISTINCT(n.topic)
+        FROM t_news n
+        WHERE n.category='entertainment';
+         0.84289288520813s
+[2025-06-14 22:59:35] 
+        SELECT DISTINCT(n.topic)
+        FROM t_news n
+        WHERE n.category='finance';
+         0.837881326675415s
+[2025-06-14 22:59:39] 
+        SELECT DISTINCT(n.topic)
+        FROM t_news n
+        WHERE n.category='entertainment';
+         0.27553248405456543s
+[2025-06-14 23:00:20] 
+            WITH filtered_news AS (
+        SELECT DISTINCT n.news_id, n.headline, n.content, n.category, n.topic
+        FROM t_news n
+        JOIN t_news_browse_record r ON n.news_id = r.news_id
+        WHERE n.category = 'entertainment'
+        AND n.topic = 'video'
+        AND r.start_ts BETWEEN UNIX_TIMESTAMP('2019-06-11 00:00:00') AND UNIX_TIMESTAMP('2019-06-27 00:00:00')
+    ),
+    agg AS (
+        SELECT
+            f.news_id,
+            f.headline,
+            f.content,
+            f.category,
+            f.topic,
+            COUNT(DISTINCT r.user_id) AS total_users,
+            SUM(r.duration) AS total_duration,
+            SUM(r.duration) / (UNIX_TIMESTAMP('2019-06-27 00:00:00') - UNIX_TIMESTAMP('2019-06-11 00:00:00')) * 3600 AS hourly_duration,
+            (
+                SUM(r.duration * (UNIX_TIMESTAMP(r.start_ts) - UNIX_TIMESTAMP('2019-06-11 00:00:00'))) -
+                SUM(r.duration) * SUM(UNIX_TIMESTAMP(r.start_ts) - UNIX_TIMESTAMP('2019-06-11 00:00:00')) / COUNT(*)
+            ) / (
+                SUM(POWER(UNIX_TIMESTAMP(r.start_ts) - UNIX_TIMESTAMP('2019-06-11 00:00:00'), 2)) -
+                POWER(SUM(UNIX_TIMESTAMP(r.start_ts) - UNIX_TIMESTAMP('2019-06-11 00:00:00')), 2) / COUNT(*)
+            ) AS growth_trend
+        FROM filtered_news f
+        JOIN t_news_browse_record r ON f.news_id = r.news_id
+        WHERE r.start_ts BETWEEN UNIX_TIMESTAMP('2019-06-11 00:00:00') AND UNIX_TIMESTAMP('2019-06-27 00:00:00')
+        GROUP BY f.news_id, f.headline, f.content, f.category, f.topic
+        HAVING COUNT(*) > 0
+    )
+    SELECT *
+    FROM agg
+    ORDER BY total_duration DESC, growth_trend DESC
+    LIMIT 5;
+     6.594505310058594s
+[2025-06-14 23:04:20] 
+            WITH filtered_news AS (
+        SELECT DISTINCT n.news_id, n.headline, n.content, n.category, n.topic
+        FROM t_news n
+        JOIN t_news_browse_record r ON n.news_id = r.news_id
+        WHERE n.category = 'entertainment'
+        AND n.topic = 'video'
+        AND r.start_ts BETWEEN UNIX_TIMESTAMP('2019-06-20 00:00:00') AND UNIX_TIMESTAMP('2019-06-27 00:00:00')
+    ),
+    agg AS (
+        SELECT
+            f.news_id,
+            f.headline,
+            f.content,
+            f.category,
+            f.topic,
+            COUNT(DISTINCT r.user_id) AS total_users,
+            SUM(r.duration) AS total_duration,
+            SUM(r.duration) / (UNIX_TIMESTAMP('2019-06-27 00:00:00') - UNIX_TIMESTAMP('2019-06-20 00:00:00')) * 3600 AS hourly_duration,
+            (
+                SUM(r.duration * (UNIX_TIMESTAMP(r.start_ts) - UNIX_TIMESTAMP('2019-06-20 00:00:00'))) -
+                SUM(r.duration) * SUM(UNIX_TIMESTAMP(r.start_ts) - UNIX_TIMESTAMP('2019-06-20 00:00:00')) / COUNT(*)
+            ) / (
+                SUM(POWER(UNIX_TIMESTAMP(r.start_ts) - UNIX_TIMESTAMP('2019-06-20 00:00:00'), 2)) -
+                POWER(SUM(UNIX_TIMESTAMP(r.start_ts) - UNIX_TIMESTAMP('2019-06-20 00:00:00')), 2) / COUNT(*)
+            ) AS growth_trend
+        FROM filtered_news f
+        JOIN t_news_browse_record r ON f.news_id = r.news_id
+        WHERE r.start_ts BETWEEN UNIX_TIMESTAMP('2019-06-20 00:00:00') AND UNIX_TIMESTAMP('2019-06-27 00:00:00')
+        GROUP BY f.news_id, f.headline, f.content, f.category, f.topic
+        HAVING COUNT(*) > 0
+    )
+    SELECT *
+    FROM agg
+    ORDER BY total_duration DESC, growth_trend DESC
+    LIMIT 5;
+     9.314866781234741s
+[2025-06-14 23:06:09] 
+        SELECT distinct(category)
+        FROM t_news_daily_category;
+         0.04654431343078613s
+[2025-06-14 23:06:19] 
+        SELECT DISTINCT(n.topic)
+        FROM t_news n
+        WHERE n.category='entertainment';
+         5.512667179107666s
+[2025-06-14 23:06:20] 
+        SELECT DISTINCT(n.topic)
+        FROM t_news n
+        WHERE n.category='finance';
+         1.0204834938049316s
+[2025-06-14 23:06:22] 
+        SELECT DISTINCT(n.topic)
+        FROM t_news n
+        WHERE n.category='entertainment';
+         0.22941231727600098s
+[2025-06-14 23:40:02] 
+        SELECT distinct(category)
+        FROM t_news_daily_category;
+         0.022995710372924805s
+[2025-06-14 23:40:06] 
+        SELECT DISTINCT(n.topic)
+        FROM t_news n
+        WHERE n.category='entertainment';
+         0.021559715270996094s
+[2025-06-14 23:40:34] 
+            WITH browse_agg AS (
+        SELECT
+            news_id,
+            COUNT(DISTINCT user_id) AS total_users,
+            SUM(duration) AS total_duration,
+            SUM(duration) / (UNIX_TIMESTAMP('2019-06-13 00:00:00') - UNIX_TIMESTAMP('2019-06-11 00:00:00')) * 3600 AS hourly_duration,
+            (
+                SUM(duration * (UNIX_TIMESTAMP(start_ts) - UNIX_TIMESTAMP('2019-06-11 00:00:00'))) -
+                SUM(duration) * SUM(UNIX_TIMESTAMP(start_ts) - UNIX_TIMESTAMP('2019-06-11 00:00:00')) / COUNT(*)
+            ) / (
+                SUM(POWER(UNIX_TIMESTAMP(start_ts) - UNIX_TIMESTAMP('2019-06-11 00:00:00'), 2)) -
+                POWER(SUM(UNIX_TIMESTAMP(start_ts) - UNIX_TIMESTAMP('2019-06-11 00:00:00')), 2) / COUNT(*)
+            ) AS growth_trend
+        FROM t_news_browse_record
+        WHERE start_ts BETWEEN UNIX_TIMESTAMP('2019-06-11 00:00:00') AND UNIX_TIMESTAMP('2019-06-13 00:00:00')
+        GROUP BY news_id
+        HAVING COUNT(*) > 0
+        LIMIT 1000 -- �����ƾۺ�������
+    )
+    SELECT
+        n.news_id,
+        n.headline,
+        n.content,
+        n.category,
+        n.topic,
+        b.total_users,
+        b.total_duration,
+        b.hourly_duration,
+        b.growth_trend
+    FROM browse_agg b
+    JOIN t_news n ON n.news_id = b.news_id
+    WHERE n.category = 'entertainment' AND n.topic = 'celebrity'
+    ORDER BY b.total_duration DESC, b.growth_trend DESC
+    LIMIT 10;
+     0.505007266998291s
+[2025-06-14 23:41:00] 
+            WITH browse_agg AS (
+        SELECT
+            news_id,
+            COUNT(DISTINCT user_id) AS total_users,
+            SUM(duration) AS total_duration,
+            SUM(duration) / (UNIX_TIMESTAMP('2019-06-21 00:00:00') - UNIX_TIMESTAMP('2019-06-19 00:00:00')) * 3600 AS hourly_duration,
+            (
+                SUM(duration * (UNIX_TIMESTAMP(start_ts) - UNIX_TIMESTAMP('2019-06-19 00:00:00'))) -
+                SUM(duration) * SUM(UNIX_TIMESTAMP(start_ts) - UNIX_TIMESTAMP('2019-06-19 00:00:00')) / COUNT(*)
+            ) / (
+                SUM(POWER(UNIX_TIMESTAMP(start_ts) - UNIX_TIMESTAMP('2019-06-19 00:00:00'), 2)) -
+                POWER(SUM(UNIX_TIMESTAMP(start_ts) - UNIX_TIMESTAMP('2019-06-19 00:00:00')), 2) / COUNT(*)
+            ) AS growth_trend
+        FROM t_news_browse_record
+        WHERE start_ts BETWEEN UNIX_TIMESTAMP('2019-06-19 00:00:00') AND UNIX_TIMESTAMP('2019-06-21 00:00:00')
+        GROUP BY news_id
+        HAVING COUNT(*) > 0
+        LIMIT 1000 -- �����ƾۺ�������
+    )
+    SELECT
+        n.news_id,
+        n.headline,
+        n.content,
+        n.category,
+        n.topic,
+        b.total_users,
+        b.total_duration,
+        b.hourly_duration,
+        b.growth_trend
+    FROM browse_agg b
+    JOIN t_news n ON n.news_id = b.news_id
+    WHERE n.category = 'entertainment' AND n.topic = 'entertainment-celebrity'
+    ORDER BY b.total_duration DESC, b.growth_trend DESC
+    LIMIT 10;
+     0.80811405181885s
+[2025-06-14 23:42:41] 
+            WITH browse_agg AS (
+        SELECT
+            news_id,
+            COUNT(DISTINCT user_id) AS total_users,
+            SUM(duration) AS total_duration,
+            SUM(duration) / (UNIX_TIMESTAMP('2019-06-13 00:00:00') - UNIX_TIMESTAMP('2019-06-11 00:00:00')) * 3600 AS hourly_duration,
+            (
+                SUM(duration * (UNIX_TIMESTAMP(start_ts) - UNIX_TIMESTAMP('2019-06-11 00:00:00'))) -
+                SUM(duration) * SUM(UNIX_TIMESTAMP(start_ts) - UNIX_TIMESTAMP('2019-06-11 00:00:00')) / COUNT(*)
+            ) / (
+                SUM(POWER(UNIX_TIMESTAMP(start_ts) - UNIX_TIMESTAMP('2019-06-11 00:00:00'), 2)) -
+                POWER(SUM(UNIX_TIMESTAMP(start_ts) - UNIX_TIMESTAMP('2019-06-11 00:00:00')), 2) / COUNT(*)
+            ) AS growth_trend
+        FROM t_news_browse_record
+        WHERE start_ts BETWEEN UNIX_TIMESTAMP('2019-06-11 00:00:00') AND UNIX_TIMESTAMP('2019-06-13 00:00:00')
+        GROUP BY news_id
+        HAVING COUNT(*) > 0
+        LIMIT 1000
+    )
+    SELECT
+        n.news_id,
+        n.headline,
+        n.content,
+        n.category,
+        n.topic,
+        b.total_users,
+        b.total_duration,
+        b.hourly_duration,
+        b.growth_trend
+    FROM browse_agg b
+    JOIN t_news n ON n.news_id = b.news_id
+    WHERE n.category = 'entertainment' AND n.topic = 'celebrity'
+    ORDER BY b.total_duration DESC, b.growth_trend DESC
+    LIMIT 10;
+     0.015449047088623047s
+[2025-06-14 23:43:29] 
+            WITH browse_agg AS (
+        SELECT
+            news_id,
+            COUNT(DISTINCT user_id) AS total_users,
+            SUM(duration) AS total_duration,
+            SUM(duration) / (UNIX_TIMESTAMP('2019-06-13 00:00:00') - UNIX_TIMESTAMP('2019-06-11 00:00:00')) * 3600 AS hourly_duration,
+            (
+                SUM(duration * (UNIX_TIMESTAMP(start_ts) - UNIX_TIMESTAMP('2019-06-11 00:00:00'))) -
+                SUM(duration) * SUM(UNIX_TIMESTAMP(start_ts) - UNIX_TIMESTAMP('2019-06-11 00:00:00')) / COUNT(*)
+            ) / (
+                SUM(POWER(UNIX_TIMESTAMP(start_ts) - UNIX_TIMESTAMP('2019-06-11 00:00:00'), 2)) -
+                POWER(SUM(UNIX_TIMESTAMP(start_ts) - UNIX_TIMESTAMP('2019-06-11 00:00:00')), 2) / COUNT(*)
+            ) AS growth_trend
+        FROM t_news_browse_record
+        WHERE start_ts BETWEEN UNIX_TIMESTAMP('2019-06-11 00:00:00') AND UNIX_TIMESTAMP('2019-06-13 00:00:00')
+        GROUP BY news_id
+        HAVING COUNT(*) > 0
+        LIMIT 1000
+    )
+    SELECT
+        n.news_id,
+        n.headline,
+        n.content,
+        n.category,
+        n.topic,
+        b.total_users,
+        b.total_duration,
+        b.hourly_duration,
+        b.growth_trend
+    FROM browse_agg b
+    JOIN t_news n ON n.news_id = b.news_id
+    WHERE n.category = 'entertainment' AND n.topic = 'celebrity'
+    ORDER BY b.total_duration DESC, b.growth_trend DESC
+    LIMIT 10;
+     0.014090538024902344s
+[2025-06-14 23:45:23] 
+            WITH browse_agg AS (
+        SELECT
+            news_id,
+            COUNT(DISTINCT user_id) AS total_users,
+            SUM(duration) AS total_duration,
+            SUM(duration) / (UNIX_TIMESTAMP('2019-06-20 00:00:00') - UNIX_TIMESTAMP('2019-06-11 00:00:00')) * 3600 AS hourly_duration,
+            (
+                SUM(duration * (UNIX_TIMESTAMP(start_ts) - UNIX_TIMESTAMP('2019-06-11 00:00:00'))) -
+                SUM(duration) * SUM(UNIX_TIMESTAMP(start_ts) - UNIX_TIMESTAMP('2019-06-11 00:00:00')) / COUNT(*)
+            ) / (
+                SUM(POWER(UNIX_TIMESTAMP(start_ts) - UNIX_TIMESTAMP('2019-06-11 00:00:00'), 2)) -
+                POWER(SUM(UNIX_TIMESTAMP(start_ts) - UNIX_TIMESTAMP('2019-06-11 00:00:00')), 2) / COUNT(*)
+            ) AS growth_trend
+        FROM t_news_browse_record
+        WHERE start_ts BETWEEN UNIX_TIMESTAMP('2019-06-11 00:00:00') AND UNIX_TIMESTAMP('2019-06-20 00:00:00')
+        GROUP BY news_id
+        HAVING COUNT(*) > 0
+        LIMIT 1000
+    )
+    SELECT
+        n.news_id,
+        n.headline,
+        n.content,
+        n.category,
+        n.topic,
+        b.total_users,
+        b.total_duration,
+        b.hourly_duration,
+        b.growth_trend
+    FROM browse_agg b
+    JOIN t_news n ON n.news_id = b.news_id
+    WHERE n.category = 'entertainment' AND n.topic = 'celebrity'
+    ORDER BY b.total_duration DESC, b.growth_trend DESC
+    LIMIT 10;
+     108.2176160812378s
+[2025-06-15 00:06:40] 
+        SELECT distinct(category)
+        FROM t_news_daily_category;
+         0.02559494972229004s
+[2025-06-15 00:06:42] 
+        SELECT DISTINCT(n.topic)
+        FROM t_news n
+        WHERE n.category='entertainment';
+         0.03325915336608887s
+[2025-06-15 00:12:31] 
+    WITH browse_agg AS (
+        SELECT
+            news_id,
+            COUNT(DISTINCT user_id) AS total_users,
+            SUM(duration) AS total_duration,
+            SUM(duration) / (UNIX_TIMESTAMP('2019-06-16 00:00:00') - UNIX_TIMESTAMP('2019-06-12 00:00:00')) * 3600 AS hourly_duration,
+            (
+                SUM(duration * (UNIX_TIMESTAMP(start_ts) - UNIX_TIMESTAMP('2019-06-12 00:00:00'))) -
+                SUM(duration) * SUM(UNIX_TIMESTAMP(start_ts) - UNIX_TIMESTAMP('2019-06-12 00:00:00')) / COUNT(*)
+            ) / (
+                SUM(POWER(UNIX_TIMESTAMP(start_ts) - UNIX_TIMESTAMP('2019-06-12 00:00:00'), 2)) -
+                POWER(SUM(UNIX_TIMESTAMP(start_ts) - UNIX_TIMESTAMP('2019-06-12 00:00:00')), 2) / COUNT(*)
+            ) AS growth_trend
+        FROM t_news_browse_record
+        WHERE start_ts BETWEEN UNIX_TIMESTAMP('2019-06-12 00:00:00') AND UNIX_TIMESTAMP('2019-06-16 00:00:00')
+        GROUP BY news_id
+        HAVING COUNT(*) > 0
+        LIMIT 1000
+    )
+    SELECT
+        n.news_id,
+        n.headline,
+        n.category,
+        n.topic,
+        b.total_users,
+        b.total_duration,
+        b.hourly_duration,
+        b.growth_trend
+    FROM browse_agg b
+    JOIN t_news n ON n.news_id = b.news_id
+    WHERE n.category = 'entertainment' AND n.topic = 'entertainment-celebrity'
+    ORDER BY b.total_duration DESC, b.growth_trend DESC
+    LIMIT 10;
+ 324.4537034034729s
+[2025-06-15 00:14:54] 
+    WITH browse_agg AS (
+        SELECT
+            news_id,
+            COUNT(DISTINCT user_id) AS total_users,
+            SUM(duration) AS total_duration,
+            SUM(duration) / (UNIX_TIMESTAMP('2019-06-16 00:00:00') - UNIX_TIMESTAMP('2019-06-12 00:00:00')) * 3600 AS hourly_duration,
+            (
+                SUM(duration * (UNIX_TIMESTAMP(start_ts) - UNIX_TIMESTAMP('2019-06-12 00:00:00'))) -
+                SUM(duration) * SUM(UNIX_TIMESTAMP(start_ts) - UNIX_TIMESTAMP('2019-06-12 00:00:00')) / COUNT(*)
+            ) / (
+                SUM(POWER(UNIX_TIMESTAMP(start_ts) - UNIX_TIMESTAMP('2019-06-12 00:00:00'), 2)) -
+                POWER(SUM(UNIX_TIMESTAMP(start_ts) - UNIX_TIMESTAMP('2019-06-12 00:00:00')), 2) / COUNT(*)
+            ) AS growth_trend
+        FROM t_news_browse_record
+        WHERE start_ts BETWEEN UNIX_TIMESTAMP('2019-06-12 00:00:00') AND UNIX_TIMESTAMP('2019-06-16 00:00:00')
+        GROUP BY news_id
+        HAVING COUNT(*) > 0
+        LIMIT 1000
+    )
+    SELECT
+        n.news_id,
+        n.headline,
+        n.category,
+        n.topic,
+        b.total_users,
+        b.total_duration,
+        b.hourly_duration,
+        b.growth_trend
+    FROM browse_agg b
+    JOIN t_news n ON n.news_id = b.news_id
+    WHERE n.category = 'entertainment' AND n.topic = 'entertainment-celebrity'
+    ORDER BY b.total_duration DESC, b.growth_trend DESC
+    LIMIT 10;
+ 332.9476580619812s
+[2025-06-15 00:31:42] 
+    WITH browse_agg AS (
+        SELECT
+            news_id,
+            COUNT(DISTINCT user_id) AS total_users,
+            SUM(duration) AS total_duration,
+            SUM(duration) / (UNIX_TIMESTAMP('2019-06-16 00:00:00') - UNIX_TIMESTAMP('2019-06-12 00:00:00')) * 3600 AS hourly_duration
+        FROM t_news_browse_record
+        WHERE start_ts BETWEEN UNIX_TIMESTAMP('2019-06-12 00:00:00') AND UNIX_TIMESTAMP('2019-06-16 00:00:00')
+        GROUP BY news_id
+        HAVING COUNT(*) > 0
+        LIMIT 100
+    )
+    SELECT
+        n.news_id,
+        n.headline,
+        n.category,
+        n.topic,
+        b.total_users,
+        b.total_duration,
+        b.hourly_duration
+    FROM browse_agg b
+    JOIN t_news n ON n.news_id = b.news_id
+    WHERE n.category = 'entertainment' AND n.topic = 'entertainment-celebrity'
+    ORDER BY b.total_duration DESC
+    LIMIT 10;
+ 16.824097871780396s
+[2025-06-15 00:36:49] 
+    WITH browse_agg AS (
+        SELECT
+            news_id,
+            COUNT(DISTINCT user_id) AS total_users,
+            SUM(duration) AS total_duration,
+            SUM(duration) / (UNIX_TIMESTAMP('2019-06-16 00:00:00') - UNIX_TIMESTAMP('2019-06-12 00:00:00')) * 3600 AS hourly_duration
+        FROM t_news_browse_record
+        WHERE start_ts BETWEEN UNIX_TIMESTAMP('2019-06-12 00:00:00') AND UNIX_TIMESTAMP('2019-06-16 00:00:00')
+        GROUP BY news_id
+        HAVING COUNT(*) > 0
+        LIMIT 100
+    )
+    SELECT
+        n.news_id,
+        n.headline,
+        n.category,
+        n.topic,
+        b.total_users,
+        b.total_duration,
+        b.hourly_duration
+    FROM browse_agg b
+    JOIN t_news n ON n.news_id = b.news_id
+    WHERE n.category = 'entertainment' AND n.topic = 'entertainment-celebrity'
+    ORDER BY b.total_duration DESC
+    LIMIT 10;
+ 15.863819599151611s
+[2025-06-15 00:41:01] 
+    WITH browse_agg AS (
+        SELECT
+            news_id,
+            COUNT(DISTINCT user_id) AS total_users,
+            SUM(duration) AS total_duration,
+            SUM(duration) / (UNIX_TIMESTAMP('2019-06-16 00:00:00') - UNIX_TIMESTAMP('2019-06-12 00:00:00')) * 3600 AS hourly_duration
+        FROM t_news_browse_record
+        WHERE start_ts BETWEEN UNIX_TIMESTAMP('2019-06-12 00:00:00') AND UNIX_TIMESTAMP('2019-06-16 00:00:00')
+        GROUP BY news_id
+        HAVING COUNT(*) > 0
+        LIMIT 100
+    )
+    SELECT
+        n.news_id,
+        n.headline,
+        n.category,
+        n.topic,
+        b.total_users,
+        b.total_duration,
+        b.hourly_duration
+    FROM browse_agg b
+    JOIN t_news n ON n.news_id = b.news_id
+    WHERE n.category = 'entertainment' AND n.topic = 'entertainment-celebrity'
+    ORDER BY b.total_duration DESC
+    LIMIT 10;
+ 15.749247550964355s
+[2025-06-15 00:42:55] 
+    WITH browse_agg AS (
+        SELECT
+            news_id,
+            COUNT(DISTINCT user_id) AS total_users,
+            SUM(duration) AS total_duration,
+            SUM(duration) / (UNIX_TIMESTAMP('2019-06-18 00:00:00') - UNIX_TIMESTAMP('2019-06-12 00:00:00')) * 3600 AS hourly_duration
+        FROM t_news_browse_record
+        WHERE start_ts BETWEEN UNIX_TIMESTAMP('2019-06-12 00:00:00') AND UNIX_TIMESTAMP('2019-06-18 00:00:00')
+        GROUP BY news_id
+        HAVING COUNT(*) > 0
+        LIMIT 100
+    )
+    SELECT
+        n.news_id,
+        n.headline,
+        n.category,
+        n.topic,
+        b.total_users,
+        b.total_duration,
+        b.hourly_duration
+    FROM browse_agg b
+    JOIN t_news n ON n.news_id = b.news_id
+    WHERE n.category = 'entertainment' AND n.topic = 'entertainment-celebrity'
+    ORDER BY b.total_duration DESC
+    LIMIT 10;
+ 11.013131856918335s
+[2025-06-15 00:43:42] 
+    WITH browse_agg AS (
+        SELECT
+            news_id,
+            COUNT(DISTINCT user_id) AS total_users,
+            SUM(duration) AS total_duration,
+            SUM(duration) / (UNIX_TIMESTAMP('2019-06-18 00:00:00') - UNIX_TIMESTAMP('2019-06-12 00:00:00')) * 3600 AS hourly_duration
+        FROM t_news_browse_record
+        WHERE start_ts BETWEEN UNIX_TIMESTAMP('2019-06-12 00:00:00') AND UNIX_TIMESTAMP('2019-06-18 00:00:00')
+        GROUP BY news_id
+        HAVING COUNT(*) > 0
+        LIMIT 100
+    )
+    SELECT
+        n.news_id,
+        n.headline,
+        n.category,
+        n.topic,
+        b.total_users,
+        b.total_duration,
+        b.hourly_duration
+    FROM browse_agg b
+    JOIN t_news n ON n.news_id = b.news_id
+    WHERE n.category = 'entertainment' AND n.topic = 'celebrity'
+    ORDER BY b.total_duration DESC
+    LIMIT 10;
+ 9.7066171169281s
+[2025-06-15 00:44:02] 
+    WITH browse_agg AS (
+        SELECT
+            news_id,
+            COUNT(DISTINCT user_id) AS total_users,
+            SUM(duration) AS total_duration,
+            SUM(duration) / (UNIX_TIMESTAMP('2019-06-18 00:00:00') - UNIX_TIMESTAMP('2019-06-04 00:00:00')) * 3600 AS hourly_duration
+        FROM t_news_browse_record
+        WHERE start_ts BETWEEN UNIX_TIMESTAMP('2019-06-04 00:00:00') AND UNIX_TIMESTAMP('2019-06-18 00:00:00')
+        GROUP BY news_id
+        HAVING COUNT(*) > 0
+        LIMIT 100
+    )
+    SELECT
+        n.news_id,
+        n.headline,
+        n.category,
+        n.topic,
+        b.total_users,
+        b.total_duration,
+        b.hourly_duration
+    FROM browse_agg b
+    JOIN t_news n ON n.news_id = b.news_id
+    WHERE n.category = 'entertainment' AND n.topic = 'celebrity'
+    ORDER BY b.total_duration DESC
+    LIMIT 10;
+ 9.69272518157959s
+[2025-06-15 00:45:07] 
+    WITH browse_agg AS (
+        SELECT
+            news_id,
+            COUNT(DISTINCT user_id) AS total_users,
+            SUM(duration) AS total_duration,
+            SUM(duration) / (UNIX_TIMESTAMP('2019-06-19 00:00:00') - UNIX_TIMESTAMP('2019-05-15 00:00:00')) * 3600 AS hourly_duration
+        FROM t_news_browse_record
+        WHERE start_ts BETWEEN UNIX_TIMESTAMP('2019-05-15 00:00:00') AND UNIX_TIMESTAMP('2019-06-19 00:00:00')
+        GROUP BY news_id
+        HAVING COUNT(*) > 0
+        LIMIT 100
+    )
+    SELECT
+        n.news_id,
+        n.headline,
+        n.category,
+        n.topic,
+        b.total_users,
+        b.total_duration,
+        b.hourly_duration
+    FROM browse_agg b
+    JOIN t_news n ON n.news_id = b.news_id
+    WHERE n.category = 'entertainment' AND n.topic = 'celebrity'
+    ORDER BY b.total_duration DESC
+    LIMIT 10;
+ 7.351702451705933s
+[2025-06-15 00:47:02] 
+    WITH browse_agg AS (
+        SELECT
+            news_id,
+            COUNT(DISTINCT user_id) AS total_users,
+            SUM(duration) AS total_duration,
+            SUM(duration) / (UNIX_TIMESTAMP('2019-06-16 00:00:00') - UNIX_TIMESTAMP('2019-06-12 00:00:00')) * 3600 AS hourly_duration
+        FROM t_news_browse_record
+        WHERE start_ts BETWEEN UNIX_TIMESTAMP('2019-06-12 00:00:00') AND UNIX_TIMESTAMP('2019-06-16 00:00:00')
+        GROUP BY news_id
+        HAVING COUNT(*) > 0
+        LIMIT 100
+    )
+    SELECT
+        n.news_id,
+        n.headline,
+        n.category,
+        n.topic,
+        b.total_users,
+        b.total_duration,
+        b.hourly_duration
+    FROM browse_agg b
+    JOIN t_news n ON n.news_id = b.news_id
+    WHERE n.category = 'entertainment' AND n.topic = 'entertainment-celebrity'
+    ORDER BY b.total_duration DESC
+    LIMIT 10;
+ 13.955461740493774s
+[2025-06-15 01:25:48] 
+    WITH browse_agg AS (
+        SELECT
+            news_id,
+            COUNT(DISTINCT user_id) AS total_users,
+            SUM(duration) AS total_duration,
+            SUM(duration) / (UNIX_TIMESTAMP('2019-06-16 00:00:00') - UNIX_TIMESTAMP('2019-06-12 00:00:00')) * 3600 AS hourly_duration,
+            (
+                SUM(duration * (UNIX_TIMESTAMP(start_ts) - UNIX_TIMESTAMP('2019-06-12 00:00:00'))) -
+                SUM(duration) * SUM(UNIX_TIMESTAMP(start_ts) - UNIX_TIMESTAMP('2019-06-12 00:00:00')) / COUNT(*)
+            ) / (
+                SUM(POWER(UNIX_TIMESTAMP(start_ts) - UNIX_TIMESTAMP('2019-06-12 00:00:00'), 2)) -
+                POWER(SUM(UNIX_TIMESTAMP(start_ts) - UNIX_TIMESTAMP('2019-06-12 00:00:00')), 2) / COUNT(*)
+            ) AS growth_trend
+        FROM t_news_browse_record
+        WHERE start_ts BETWEEN UNIX_TIMESTAMP('2019-06-12 00:00:00') AND UNIX_TIMESTAMP('2019-06-16 00:00:00')
+        GROUP BY news_id
+        HAVING COUNT(*) > 0
+        LIMIT 1000
+    )
+    SELECT
+        n.news_id,
+        n.headline,
+        n.category,
+        n.topic,
+        b.total_users,
+        b.total_duration,
+        b.hourly_duration,
+        b.growth_trend
+    FROM browse_agg b
+    JOIN t_news n ON n.news_id = b.news_id
+    WHERE n.category = 'entertainment' AND n.topic = 'entertainment-celebrity'
+    ORDER BY b.total_duration DESC, b.growth_trend DESC
+    LIMIT 10;
+     874.5358748435974s
+[2025-06-15 01:25:48] 
+            SELECT news_id, content 
+            FROM t_news 
+            WHERE news_id IN (662,1562,1371,1885,1716,1760,5119)
+         0.06114363670349121s
+[2025-06-15 01:26:34] 
+    WITH browse_agg AS (
+        SELECT
+            news_id,
+            COUNT(DISTINCT user_id) AS total_users,
+            SUM(duration) AS total_duration,
+            SUM(duration) / (UNIX_TIMESTAMP('2019-06-16 00:00:00') - UNIX_TIMESTAMP('2019-06-12 00:00:00')) * 3600 AS hourly_duration,
+            (
+                SUM(duration * (UNIX_TIMESTAMP(start_ts) - UNIX_TIMESTAMP('2019-06-12 00:00:00'))) -
+                SUM(duration) * SUM(UNIX_TIMESTAMP(start_ts) - UNIX_TIMESTAMP('2019-06-12 00:00:00')) / COUNT(*)
+            ) / (
+                SUM(POWER(UNIX_TIMESTAMP(start_ts) - UNIX_TIMESTAMP('2019-06-12 00:00:00'), 2)) -
+                POWER(SUM(UNIX_TIMESTAMP(start_ts) - UNIX_TIMESTAMP('2019-06-12 00:00:00')), 2) / COUNT(*)
+            ) AS growth_trend
+        FROM t_news_browse_record
+        WHERE start_ts BETWEEN UNIX_TIMESTAMP('2019-06-12 00:00:00') AND UNIX_TIMESTAMP('2019-06-16 00:00:00')
+        GROUP BY news_id
+        HAVING COUNT(*) > 0
+        LIMIT 1000
+    )
+    SELECT
+        n.news_id,
+        n.headline,
+        n.category,
+        n.topic,
+        b.total_users,
+        b.total_duration,
+        b.hourly_duration,
+        b.growth_trend
+    FROM browse_agg b
+    JOIN t_news n ON n.news_id = b.news_id
+    WHERE n.category = 'entertainment' AND n.topic = 'entertainment-celebrity'
+    ORDER BY b.total_duration DESC, b.growth_trend DESC
+    LIMIT 10;
+     868.8489923477173s
+[2025-06-15 01:26:34] 
+            SELECT news_id, content 
+            FROM t_news 
+            WHERE news_id IN (662,1562,1371,1885,1716,1760,5119)
+         0.024615764617919922s
+[2025-06-15 01:45:14] 
+    WITH browse_agg AS (
+        SELECT
+            news_id,
+            COUNT(DISTINCT user_id) AS total_users,
+            SUM(duration) AS total_duration,
+            SUM(duration) / (UNIX_TIMESTAMP('2019-06-16 00:00:00') - UNIX_TIMESTAMP('2019-06-12 00:00:00')) * 3600 AS hourly_duration,
+            (
+                SUM(duration * (UNIX_TIMESTAMP(start_ts) - UNIX_TIMESTAMP('2019-06-12 00:00:00'))) -
+                SUM(duration) * SUM(UNIX_TIMESTAMP(start_ts) - UNIX_TIMESTAMP('2019-06-12 00:00:00')) / COUNT(*)
+            ) / (
+                SUM(POWER(UNIX_TIMESTAMP(start_ts) - UNIX_TIMESTAMP('2019-06-12 00:00:00'), 2)) -
+                POWER(SUM(UNIX_TIMESTAMP(start_ts) - UNIX_TIMESTAMP('2019-06-12 00:00:00')), 2) / COUNT(*)
+            ) AS growth_trend
+        FROM t_news_browse_record
+        WHERE start_ts BETWEEN UNIX_TIMESTAMP('2019-06-12 00:00:00') AND UNIX_TIMESTAMP('2019-06-16 00:00:00')
+        GROUP BY news_id
+        HAVING COUNT(*) > 0
+        LIMIT 1000
+    )
+    SELECT
+        n.news_id,
+        n.headline,
+        n.category,
+        n.topic,
+        b.total_users,
+        b.total_duration,
+        b.hourly_duration,
+        b.growth_trend
+    FROM browse_agg b
+    JOIN t_news n ON n.news_id = b.news_id
+    WHERE n.category = 'entertainment' AND n.topic = 'entertainment-celebrity'
+    ORDER BY b.total_duration DESC, b.growth_trend DESC
+    LIMIT 10;
+     673.4306421279907s
+[2025-06-15 01:45:14] 
+            SELECT news_id, content 
+            FROM t_news 
+            WHERE news_id IN (662,1562,1371,1885,1716,1760,5119)
+         0.024596452713012695s
+[2025-06-15 02:59:33] 
+        SELECT distinct(category)
+        FROM t_news_daily_category;
+         0.04169058799743652s
+[2025-06-15 02:59:35] 
+        SELECT DISTINCT(n.topic)
+        FROM t_news n
+        WHERE n.category='entertainment';
+         0.030384302139282227s
+[2025-06-15 03:09:40] 
+        SELECT distinct(category)
+        FROM t_news_daily_category;
+         0.07333827018737793s
+[2025-06-15 03:09:44] 
+        SELECT DISTINCT(n.topic)
+        FROM t_news n
+        WHERE n.category='entertainment';
+         0.023888826370239258s
+[2025-06-15 03:22:10] 
+    WITH browse_agg AS (
+        SELECT
+            news_id,
+            COUNT(DISTINCT user_id) AS total_users,
+            SUM(duration) AS total_duration,
+            SUM(duration) / (UNIX_TIMESTAMP('2019-06-12 00:00:00') - UNIX_TIMESTAMP('2019-06-11 00:00:00')) * 3600 AS hourly_duration
+        FROM t_news_browse_record
+        WHERE start_ts BETWEEN UNIX_TIMESTAMP('2019-06-11 00:00:00') AND UNIX_TIMESTAMP('2019-06-12 00:00:00')
+        GROUP BY news_id
+        HAVING COUNT(*) > 0
+    )
+    SELECT
+        n.news_id,
+        n.headline,
+        n.category,
+        n.topic,
+        b.total_users,
+        b.total_duration,
+        b.hourly_duration
+    FROM browse_agg b
+    JOIN t_news n ON n.news_id = b.news_id
+    WHERE 1=1
+        AND n.category LIKE '%entertainment%'
+        AND n.topic LIKE '%entertainment-celebrity%'
+    ORDER BY b.total_duration DESC
+    LIMIT 10;
+     0.0880885124206543s
+[2025-06-15 03:22:15] 
+    WITH browse_agg AS (
+        SELECT
+            news_id,
+            COUNT(DISTINCT user_id) AS total_users,
+            SUM(duration) AS total_duration,
+            SUM(duration) / (UNIX_TIMESTAMP('2019-06-13 00:00:00') - UNIX_TIMESTAMP('2019-06-11 00:00:00')) * 3600 AS hourly_duration
+        FROM t_news_browse_record
+        WHERE start_ts BETWEEN UNIX_TIMESTAMP('2019-06-11 00:00:00') AND UNIX_TIMESTAMP('2019-06-13 00:00:00')
+        GROUP BY news_id
+        HAVING COUNT(*) > 0
+    )
+    SELECT
+        n.news_id,
+        n.headline,
+        n.category,
+        n.topic,
+        b.total_users,
+        b.total_duration,
+        b.hourly_duration
+    FROM browse_agg b
+    JOIN t_news n ON n.news_id = b.news_id
+    WHERE 1=1
+        AND n.category LIKE '%entertainment%'
+        AND n.topic LIKE '%entertainment-celebrity%'
+    ORDER BY b.total_duration DESC
+    LIMIT 10;
+     0.028311967849731445s
+[2025-06-15 03:22:22] 
+    WITH browse_agg AS (
+        SELECT
+            news_id,
+            COUNT(DISTINCT user_id) AS total_users,
+            SUM(duration) AS total_duration,
+            SUM(duration) / (UNIX_TIMESTAMP('2019-06-13 00:00:00') - UNIX_TIMESTAMP('2019-06-11 00:00:00')) * 3600 AS hourly_duration
+        FROM t_news_browse_record
+        WHERE start_ts BETWEEN UNIX_TIMESTAMP('2019-06-11 00:00:00') AND UNIX_TIMESTAMP('2019-06-13 00:00:00')
+        GROUP BY news_id
+        HAVING COUNT(*) > 0
+    )
+    SELECT
+        n.news_id,
+        n.headline,
+        n.category,
+        n.topic,
+        b.total_users,
+        b.total_duration,
+        b.hourly_duration
+    FROM browse_agg b
+    JOIN t_news n ON n.news_id = b.news_id
+    WHERE 1=1
+        AND n.category LIKE '%entertainment%'
+        AND n.topic LIKE '%entertainment-celebrity%'
+    ORDER BY b.total_duration DESC
+    LIMIT 10;
+     0.016522645950317383s
+[2025-06-15 03:22:41] 
+    WITH browse_agg AS (
+        SELECT
+            news_id,
+            COUNT(DISTINCT user_id) AS total_users,
+            SUM(duration) AS total_duration,
+            SUM(duration) / (UNIX_TIMESTAMP('2019-06-14 00:00:00') - UNIX_TIMESTAMP('2019-06-11 00:00:00')) * 3600 AS hourly_duration
+        FROM t_news_browse_record
+        WHERE start_ts BETWEEN UNIX_TIMESTAMP('2019-06-11 00:00:00') AND UNIX_TIMESTAMP('2019-06-14 00:00:00')
+        GROUP BY news_id
+        HAVING COUNT(*) > 0
+    )
+    SELECT
+        n.news_id,
+        n.headline,
+        n.category,
+        n.topic,
+        b.total_users,
+        b.total_duration,
+        b.hourly_duration
+    FROM browse_agg b
+    JOIN t_news n ON n.news_id = b.news_id
+    WHERE 1=1
+        AND n.category LIKE '%entertainment%'
+        AND n.topic LIKE '%entertainment-celebrity%'
+    ORDER BY b.total_duration DESC
+    LIMIT 10;
+     22.228368997573853s
+[2025-06-15 03:22:41] 
+    WITH browse_agg AS (
+        SELECT
+            news_id,
+            COUNT(DISTINCT user_id) AS total_users,
+            SUM(duration) AS total_duration,
+            SUM(duration) / (UNIX_TIMESTAMP('2019-06-14 00:00:00') - UNIX_TIMESTAMP('2019-06-11 00:00:00')) * 3600 AS hourly_duration
+        FROM t_news_browse_record
+        WHERE start_ts BETWEEN UNIX_TIMESTAMP('2019-06-11 00:00:00') AND UNIX_TIMESTAMP('2019-06-14 00:00:00')
+        GROUP BY news_id
+        HAVING COUNT(*) > 0
+    )
+    SELECT
+        n.news_id,
+        n.headline,
+        n.category,
+        n.topic,
+        b.total_users,
+        b.total_duration,
+        b.hourly_duration
+    FROM browse_agg b
+    JOIN t_news n ON n.news_id = b.news_id
+    WHERE 1=1
+        AND n.category LIKE '%entertainment%'
+        AND n.topic LIKE '%entertainment-celebrity%'
+    ORDER BY b.total_duration DESC
+    LIMIT 10;
+     24.01617670059204s
+[2025-06-15 03:22:41] 
+            SELECT news_id, content 
+            FROM t_news 
+            WHERE news_id IN (48081,17807,15109,16602,67690,108667,45362,108139,54779,20172)
+         0.13425421714782715s
+[2025-06-15 03:22:42] 
+            SELECT news_id, content 
+            FROM t_news 
+            WHERE news_id IN (48081,17807,15109,16602,67690,108667,45362,108139,54779,20172)
+         0.1357100009918213s
+[2025-06-15 03:22:49] 
+    WITH browse_agg AS (
+        SELECT
+            news_id,
+            COUNT(DISTINCT user_id) AS total_users,
+            SUM(duration) AS total_duration,
+            SUM(duration) / (UNIX_TIMESTAMP('2019-06-14 00:00:00') - UNIX_TIMESTAMP('2019-06-11 00:00:00')) * 3600 AS hourly_duration
+        FROM t_news_browse_record
+        WHERE start_ts BETWEEN UNIX_TIMESTAMP('2019-06-11 00:00:00') AND UNIX_TIMESTAMP('2019-06-14 00:00:00')
+        GROUP BY news_id
+        HAVING COUNT(*) > 0
+    )
+    SELECT
+        n.news_id,
+        n.headline,
+        n.category,
+        n.topic,
+        b.total_users,
+        b.total_duration,
+        b.hourly_duration
+    FROM browse_agg b
+    JOIN t_news n ON n.news_id = b.news_id
+    WHERE 1=1
+        AND n.category LIKE '%entertainment%'
+        AND n.topic LIKE '%entertainment-celebrity%'
+    ORDER BY b.total_duration DESC
+    LIMIT 10;
+     23.49044632911682s
+[2025-06-15 03:22:49] 
+            SELECT news_id, content 
+            FROM t_news 
+            WHERE news_id IN (48081,17807,15109,16602,67690,108667,45362,108139,54779,20172)
+         0.12618350982666016s
+[2025-06-15 10:02:04] 
+        SELECT distinct(category)
+        FROM t_news_daily_category;
+         0.03585243225097656s
+[2025-06-15 10:02:12] 
+        SELECT DISTINCT(n.topic)
+        FROM t_news n
+        WHERE n.category='entertainment';
+         0.016193151473999023s
+[2025-06-15 10:02:30] 
+    WITH browse_agg AS (
+        SELECT
+            news_id,
+            COUNT(DISTINCT user_id) AS total_users,
+            SUM(duration) AS total_duration,
+            SUM(duration) / (UNIX_TIMESTAMP('2019-06-13 00:00:00') - UNIX_TIMESTAMP('2019-06-11 00:00:00')) * 3600 AS hourly_duration
+        FROM t_news_browse_record
+        WHERE start_ts BETWEEN UNIX_TIMESTAMP('2019-06-11 00:00:00') AND UNIX_TIMESTAMP('2019-06-13 00:00:00')
+        GROUP BY news_id
+        HAVING COUNT(*) > 0
+    )
+    SELECT
+        n.news_id,
+        n.headline,
+        n.category,
+        n.topic,
+        b.total_users,
+        b.total_duration,
+        b.hourly_duration
+    FROM browse_agg b
+    JOIN t_news n ON n.news_id = b.news_id
+    WHERE 1=1
+        AND n.category LIKE '%entertainment%'
+        AND n.topic LIKE '%celebrity%'
+    ORDER BY b.total_duration DESC
+    LIMIT 10;
+     0.017345666885375977s
+[2025-06-15 10:02:40] 
+    WITH browse_agg AS (
+        SELECT
+            news_id,
+            COUNT(DISTINCT user_id) AS total_users,
+            SUM(duration) AS total_duration,
+            SUM(duration) / (UNIX_TIMESTAMP('2019-06-14 00:00:00') - UNIX_TIMESTAMP('2019-06-11 00:00:00')) * 3600 AS hourly_duration
+        FROM t_news_browse_record
+        WHERE start_ts BETWEEN UNIX_TIMESTAMP('2019-06-11 00:00:00') AND UNIX_TIMESTAMP('2019-06-14 00:00:00')
+        GROUP BY news_id
+        HAVING COUNT(*) > 0
+    )
+    SELECT
+        n.news_id,
+        n.headline,
+        n.category,
+        n.topic,
+        b.total_users,
+        b.total_duration,
+        b.hourly_duration
+    FROM browse_agg b
+    JOIN t_news n ON n.news_id = b.news_id
+    WHERE 1=1
+        AND n.category LIKE '%entertainment%'
+        AND n.topic LIKE '%celebrity%'
+    ORDER BY b.total_duration DESC
+    LIMIT 10;
+     5.089786767959595s
+[2025-06-15 10:02:40] 
+            SELECT news_id, content 
+            FROM t_news 
+            WHERE news_id IN (48081,27762,17807,42505,15109,16602,67690,108667,105584,64186)
+         0.07871890068054199s

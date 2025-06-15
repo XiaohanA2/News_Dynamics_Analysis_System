@@ -127,7 +127,7 @@ export const constantRoutes = [
       path: 'index',
       name: 'hot',
       component: () => import('@/views/f-hot-news-suggestion/index'),
-      meta: { title: '爆款新闻分析（待完成）', icon: 'fire' }
+      meta: { title: '爆款新闻分析', icon: 'fire' }
     }]
   },
 
