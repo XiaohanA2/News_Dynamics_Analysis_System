@@ -334,9 +334,28 @@ ORDER BY popularity DESC
 LIMIT 10;
 ```
 
+![](./assets/2025-06-15-20-08-09.png)
+
 为保证推荐的实时性，我们添加了 `t_news_current_popularity` 用于存储指定时间及此前十五天内各新闻的浏览量，并设置定时器任务每隔一段时间进行更新。为提高全表更新的速度，为 `t_news_browse_record` 建立 `news_id` 与 `start_day` 的索引，放入全部点击记录时全表更新时间大约为 20s。
+
+```SQL
+INSERT INTO t_news_current_popularity (news_id, popularity)
+SELECT news_id, 0
+FROM t_news
+ON DUPLICATE KEY UPDATE popularity = VALUES(popularity);
+
+INSERT INTO t_news_current_popularity (news_id, popularity)
+SELECT news_id, COUNT(news_id) AS popularity
+FROM t_news_browse_record
+WHERE start_day BETWEEN (UNIX_TIMESTAMP(NOW()) DIV 86400 - 15)
+        AND (UNIX_TIMESTAMP(NOW()) DIV 86400)
+GROUP BY news_id
+ON DUPLICATE KEY UPDATE popularity = VALUES(popularity);
+```
 
 ### 6.7. 查询日志
 
 当我们调用 API 进行查询时，会将使用到的 SQL 语句与执行时间记录下来，以保存所有的 SQL 查询记录和查询时间，以便于后续对性能指标进行检验和优化，以及定位 bug。
+
+![](./assets/2025-06-15-20-05-26.png)
 

@@ -2994,3 +2994,10 @@
         SELECT distinct(category)
         FROM t_news_daily_category;
          0.013866424560546875s
+[2025-06-15 20:02:20] 
+        SELECT distinct(category)
+        FROM t_news_daily_category;
+         0.015713930130004883s
+[2025-06-15 20:03:08] 
+        SELECT min(user_id), max(user_id) FROM t_news_browse_record;
+         0.016542911529541016s
