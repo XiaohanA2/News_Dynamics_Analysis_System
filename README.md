@@ -212,14 +212,113 @@ create table t_news_daily_category
 我们可以根据不同查询任务设置不同的冗余表，并设置类似定时任务程序来从主表中统计相关数据，进而存储到冗余表中，在查询相关任务时直接针对冗余表进行查询，提升效率。
 
 
-## 实时推荐功能实现简要说明
+## 6. 功能实现
 
-添加冗余表 `t_news_current_popularity` 用于存储指定时间及此前十五天内各新闻的浏览量，可以设置定时器任务每天进行更新。为提高全表更新的速度，为 `t_news_browse_record` 建立 `news_id` 与 `start_day` 的索引，每次更新时间大约为 20s。
+### 6.1. 查询单个新闻的生命周期
 
-实时推荐步骤如下：
-- 获取用户最近浏览的新闻 ID
-- 找出这部分新闻中最常出现的新闻种类
-- 查找该种类下最近浏览量增长较快的十条新闻，推荐给用户
+首先由用户输入新闻标题，使用后端提供的新闻标题的模糊匹配功能，选取需要查询的新闻标题。
 
-当前查找速度较慢，可以新增用户偏好表用于存储用户最近浏览的新闻的 ID，避免每次推荐时查询 `t_news_browse_record` 全表，同时使用 Flume 管理更新该表，以提高系统的实时性。
+```SQL
+SELECT news_id, headline
+FROM t_news
+WHERE headline LIKE '%{headline}%'
+LIMIT {amount};
+```
+
+然后根据新闻标题，由后端服务查找指定新闻在指定时间内的日浏览量变化，前端使用折线图进行展示。
+
+```SQL
+SELECT COUNT(*), FROM_UNIXTIME(tnbr.start_ts,"%Y-%m-%d")
+FROM t_news_browse_record tnbr
+WHERE {start_ts} <= tnbr.start_ts AND tnbr.start_ts <= {end_ts} AND news_id = {news_id}
+GROUP BY tnbr.news_id, FROM_UNIXTIME(tnbr.start_ts,"%Y-%m-%d");
+```
+
+### 6.2. 查询某些种类的新闻的变化情况
+
+后端获取新闻种类后，用户可以选择需要查询的新闻种类。
+
+```SQL
+SELECT DISTINCT(category)
+FROM t_news_daily_category;
+```
+
+根据所选新闻种类，可以查询多个新闻种类在指定时间内日浏览数的变化，前端使用折线图进行展示。
+
+```SQL
+SELECT day_stamp, category, browse_count
+FROM t_news_daily_category WHERE day_stamp >= {start_day} AND day_stamp<={end_day}
+AND (category = 'entertainment' or category = 'finance')
+GROUP BY day_stamp, category;
+```
+
+### 6.3. 查询用户兴趣变化
+
+可以查询指定用户在指定时间内不同种类新闻的浏览数量。
+
+```SQL
+SELECT count(*), n.category
+FROM t_news AS n
+    JOIN (
+        SELECT tnbr.news_id,tnbr.start_ts
+        FROM t_news_browse_record AS tnbr
+        WHERE tnbr.user_id={user_id} AND tnbr.start_ts>={start_ts} AND tnbr.start_ts<={end_ts}
+    ) AS t ON n.news_id=t.news_id
+GROUP BY n.category;
+```
+
+### 6.4. 组合查询
+
+后端可以根据用户 ID、新闻标题长度、新闻内容长度、新闻种类、新闻主题、起始时间等多种条件和组合完成对用户浏览过的所有新闻的统计查询。
+
+```SQL
+SELECT DISTINCT new.headline, new.news_id
+FROM t_news_browse_record AS tnbr
+    JOIN t_news AS new
+    ON tnbr.news_id = new.news_id
+WHERE tnbr.start_ts >= 1560355200 AND tnbr.start_ts <= 1561996800
+    AND user_id >= 1008 AND user_id <= 1008 AND tnbr.news_id
+    IN (
+        SELECT news_id
+        FROM t_news n
+        WHERE LENGTH(n.headline) >= 7  AND LENGTH(n.headline) <= 245
+            AND LENGTH(n.content) >= 2 AND LENGTH(n.content) <= 5000
+            AND n.topic like '%soccer%'
+    );
+```
+
+### 6.5. 爆款新闻分析
+
+### 6.6. 实时新闻推荐
+
+为实现新闻的实时推荐，我们会从后端获取用户最新的二十条新闻浏览记录，选择最近浏览新闻中浏览最多的两个种类，然后从数据库中获取最近十五天内浏览量增长较快的十条新闻，推荐给用户。
+
+```SQL
+SELECT category
+FROM pens_db.t_news n JOIN (
+    SELECT news_id
+    FROM pens_db.t_news_browse_record
+    WHERE user_id = ?1
+    ORDER BY start_ts DESC
+    LIMIT 10
+) AS r ON n.news_id = r.news_id
+GROUP BY category
+ORDER BY COUNT(n.news_id) DESC
+LIMIT 1；
+```
+
+```SQL
+SELECT news.news_id, category, topic, headline, content
+FROM pens_db.t_news news JOIN pens_db.t_news_current_popularity popular
+ON news.news_id = popular.news_id
+WHERE category='autos'
+ORDER BY popularity DESC
+LIMIT 10;
+```
+
+为保证推荐的实时性，我们添加了 `t_news_current_popularity` 用于存储指定时间及此前十五天内各新闻的浏览量，并设置定时器任务每隔一段时间进行更新。为提高全表更新的速度，为 `t_news_browse_record` 建立 `news_id` 与 `start_day` 的索引，放入全部点击记录时全表更新时间大约为 20s。
+
+### 6.7. 查询日志
+
+当我们调用 API 进行查询时，会将使用到的 SQL 语句与执行时间记录下来，以保存所有的 SQL 查询记录和查询时间，以便于后续对性能指标进行检验和优化，以及定位 bug。
 

@@ -53,10 +53,10 @@ def getSingleNewsFashion():
     news_id = data.get('news_id')
 
     sql = f'''
-        SELECT count(*), from_unixtime(tnbr.start_ts,"%Y-%m-%d")
+        SELECT COUNT(*), FROM_UNIXTIME(tnbr.start_ts,"%Y-%m-%d")
         FROM t_news_browse_record tnbr
-        WHERE {start_ts} <= tnbr.start_ts and tnbr.start_ts <= {end_ts} and news_id = {news_id}
-        GROUP BY tnbr.news_id, from_unixtime(tnbr.start_ts,"%Y-%m-%d");
+        WHERE {start_ts} <= tnbr.start_ts AND tnbr.start_ts <= {end_ts} AND news_id = {news_id}
+        GROUP BY tnbr.news_id, FROM_UNIXTIME(tnbr.start_ts,"%Y-%m-%d");
         '''
 
     with db.engine.connect() as conn:
@@ -96,13 +96,6 @@ def getCategoryNewsChanging():
     start_day = start_ts // 86400
     end_day = min(end_ts // 86400, 18088)
 
-    sql = f"""
-        SELECT sum(tndc.browse_count), sum(tndc.browse_duration), tndc.day_stamp
-        FROM t_news_daily_category tndc
-        WHERE tndc.day_stamp>={start_day} and tndc.day_stamp<={end_day} and tndc.category = '{category}'
-        GROUP BY tndc.day_stamp;
-        """
-
     new_sql = f"""
         SELECT day_stamp, category, browse_count
         FROM t_news_daily_category WHERE day_stamp>={start_day} and day_stamp<={end_day} and ({where_clause})
@@ -137,8 +130,7 @@ def getUserInterestChanging():
     
     sql = f"""
         SELECT count(*), n.category
-        FROM
-            t_news AS n
+        FROM t_news AS n
             JOIN (
                 SELECT tnbr.news_id,tnbr.start_ts
                 FROM t_news_browse_record AS tnbr
@@ -151,7 +143,6 @@ def getUserInterestChanging():
         rows = conn.execute(text(sql)).fetchall()
         end = time.time()
         log(text(sql), end - start)
-        # result = [{'count': row[0], 'category': row[1], 'date': row[2]} for row in rows]
         result = [{'count': row[0], 'category': row[1]} for row in rows]
         return jsonify(result)
 
