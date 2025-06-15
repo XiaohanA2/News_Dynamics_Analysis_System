@@ -95,6 +95,123 @@ PENS数据集包含113,762篇新闻，其主题分为15个类别。每个新闻�
 
 我们设置一个当前时间戳，每当新读取一行点击时间，用新时间戳减去当前时间戳得到时差delta，并让程序睡眠delta秒，睡眠完成后再将其写入到`click.log` 文件中。由flume监视其改变，当有新的内容在文件末尾写入时，就将其采集给kafka消息队列中。
 
+## 4. 数据采集
+### 4.1 Flume日志采集
+- 使用了 Flume 来实时监控 /opt/click.log 文件的新增内容，将其采集并发送至 Kafka。
+- 使用 Kafka Sink 将日志消息推送到 Kafka 的 flume-topic 中。
+Kafka 在这里是一个 消息中间件，用于缓冲 Flume 发过来的数据，提供给 PySpark 程序进行消费和处理。
+- Kafka 是整个系统的消息缓冲和解耦中心。
+```
+agent1.sources = r1
+agent1.channels = c1
+agent1.sinks = k1
+
+# source: 监测log文件
+agent1.sources.r1.type = TAILDIR
+agent1.sources.r1.filegroups = f1
+agent1.sources.r1.filegroups.f1 = /opt/click.log
+agent1.sources.r1.positionFile = /opt/flume-taildir.position
+agent1.sources.r1.batchSize = 100
+agent1.sources.r1.deserializer = LINE
+agent1.sources.r1.deserializer.maxLineLength = 2000
+
+# channel: 内存channel
+agent1.channels.c1.type = memory
+agent1.channels.c1.capacity = 10000
+agent1.channels.c1.transactionCapacity = 1000
+
+# sink: kafka sink
+agent1.sinks.k1.type = org.apache.flume.sink.kafka.KafkaSink
+agent1.sinks.k1.topic = flume-topic
+agent1.sinks.k1.brokerList = localhost:9092
+agent1.sinks.k1.requiredAcks = 1
+agent1.sinks.k1.batchSize = 100
+
+# 绑定关系
+agent1.sources.r1.channels = c1
+agent1.sinks.k1.channel = c1
+```
+### 4.2 Spark Streaming
+用 PySpark 编写了一个流处理应用，使用Spark Streaming。
+- 从 Kafka 的 flume-topic 实时读取数据
+- 对数据进行 ETL 操作，进行数据清洗、转换、加工
+将处理后的结果写入MySQL
+
+## 5. 数据存储设计
+### 5.1 t_news
+
+```SQL
+create table t_news
+(
+    news_id               int          not null
+        primary key,
+    headline              varchar(256) null,
+    content               mediumtext   null,
+    category              varchar(16)  not null,
+    topic                 varchar(64)  not null,
+    total_browse_num      int unsigned not null,
+    total_browse_duration int unsigned not null,
+);
+```
+
+该表存储了所有的新闻信息，包含新闻ID、标题headline、内容content、类别category、主题topic，以及用于统计的总浏览次数total_browse_num和总浏览时长total_browse_duration。
+
+### 5.2. t_news_browse_record
+
+```SQL
+create table t_news_browse_record
+(
+    user_id   int          not null,
+    news_id   int          not null,
+    start_ts  int unsigned not null,
+    duration  int          not null,
+    start_day int unsigned not null
+);
+
+create index t_news_browse_record_news_id_index
+    on t_news_browse_record (news_id);
+
+create index t_news_browse_record_start_day_index
+    on t_news_browse_record (start_day);
+
+create index t_news_browse_record_start_ts_index
+    on t_news_browse_record (start_ts);
+
+create index t_news_browse_record_user_id_index
+    on t_news_browse_record (user_id);
+```
+
+该表存储用户的新闻浏览记录，包括用户ID、新闻ID、浏览时间戳、浏览持续时间和浏览的天戳，这里的天戳指距离1970年的天数。该表会在kafka队列出口的实时流计算程序中被不断添加新的行。
+
+我们将以秒和天作为最小单位的时间都以整数表示，在具体需要显示时再将其转换，目的是便于建立索引、加快诸如根据天数统计相关信息的速度。
+
+我们针对用户ID、新闻ID、时间戳start_ts、天戳start_day都建立了索引，分别加快了：
+
+1. 用户ID索引：加快针对某些用户浏览情况的查询
+2. 新闻ID索引：加快针对某些/某类新闻被点击情况的查询
+3. 时间戳start_ts和天戳start_day索引：加快针对某个时间段的用户浏览情况和新闻被点击情况的查询
+
+该表的行数很多，因此若进行综合查询（如先查询某一类别的新闻被点击情况），当涉及到表的join时，速度会变得非常慢；因此我们添加了下列表用于实时存储一些冗余信息。
+
+### 5.3. t_news_daily_category
+
+```SQL
+create table t_news_daily_category
+(
+    day_stamp       int         not null,
+    category        varchar(16) not null,
+    browse_count    int         null,
+    browse_duration int         null,
+    constraint t_news_daily_category_pk
+        unique (day_stamp, category)
+);
+```
+
+该表存储某天某类别的新闻被浏览的次数和持续时间。作为冗余表，他可以被t_news_browse_record中被直接计算出来，但是由于t_news_browse_record的行数过多，如果按照类别查询，则会与t_news进行join操作，导致查询时间大量增加。因此我们设置定时任务，在kafka队列出口的实时流计算程序中判断是否进入了新的一天（根据四元组中的时间戳），如果进入新的一天，则统计前一天的新闻类别点击情况，并存入本表格，大大提升查询效率。
+
+我们可以根据不同查询任务设置不同的冗余表，并设置类似定时任务程序来从主表中统计相关数据，进而存储到冗余表中，在查询相关任务时直接针对冗余表进行查询，提升效率。
+
+
 ## 实时推荐功能实现简要说明
 
 添加冗余表 `t_news_current_popularity` 用于存储指定时间及此前十五天内各新闻的浏览量，可以设置定时器任务每天进行更新。为提高全表更新的速度，为 `t_news_browse_record` 建立 `news_id` 与 `start_day` 的索引，每次更新时间大约为 20s。
